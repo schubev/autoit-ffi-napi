@@ -1,0 +1,8 @@
+{
+  "name": "autoit-ffi-napi",
+  "version": "0.0.1",
+  "description": "FFI bindings for AutoIT",
+  "main": "lib/index.js",
+  "author": "Victor Schubert <v@schu.be>",
+  "license": "MIT"
+}
