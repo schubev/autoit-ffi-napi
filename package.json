@@ -4,5 +4,8 @@
   "description": "FFI bindings for AutoIT",
   "main": "lib/index.js",
   "author": "Victor Schubert <v@schu.be>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  }
 }
