@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "module": "esnext",
+    "target": "es2017",
+    "outDir": "./lib",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strict": true
+  },
+  "include": ["./src/**/*"]
+}
