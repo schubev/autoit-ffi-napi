@@ -1,7 +1,6 @@
 /* eslint @typescript-eslint/camelcase: "off" */
 
-enum Param {
-  Void,
+export enum Param {
   Int,
   InWstr,
   InWstrCommand,
@@ -15,7 +14,7 @@ enum Param {
   SendMode,
 }
 
-enum Return {
+export enum Return {
   Void,
   Int,
   Hwnd,
@@ -37,8 +36,8 @@ export enum MouseButton {
   Menu = 'menu',
 }
 
-type ParamDef = [string, Param] | [string, Param.Int, number]
-type FunctionDef = [Return, ParamDef[]]
+export type ParamDef = [string, Param] | [string, Param.Int, number]
+export type FunctionDef = [Return, ParamDef[]]
 
 export const defaultInt = -0x7fffffff
 
