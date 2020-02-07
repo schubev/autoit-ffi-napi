@@ -1,8 +1,9 @@
-import { Return, Param } from '../functions'
+import { functions, Return, Param } from '../functions'
 import {
   ffiTypeOfReturn,
   ffiTypeOfParam,
   ffiBindingOfDescription,
+  ffiBindingOfDescriptions,
 } from '../binding-utils'
 
 describe(ffiTypeOfReturn, () => {
@@ -60,4 +61,10 @@ describe(ffiBindingOfDescription, () => {
       expect(ffiBindingOfDescription(autoitSignature)).toEqual(ffiSignature)
     },
   )
+})
+
+describe(ffiBindingOfDescriptions, () => {
+  it('builds all the bindings', () => {
+    expect(ffiBindingOfDescriptions(functions)).toMatchSnapshot()
+  })
 })

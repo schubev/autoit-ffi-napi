@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ffiBindingOfDescriptions builds all the bindings 1`] = `
+Object {
+  "AU3_AutoItSetOption": Array [
+    "int",
+    Array [
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ClipGet": Array [
+    "void",
+    Array [
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ClipPut": Array [
+    "void",
+    Array [
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlClick": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+      "int",
+      "int",
+    ],
+  ],
+  "AU3_ControlClickByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+      "int",
+      "int",
+      "int",
+    ],
+  ],
+  "AU3_ControlCommand": Array [
+    "void",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlCommandByHandle": Array [
+    "void",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlDisable": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlDisableByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlEnable": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlEnableByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlFocus": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlFocusByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlGetFocus": Array [
+    "void",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlGetFocusByHandle": Array [
+    "void",
+    Array [
+      "void*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlGetHandle": Array [
+    "void*",
+    Array [
+      "void*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlGetPos": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlGetPosByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlGetText": Array [
+    "void",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlGetTextByHandle": Array [
+    "void",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlHide": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlHideByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_ControlListView": Array [
+    "void",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlListViewByHandle": Array [
+    "void",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlMove": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+      "int",
+      "int",
+      "int",
+    ],
+  ],
+  "AU3_ControlMoveByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+      "int",
+      "int",
+      "int",
+      "int",
+    ],
+  ],
+  "AU3_ControlSend": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlSendByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+      "int",
+    ],
+  ],
+  "AU3_ControlSetText": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlSetTextByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlShow": Array [
+    "int",
+    Array [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+    ],
+  ],
+  "AU3_ControlShowByHandle": Array [
+    "int",
+    Array [
+      "void*",
+      "void*",
+    ],
+  ],
+  "AU3_Init": Array [
+    "void",
+    Array [],
+  ],
+  "AU3_error": Array [
+    "int",
+    Array [],
+  ],
+}
+`;
