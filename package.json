@@ -19,6 +19,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "autoit-advanced-descriptor": "git+https://github.com/schubev/autoit-advanced-descriptor.git#v1.0.5",
     "ffi-napi": "^2.4.6",
     "ref": "^1.3.5"
   },
