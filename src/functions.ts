@@ -1,23 +1,23 @@
 /* eslint @typescript-eslint/camelcase: "off" */
 
 export enum Param {
-  Int,
-  InWstr,
-  InWstrCommand,
-  InWstrCommandExtra,
-  InWstrDescription,
-  InWstrMouseButton,
-  OutWstr,
-  OutWstrSize,
-  OutRectangle,
-  Hwnd,
-  SendMode,
+  Int = 'Int',
+  InWstr = 'IntWstr',
+  InWstrCommand = 'InWstrCommand',
+  InWstrCommandExtra = 'InWstrCommandExtra',
+  InWstrDescription = 'InWstrDescription',
+  InWstrMouseButton = 'InWstrMouseButton',
+  OutWstr = 'OutWstr',
+  OutWstrSize = 'OutWstrSize',
+  OutRectangle = 'OutRectangle',
+  Hwnd = 'Hwnd',
+  SendMode = 'SendMode',
 }
 
 export enum Return {
-  Void,
-  Int,
-  Hwnd,
+  Void = 'Void',
+  Int = 'Int',
+  Hwnd = 'Hwnd',
 }
 
 export enum SendMode {
