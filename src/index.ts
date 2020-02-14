@@ -11,9 +11,6 @@ export interface Hwnd {
 function numberOfHwnd(hwnd: Hwnd): number {
   return hwnd as any
 }
-function hwndOfNumber(hwnd: number): Hwnd {
-  return hwnd as any
-}
 
 function autoitSetOption(key: AutoitOption, value: number): Promise<number> {
   const keyBuffer = inWstrOfString(key)
