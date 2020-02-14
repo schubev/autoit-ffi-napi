@@ -73,7 +73,7 @@ export const functions: Record<string, FunctionDef> = {
   AU3_ControlClick: [
     Return.Int,
     [
-      ...windowSelection,
+      ...controlSelection,
       ['button', Param.InWstrMouseButton],
       ['numClicks', Param.Int],
       ['nX', Param.Int, -0x7fff_ffff],
