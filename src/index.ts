@@ -123,7 +123,7 @@ export async function autoitSetOptions(
   return previousOptions
 }
 
-export function clipGet(clipSize = 0x200): Promise<string> {
+export async function clipGet(clipSize = 0x200): Promise<string> {
   return new Promise(resolve => {
     const clipBuffer = Buffer.alloc(clipSize * 2)
     lib.AU3_ClipGet.async(clipBuffer, clipSize, () => {
@@ -132,7 +132,16 @@ export function clipGet(clipSize = 0x200): Promise<string> {
   })
 }
 
-export function controlClick(
+export async function clipPut(clip: string): Promise<boolean> {
+  const clipBuffer = inWstrOfString(clip)
+  return new Promise(resolve => {
+    lib.AU3_ClipPut(clipBuffer, (status: 0 | 1) => {
+      resolve(Boolean(status))
+    })
+  })
+}
+
+export async function controlClick(
   window: string | WindowDescription,
   text: string,
   button = MouseButton.Default,
@@ -159,7 +168,7 @@ export function controlClick(
   })
 }
 
-export function controlClickByHandle(
+export async function controlClickByHandle(
   hwnd: Hwnd,
   button = MouseButton.Default,
   numClicks = 1,

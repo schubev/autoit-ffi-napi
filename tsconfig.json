@@ -3,6 +3,7 @@
     "baseUrl": "src",
     "module": "esnext",
     "target": "es2017",
+    "moduleResolution": "node",
     "outDir": "./lib",
     "noImplicitAny": true,
     "noImplicitReturns": true,

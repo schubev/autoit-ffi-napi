@@ -36,201 +36,234 @@ export enum MouseButton {
   Menu = 'menu',
 }
 
-export type ParamDef = [string, Param] | [string, Param.Int, number]
-export type FunctionDef = [Return, ParamDef[]]
+export interface ParamDefGeneric {
+  key: string
+  type: Param
+}
+
+export interface ParamDefWithDefaultInt {
+  key: string
+  type: Param.Int
+  default: number
+}
+
+export type ParamDef = ParamDefGeneric | ParamDefWithDefaultInt
+
+export interface FunctionDef {
+  return: Return
+  params: ParamDef[]
+}
 
 export const defaultInt = -0x7fffffff
 
 const windowSelection: ParamDef[] = [
-  ['title', Param.InWstrDescription],
-  ['text', Param.InWstr],
+  { key: 'title', type: Param.InWstrDescription },
+  { key: 'text', type: Param.InWstr },
 ]
 const controlSelection: ParamDef[] = [
   ...windowSelection,
-  ['control', Param.InWstrDescription],
+  { key: 'control', type: Param.InWstrDescription },
 ]
-const windowByHwnd: ParamDef[] = [['window', Param.Hwnd]]
-const controlByHwnd: ParamDef[] = [...windowByHwnd, ['control', Param.Hwnd]]
+const windowByHwnd: ParamDef[] = [{ key: 'window', type: Param.Hwnd }]
+const controlByHwnd: ParamDef[] = [
+  ...windowByHwnd,
+  { key: 'control', type: Param.Hwnd },
+]
 
-export const functions: Record<string, FunctionDef> = {
-  AU3_Init: [Return.Void, []],
-  AU3_error: [Return.Int, []],
-  AU3_AutoItSetOption: [
-    Return.Int,
-    [
-      ['option', Param.InWstr],
-      ['value', Param.Int],
+export const functions: Record<string, Readonly<FunctionDef>> = {
+  AU3_Init: { return: Return.Void, params: [] },
+  AU3_error: { return: Return.Int, params: [] },
+  AU3_AutoItSetOption: {
+    return: Return.Int,
+    params: [
+      { key: 'option', type: Param.InWstr },
+      { key: 'value', type: Param.Int },
     ],
-  ],
-  AU3_ClipGet: [
-    Return.Void,
-    [
-      ['clip', Param.OutWstr],
-      ['clipSize', Param.OutWstrSize],
+  },
+  AU3_ClipGet: {
+    return: Return.Void,
+    params: [
+      { key: 'clip', type: Param.OutWstr },
+      { key: 'clipSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ClipPut: [Return.Void, [['clip', Param.InWstr]]],
-  AU3_ControlClick: [
-    Return.Int,
-    [
+  },
+  AU3_ClipPut: {
+    return: Return.Void,
+    params: [{ key: 'clip', type: Param.InWstr }],
+  },
+  AU3_ControlClick: {
+    return: Return.Int,
+    params: [
       ...controlSelection,
-      ['button', Param.InWstrMouseButton],
-      ['numClicks', Param.Int],
-      ['nX', Param.Int, -0x7fff_ffff],
-      ['nY', Param.Int, -0x7fff_ffff],
+      { key: 'button', type: Param.InWstrMouseButton },
+      { key: 'numClicks', type: Param.Int },
+      { key: 'nX', type: Param.Int, default: -0x7fff_ffff },
+      { key: 'nY', type: Param.Int, default: -0x7fff_ffff },
     ],
-  ],
-  AU3_ControlClickByHandle: [
-    Return.Int,
-    [
+  },
+  AU3_ControlClickByHandle: {
+    return: Return.Int,
+    params: [
       ...controlByHwnd,
-      ['button', Param.InWstrMouseButton],
-      ['numClicks', Param.Int],
-      ['nX', Param.Int, -0x7fff_ffff],
-      ['nY', Param.Int, -0x7fff_ffff],
+      { key: 'button', type: Param.InWstrMouseButton },
+      { key: 'numClicks', type: Param.Int },
+      { key: 'nX', type: Param.Int, default: -0x7fff_ffff },
+      { key: 'nY', type: Param.Int, default: -0x7fff_ffff },
     ],
-  ],
-  AU3_ControlCommand: [
-    // polymorphic return type
-    Return.Void,
-    [
+  },
+  AU3_ControlCommand: /* polymorphic return type */ {
+    return: Return.Void,
+    params: [
       ...controlSelection,
-      ['command', Param.InWstrCommand],
-      ['extra', Param.InWstrCommandExtra],
-      ['result', Param.OutWstr],
-      ['resultSize', Param.OutWstrSize],
+      { key: 'command', type: Param.InWstrCommand },
+      { key: 'extra', type: Param.InWstrCommandExtra },
+      { key: 'result', type: Param.OutWstr },
+      { key: 'resultSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlCommandByHandle: [
-    // polymorphic return type
-    Return.Void,
-    [
+  },
+  AU3_ControlCommandByHandle: /* polymorphic return type */ {
+    return: Return.Void,
+    params: [
       ...controlByHwnd,
-      ['command', Param.InWstrCommand],
-      ['extra', Param.InWstrCommandExtra],
-      ['result', Param.OutWstr],
-      ['resultSize', Param.OutWstrSize],
+      { key: 'command', type: Param.InWstrCommand },
+      { key: 'extra', type: Param.InWstrCommandExtra },
+      { key: 'result', type: Param.OutWstr },
+      { key: 'resultSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlListView: [
-    Return.Void,
-    [
+  },
+  AU3_ControlListView: {
+    return: Return.Void,
+    params: [
       ...controlSelection,
-      ['command', Param.InWstrCommand],
-      ['extra1', Param.InWstrCommandExtra],
-      ['extra2', Param.InWstrCommandExtra],
-      ['result', Param.OutWstr],
-      ['resultSize', Param.OutWstrSize],
+      { key: 'command', type: Param.InWstrCommand },
+      { key: 'extra1', type: Param.InWstrCommandExtra },
+      { key: 'extra2', type: Param.InWstrCommandExtra },
+      { key: 'result', type: Param.OutWstr },
+      { key: 'resultSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlListViewByHandle: [
-    Return.Void,
-    [
+  },
+  AU3_ControlListViewByHandle: {
+    return: Return.Void,
+    params: [
       ...controlByHwnd,
-      ['command', Param.InWstrCommand],
-      ['extra1', Param.InWstrCommandExtra],
-      ['extra2', Param.InWstrCommandExtra],
-      ['result', Param.OutWstr],
-      ['resultSize', Param.OutWstrSize],
+      { key: 'command', type: Param.InWstrCommand },
+      { key: 'extra1', type: Param.InWstrCommandExtra },
+      { key: 'extra2', type: Param.InWstrCommandExtra },
+      { key: 'result', type: Param.OutWstr },
+      { key: 'resultSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlDisable: [Return.Int, [...controlSelection]],
-  AU3_ControlDisableByHandle: [Return.Int, [...controlByHwnd]],
-  AU3_ControlEnable: [Return.Int, [...controlSelection]],
-  AU3_ControlEnableByHandle: [Return.Int, [...controlByHwnd]],
-  AU3_ControlFocus: [Return.Int, [...controlSelection]],
-  AU3_ControlFocusByHandle: [Return.Int, [...controlByHwnd]],
-  AU3_ControlGetFocus: [
-    Return.Void,
-    [
+  },
+  AU3_ControlDisable: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlDisableByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd],
+  },
+  AU3_ControlEnable: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlEnableByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlFocus: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlFocusByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlGetFocus: {
+    return: Return.Void,
+    params: [
       ...windowSelection,
-      ['control', Param.OutWstr],
-      ['controlSize', Param.OutWstrSize],
+      { key: 'control', type: Param.OutWstr },
+      { key: 'controlSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlGetFocusByHandle: [
-    Return.Void,
-    [
-      ['window', Param.Hwnd],
-      ['control', Param.OutWstr],
-      ['controlSize', Param.OutWstrSize],
+  },
+  AU3_ControlGetFocusByHandle: {
+    return: Return.Void,
+    params: [
+      { key: 'window', type: Param.Hwnd },
+      { key: 'control', type: Param.OutWstr },
+      { key: 'controlSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlGetHandle: [
-    Return.Hwnd,
-    [
-      ['window', Param.Hwnd],
-      ['control', Param.InWstrDescription],
+  },
+  AU3_ControlGetHandle: {
+    return: Return.Hwnd,
+    params: [
+      { key: 'window', type: Param.Hwnd },
+      { key: 'control', type: Param.InWstrDescription },
     ],
-  ],
+  },
   // AU3_ControlGetHandleAsText: [
   //   'void',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPCWSTR szControl, LPWSTR szRetText, int nBufSize)',
   // ],
-  AU3_ControlGetPos: [
-    Return.Int,
-    [...controlSelection, ['rectangle', Param.OutRectangle]],
-  ],
-  AU3_ControlGetPosByHandle: [
-    Return.Int,
-    [...controlByHwnd, ['rectangle', Param.OutRectangle]],
-  ],
-  AU3_ControlGetText: [
-    Return.Void,
-    [
+  AU3_ControlGetPos: {
+    return: Return.Int,
+    params: [
       ...controlSelection,
-      ['controlText', Param.OutWstr],
-      ['controlTextSize', Param.OutWstrSize],
+      { key: 'rectangle', type: Param.OutRectangle },
     ],
-  ],
-  AU3_ControlGetTextByHandle: [
-    Return.Void,
-    [
-      ...controlByHwnd,
-      ['controlText', Param.OutWstr],
-      ['controlTextSize', Param.OutWstrSize],
-    ],
-  ],
-  AU3_ControlHide: [Return.Int, [...controlSelection]],
-  AU3_ControlHideByHandle: [Return.Int, [...controlByHwnd]],
-  AU3_ControlMove: [
-    Return.Int,
-    [
+  },
+  AU3_ControlGetPosByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
+  },
+  AU3_ControlGetText: {
+    return: Return.Void,
+    params: [
       ...controlSelection,
-      ['nX', Param.Int],
-      ['nY', Param.Int],
-      ['nWidth', Param.Int, -1],
-      ['nHeight', Param.Int, -1],
+      { key: 'controlText', type: Param.OutWstr },
+      { key: 'controlTextSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlMoveByHandle: [
-    Return.Int,
-    [
+  },
+  AU3_ControlGetTextByHandle: {
+    return: Return.Void,
+    params: [
       ...controlByHwnd,
-      ['nX', Param.Int],
-      ['nY', Param.Int],
-      ['nWidth', Param.Int, -1],
-      ['nHeight', Param.Int, -1],
+      { key: 'controlText', type: Param.OutWstr },
+      { key: 'controlTextSize', type: Param.OutWstrSize },
     ],
-  ],
-  AU3_ControlSend: [
-    Return.Int,
-    [...controlSelection, ['text', Param.InWstr], ['mode', Param.SendMode]],
-  ],
-  AU3_ControlSendByHandle: [
-    Return.Int,
-    [...controlByHwnd, ['text', Param.InWstr], ['mode', Param.SendMode]],
-  ],
-  AU3_ControlSetText: [
-    Return.Int,
-    [...controlSelection, ['text', Param.InWstr]],
-  ],
-  AU3_ControlSetTextByHandle: [
-    Return.Int,
-    [...controlByHwnd, ['text', Param.InWstr]],
-  ],
-  AU3_ControlShow: [Return.Int, [...controlSelection]],
-  AU3_ControlShowByHandle: [Return.Int, [...controlByHwnd]],
+  },
+  AU3_ControlHide: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlHideByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlMove: {
+    return: Return.Int,
+    params: [
+      ...controlSelection,
+      { key: 'nX', type: Param.Int },
+      { key: 'nY', type: Param.Int },
+      { key: 'nWidth', type: Param.Int, default: -1 },
+      { key: 'nHeight', type: Param.Int, default: -1 },
+    ],
+  },
+  AU3_ControlMoveByHandle: {
+    return: Return.Int,
+    params: [
+      ...controlByHwnd,
+      { key: 'nX', type: Param.Int },
+      { key: 'nY', type: Param.Int },
+      { key: 'nWidth', type: Param.Int, default: -1 },
+      { key: 'nHeight', type: Param.Int, default: -1 },
+    ],
+  },
+  AU3_ControlSend: {
+    return: Return.Int,
+    params: [
+      ...controlSelection,
+      { key: 'text', type: Param.InWstr },
+      { key: 'mode', type: Param.SendMode },
+    ],
+  },
+  AU3_ControlSendByHandle: {
+    return: Return.Int,
+    params: [
+      ...controlByHwnd,
+      { key: 'text', type: Param.InWstr },
+      { key: 'mode', type: Param.SendMode },
+    ],
+  },
+  AU3_ControlSetText: {
+    return: Return.Int,
+    params: [...controlSelection, { key: 'text', type: Param.InWstr }],
+  },
+  AU3_ControlSetTextByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd, { key: 'text', type: Param.InWstr }],
+  },
+  AU3_ControlShow: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlShowByHandle: { return: Return.Int, params: [...controlByHwnd] },
   // AU3_ControlTreeView: [
   //   'void',
   //   '(LPCWSTR szTitle, LPCWSTR szText, LPCWSTR szControl, LPCWSTR szCommand, LPCWSTR szExtra1, LPCWSTR szExtra2, LPWSTR szResult, int nBufSize)',
@@ -343,10 +376,10 @@ export const functions: Record<string, FunctionDef> = {
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPRECT lpRect)',
   // ],
   // AU3_WinGetClientSizeByHandle: [Return.Int, '(HWND hWnd, LPRECT lpRect)'],
-  // AU3_WinGetHandle: [
-  //   'HWND',
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
+  AU3_WinGetHandle: {
+    return: Return.Hwnd,
+    params: [...windowSelection],
+  },
   // AU3_WinGetHandleAsText: [
   //   'void',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPWSTR szRetText, int nBufSize)',

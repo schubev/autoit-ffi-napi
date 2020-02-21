@@ -1,5 +1,3 @@
-Buffer.from
-
 export function inWstrOfString(string: string): Buffer {
   const bufferLength = 2 + Buffer.byteLength(string, 'utf16le')
   const buffer = Buffer.allocUnsafe(bufferLength)
