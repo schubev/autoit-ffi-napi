@@ -1,4 +1,4 @@
-import { FunctionDef, Return } from '../functions'
+import { FunctionDef, Return, Param } from '../functions'
 import { makePrettyFunctionName, generateFunction } from '../function-gen'
 
 describe(generateFunction, () => {
@@ -9,15 +9,46 @@ describe(generateFunction, () => {
     }
     expect(generateFunction('AU3_FooBar', voidvoidfoo)).toEqual(
       `async function fooBar(): Promise<void> {
-  
   return new Promise(resolve => {
     lib.AU3_FooBar.async(resolve)
   })
 }`,
     )
   })
+
+  it('creates a function with a single parameter', () => {
+    const voidintfoo: FunctionDef = {
+      return: Return.Void,
+      params: [{ key: 'qux', type: Param.Int }],
+    }
+    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
+      `async function fooBar(qux: number): Promise<void> {
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(qux, resolve)
+  })
+}`,
+    )
+  })
+
+  it('creates a function with two parameters', () => {
+    const voidintfoo: FunctionDef = {
+      return: Return.Void,
+      params: [
+        { key: 'qux', type: Param.Int },
+        { key: 'baz', type: Param.Int },
+      ],
+    }
+    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
+      `async function fooBar(qux: number, baz: number): Promise<void> {
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(qux, baz, resolve)
+  })
+}`,
+    )
+  })
 })
 
+/*
 describe(makePrettyFunctionName, () => {
   test.each([
     ['AU3_ClipPut', 'clipPut'],
@@ -142,3 +173,4 @@ describe(makePrettyFunctionName, () => {
     expect(makePrettyFunctionName(input)).toEqual(expected)
   })
 })
+*/

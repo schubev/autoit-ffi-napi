@@ -11,7 +11,7 @@ export function makePrettyFunctionName(functionName: string): string {
 function typeOfParamType(param: Param): string {
   switch (param) {
     case Param.Int:
-      return 'int'
+      return 'number'
     case Param.InWstr:
       return 'string'
     case Param.InWstrCommand:
@@ -50,7 +50,15 @@ export function makeParamsSection(paramDefs: ParamDef[]): string {
     const tsType = typeOfParamType(paramDef.type)
     params.push(`${name}: ${tsType}`)
   }
-  if (params.length === 0) return ''
+  return params.join(', ')
+}
+
+export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
+  if (paramDefs.length === 0) return ''
+  const params = []
+  for (const paramDef of paramDefs) {
+    params.push(paramDef.key)
+  }
   params.push('')
   return params.join(', ')
 }
@@ -62,12 +70,11 @@ export function generateFunction(
   const prettyFunctionName = makePrettyFunctionName(functionName)
   const paramsSection = makeParamsSection(functionDef.params)
   const transformSection = ''
-  const lowlevelArgsSection = ''
+  const lowlevelArgsSection = makeLowlevelArgsSection(functionDef.params)
   const returnTypeSection = `Promise<${typeOfReturnType(functionDef.return)}>`
   const resolverSection = 'resolve'
   return `async function ${prettyFunctionName}(${paramsSection}): ${returnTypeSection} {
-  ${transformSection}
-  return new Promise(resolve => {
+  ${transformSection}return new Promise(resolve => {
     lib.${functionName}.async(${lowlevelArgsSection}${resolverSection})
   })
 }`
