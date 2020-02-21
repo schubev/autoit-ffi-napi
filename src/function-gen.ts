@@ -1,4 +1,4 @@
-import { FunctionDef } from './functions'
+import { FunctionDef, ParamDef, Param, Return } from './functions'
 
 export function makePrettyFunctionName(functionName: string): string {
   if (functionName === 'AU3_AutoItSetOption') return 'autoitSetOption'
@@ -7,12 +7,68 @@ export function makePrettyFunctionName(functionName: string): string {
     throw Error(`failed to get pretty name for ${functionName}`)
   return match[1].toLowerCase() + match[2]
 }
-/*
+
+function typeOfParamType(param: Param): string {
+  switch (param) {
+    case Param.Int:
+      return 'int'
+    case Param.InWstr:
+      return 'string'
+    case Param.InWstrCommand:
+    case Param.InWstrCommandExtra:
+      throw Error('not implemented')
+    case Param.InWstrDescription:
+      return 'string | WindowDescription'
+    case Param.InWstrMouseButton:
+      return 'MouseButton'
+    case Param.OutWstr:
+    case Param.OutWstrSize:
+    case Param.OutRectangle:
+      return 'never'
+    case Param.Hwnd:
+      return 'Hwnd'
+    case Param.SendMode:
+      return 'SendMode'
+  }
+}
+
+function typeOfReturnType(type: Return): string {
+  switch (type) {
+    case Return.Void:
+      return 'void'
+    case Return.Int:
+      return 'number'
+    case Return.Hwnd:
+      return 'Hwnd'
+  }
+}
+
+export function makeParamsSection(paramDefs: ParamDef[]): string {
+  const params = []
+  for (const paramDef of paramDefs) {
+    const name = paramDef.key
+    const tsType = typeOfParamType(paramDef.type)
+    params.push(`${name}: ${tsType}`)
+  }
+  if (params.length === 0) return ''
+  params.push('')
+  return params.join(', ')
+}
+
 export function generateFunction(
   functionName: string,
   functionDef: FunctionDef,
 ): string {
   const prettyFunctionName = makePrettyFunctionName(functionName)
-  return `function ${prettyFunctionName}() {}`
+  const paramsSection = makeParamsSection(functionDef.params)
+  const transformSection = ''
+  const lowlevelArgsSection = ''
+  const returnTypeSection = `Promise<${typeOfReturnType(functionDef.return)}>`
+  const resolverSection = 'resolve'
+  return `async function ${prettyFunctionName}(${paramsSection}): ${returnTypeSection} {
+  ${transformSection}
+  return new Promise(resolve => {
+    lib.${functionName}.async(${lowlevelArgsSection}${resolverSection})
+  })
+}`
 }
-*/

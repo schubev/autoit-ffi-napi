@@ -1,4 +1,22 @@
-import { makePrettyFunctionName } from '../function-gen'
+import { FunctionDef, Return } from '../functions'
+import { makePrettyFunctionName, generateFunction } from '../function-gen'
+
+describe(generateFunction, () => {
+  it('creates the most basic function', () => {
+    const voidvoidfoo: FunctionDef = {
+      return: Return.Void,
+      params: [],
+    }
+    expect(generateFunction('AU3_FooBar', voidvoidfoo)).toEqual(
+      `async function fooBar(): Promise<void> {
+  
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(resolve)
+  })
+}`,
+    )
+  })
+})
 
 describe(makePrettyFunctionName, () => {
   test.each([
