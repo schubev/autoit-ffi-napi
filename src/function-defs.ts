@@ -53,6 +53,7 @@ export type ParamDef = ParamDefGeneric | ParamDefWithDefaultInt
 export interface FunctionDef {
   return: Return
   params: ParamDef[]
+  generate: boolean
 }
 
 export const defaultInt = -0x7fffffff
@@ -72,14 +73,15 @@ const controlByHwnd: ParamDef[] = [
 ]
 
 export const functions: Record<string, Readonly<FunctionDef>> = {
-  AU3_Init: { return: Return.Void, params: [] },
-  AU3_error: { return: Return.Int, params: [] },
+  AU3_Init: { return: Return.Void, params: [], generate: true },
+  AU3_error: { return: Return.Int, params: [], generate: true },
   AU3_AutoItSetOption: {
     return: Return.Int,
     params: [
       { key: 'option', type: Param.InWstr },
       { key: 'value', type: Param.Int },
     ],
+    generate: false,
   },
   AU3_ClipGet: {
     return: Return.Void,
@@ -87,6 +89,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'clip', type: Param.OutWstr },
       { key: 'clipSize', type: Param.OutWstrSize },
     ],
+    generate: true,
   },
   AU3_ClipPut: {
     return: Return.Void,
@@ -101,6 +104,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'nX', type: Param.Int, default: -0x7fff_ffff },
       { key: 'nY', type: Param.Int, default: -0x7fff_ffff },
     ],
+    generate: true,
   },
   AU3_ControlClickByHandle: {
     return: Return.Int,
@@ -111,6 +115,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'nX', type: Param.Int, default: -0x7fff_ffff },
       { key: 'nY', type: Param.Int, default: -0x7fff_ffff },
     ],
+    generate: true,
   },
   AU3_ControlCommand: /* polymorphic return type */ {
     return: Return.Void,
@@ -121,6 +126,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'result', type: Param.OutWstr },
       { key: 'resultSize', type: Param.OutWstrSize },
     ],
+    generate: false,
   },
   AU3_ControlCommandByHandle: /* polymorphic return type */ {
     return: Return.Void,
@@ -131,6 +137,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'result', type: Param.OutWstr },
       { key: 'resultSize', type: Param.OutWstrSize },
     ],
+    generate: false,
   },
   AU3_ControlListView: {
     return: Return.Void,
@@ -142,6 +149,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'result', type: Param.OutWstr },
       { key: 'resultSize', type: Param.OutWstrSize },
     ],
+    generate: false,
   },
   AU3_ControlListViewByHandle: {
     return: Return.Void,
@@ -153,16 +161,38 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'result', type: Param.OutWstr },
       { key: 'resultSize', type: Param.OutWstrSize },
     ],
+    generate: false,
   },
-  AU3_ControlDisable: { return: Return.Int, params: [...controlSelection] },
+  AU3_ControlDisable: {
+    return: Return.Int,
+    params: [...controlSelection],
+    generate: true,
+  },
   AU3_ControlDisableByHandle: {
     return: Return.Int,
     params: [...controlByHwnd],
+    generate: true,
   },
-  AU3_ControlEnable: { return: Return.Int, params: [...controlSelection] },
-  AU3_ControlEnableByHandle: { return: Return.Int, params: [...controlByHwnd] },
-  AU3_ControlFocus: { return: Return.Int, params: [...controlSelection] },
-  AU3_ControlFocusByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlEnable: {
+    return: Return.Int,
+    params: [...controlSelection],
+    generate: true,
+  },
+  AU3_ControlEnableByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd],
+    generate: true,
+  },
+  AU3_ControlFocus: {
+    return: Return.Int,
+    params: [...controlSelection],
+    generate: true,
+  },
+  AU3_ControlFocusByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd],
+    generate: true,
+  },
   AU3_ControlGetFocus: {
     return: Return.Void,
     params: [
@@ -170,6 +200,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'control', type: Param.OutWstr },
       { key: 'controlSize', type: Param.OutWstrSize },
     ],
+    generate: true,
   },
   AU3_ControlGetFocusByHandle: {
     return: Return.Void,
@@ -178,6 +209,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'control', type: Param.OutWstr },
       { key: 'controlSize', type: Param.OutWstrSize },
     ],
+    generate: true,
   },
   AU3_ControlGetHandle: {
     return: Return.Hwnd,
@@ -185,6 +217,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'window', type: Param.Hwnd },
       { key: 'control', type: Param.InWstrDescription },
     ],
+    generate: true,
   },
   // AU3_ControlGetHandleAsText: [
   //   'void',
@@ -196,10 +229,12 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       ...controlSelection,
       { key: 'rectangle', type: Param.OutRectangle },
     ],
+    generate: true,
   },
   AU3_ControlGetPosByHandle: {
     return: Return.Int,
     params: [...controlByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
+    generate: true,
   },
   AU3_ControlGetText: {
     return: Return.Void,
@@ -208,6 +243,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'controlText', type: Param.OutWstr },
       { key: 'controlTextSize', type: Param.OutWstrSize },
     ],
+    generate: true,
   },
   AU3_ControlGetTextByHandle: {
     return: Return.Void,
@@ -216,9 +252,18 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'controlText', type: Param.OutWstr },
       { key: 'controlTextSize', type: Param.OutWstrSize },
     ],
+    generate: true,
   },
-  AU3_ControlHide: { return: Return.Int, params: [...controlSelection] },
-  AU3_ControlHideByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlHide: {
+    return: Return.Int,
+    params: [...controlSelection],
+    generate: true,
+  },
+  AU3_ControlHideByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd],
+    generate: true,
+  },
   AU3_ControlMove: {
     return: Return.Int,
     params: [
@@ -228,6 +273,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'nWidth', type: Param.Int, default: -1 },
       { key: 'nHeight', type: Param.Int, default: -1 },
     ],
+    generate: true,
   },
   AU3_ControlMoveByHandle: {
     return: Return.Int,
@@ -238,6 +284,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'nWidth', type: Param.Int, default: -1 },
       { key: 'nHeight', type: Param.Int, default: -1 },
     ],
+    generate: true,
   },
   AU3_ControlSend: {
     return: Return.Int,
@@ -246,6 +293,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'text', type: Param.InWstr },
       { key: 'mode', type: Param.SendMode },
     ],
+    generate: true,
   },
   AU3_ControlSendByHandle: {
     return: Return.Int,
@@ -254,17 +302,28 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'text', type: Param.InWstr },
       { key: 'mode', type: Param.SendMode },
     ],
+    generate: true,
   },
   AU3_ControlSetText: {
     return: Return.Int,
     params: [...controlSelection, { key: 'text', type: Param.InWstr }],
+    generate: true,
   },
   AU3_ControlSetTextByHandle: {
     return: Return.Int,
     params: [...controlByHwnd, { key: 'text', type: Param.InWstr }],
+    generate: true,
   },
-  AU3_ControlShow: { return: Return.Int, params: [...controlSelection] },
-  AU3_ControlShowByHandle: { return: Return.Int, params: [...controlByHwnd] },
+  AU3_ControlShow: {
+    return: Return.Int,
+    params: [...controlSelection],
+    generate: true,
+  },
+  AU3_ControlShowByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd],
+    generate: true,
+  },
   // AU3_ControlTreeView: [
   //   'void',
   //   '(LPCWSTR szTitle, LPCWSTR szText, LPCWSTR szControl, LPCWSTR szCommand, LPCWSTR szExtra1, LPCWSTR szExtra2, LPWSTR szResult, int nBufSize)',
@@ -380,6 +439,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_WinGetHandle: {
     return: Return.Hwnd,
     params: [...windowSelection],
+    generate: true,
   },
   // AU3_WinGetHandleAsText: [
   //   'void',
