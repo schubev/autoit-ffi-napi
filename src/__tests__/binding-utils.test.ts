@@ -1,4 +1,4 @@
-import { functions, Return, Param, FunctionDef } from '../functions'
+import { functions, Return, Param, FunctionDef } from '../function-defs'
 import {
   ffiTypeOfReturn,
   ffiTypeOfParam,

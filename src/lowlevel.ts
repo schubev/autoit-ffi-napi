@@ -1,5 +1,5 @@
 import { Library } from 'ffi-napi'
-import { functions, FunctionDef } from './functions'
+import { functions, FunctionDef } from './function-defs'
 import { ffiBindingOfDescriptions } from './binding-utils'
 
 function ffiLibrary(

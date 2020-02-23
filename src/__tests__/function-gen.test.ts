@@ -1,4 +1,4 @@
-import { FunctionDef, Return, Param } from '../functions'
+import { FunctionDef, Return, Param } from '../function-defs'
 import { makePrettyFunctionName, generateFunction } from '../function-gen'
 
 describe(generateFunction, () => {
@@ -48,7 +48,6 @@ describe(generateFunction, () => {
   })
 })
 
-/*
 describe(makePrettyFunctionName, () => {
   test.each([
     ['AU3_ClipPut', 'clipPut'],
@@ -173,4 +172,3 @@ describe(makePrettyFunctionName, () => {
     expect(makePrettyFunctionName(input)).toEqual(expected)
   })
 })
-*/

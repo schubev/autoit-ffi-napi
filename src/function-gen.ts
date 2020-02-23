@@ -1,4 +1,4 @@
-import { FunctionDef, ParamDef, Param, Return } from './functions'
+import { FunctionDef, ParamDef, Param, Return } from './function-defs'
 
 export function makePrettyFunctionName(functionName: string): string {
   if (functionName === 'AU3_AutoItSetOption') return 'autoitSetOption'

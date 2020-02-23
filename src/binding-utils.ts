@@ -1,4 +1,4 @@
-import { Param, Return, FunctionDef } from './functions'
+import { Param, Return, FunctionDef } from './function-defs'
 
 type Signature = [string, string[]]
 

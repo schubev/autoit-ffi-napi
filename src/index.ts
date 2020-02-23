@@ -1,6 +1,6 @@
 import { WindowDescription, descriptor } from 'autoit-advanced-descriptor'
 import { inWstrOfString, stringOfOutWstr } from './wrap-utils'
-import { MouseButton } from './functions'
+import { MouseButton } from './function-defs'
 import { lib } from './lowlevel'
 import { AutoitOptions, AutoitOptionsList, AutoitOption } from './options'
 
