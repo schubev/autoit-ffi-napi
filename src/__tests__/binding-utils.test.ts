@@ -61,7 +61,7 @@ describe(ffiBindingOfDescription, () => {
 })
 
 describe(ffiBindingOfDescriptions, () => {
-  it('builds all the bindings', () => {
-    expect(ffiBindingOfDescriptions(functions)).toMatchSnapshot()
+  it.each(Object.keys(functions))('builds bindings for %s', name => {
+    expect(ffiBindingOfDescriptions(functions)[name]).toMatchSnapshot()
   })
 })

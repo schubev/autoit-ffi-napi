@@ -1,306 +1,406 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ffiBindingOfDescriptions builds all the bindings 1`] = `
-Object {
-  "AU3_AutoItSetOption": Array [
+exports[`ffiBindingOfDescriptions builds bindings for AU3_AutoItSetOption 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
     "int",
-    Array [
-      "uint16*",
-      "int",
-    ],
   ],
-  "AU3_ClipGet": Array [
-    "void",
-    Array [
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ClipPut": Array [
-    "void",
-    Array [
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlClick": Array [
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ClipGet 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
     "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-      "int",
-      "int",
-    ],
   ],
-  "AU3_ControlClickByHandle": Array [
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ClipPut 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlClick 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
     "int",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-      "int",
-      "int",
-      "int",
-    ],
-  ],
-  "AU3_ControlCommand": Array [
-    "void",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlCommandByHandle": Array [
-    "void",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlDisable": Array [
     "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlDisableByHandle": Array [
     "int",
-    Array [
-      "void*",
-      "void*",
-    ],
   ],
-  "AU3_ControlEnable": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlEnableByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-    ],
-  ],
-  "AU3_ControlFocus": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlFocusByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-    ],
-  ],
-  "AU3_ControlGetFocus": Array [
-    "void",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlGetFocusByHandle": Array [
-    "void",
-    Array [
-      "void*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlGetHandle": Array [
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlClickByHandle 1`] = `
+Array [
+  "int",
+  Array [
     "void*",
-    Array [
-      "void*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlGetPos": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "void*",
-    ],
-  ],
-  "AU3_ControlGetPosByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-      "void*",
-    ],
-  ],
-  "AU3_ControlGetText": Array [
-    "void",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlGetTextByHandle": Array [
-    "void",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlHide": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlHideByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-    ],
-  ],
-  "AU3_ControlListView": Array [
-    "void",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlListViewByHandle": Array [
-    "void",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlMove": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-      "int",
-      "int",
-      "int",
-    ],
-  ],
-  "AU3_ControlMoveByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-      "int",
-      "int",
-      "int",
-      "int",
-    ],
-  ],
-  "AU3_ControlSend": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlSendByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-      "int",
-    ],
-  ],
-  "AU3_ControlSetText": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlSetTextByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlShow": Array [
-    "int",
-    Array [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_ControlShowByHandle": Array [
-    "int",
-    Array [
-      "void*",
-      "void*",
-    ],
-  ],
-  "AU3_Init": Array [
-    "void",
-    Array [],
-  ],
-  "AU3_WinGetHandle": Array [
     "void*",
-    Array [
-      "uint16*",
-      "uint16*",
-    ],
-  ],
-  "AU3_error": Array [
+    "uint16*",
     "int",
-    Array [],
+    "int",
+    "int",
   ],
-}
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlCommand 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlCommandByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlDisable 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlDisableByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlEnable 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlEnableByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlFocus 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlFocusByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetFocus 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetFocusByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetHandle 1`] = `
+Array [
+  "void*",
+  Array [
+    "void*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPos 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPosByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetText 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetTextByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlHide 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlHideByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlListView 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlListViewByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlMove 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlMoveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSend 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSendByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSetText 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSetTextByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlShow 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlShowByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_Init 1`] = `
+Array [
+  "void",
+  Array [],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
+Array [
+  "void*",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_error 1`] = `
+Array [
+  "int",
+  Array [],
+]
 `;
