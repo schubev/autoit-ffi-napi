@@ -28,6 +28,7 @@ Object {
       "uint16*",
       "uint16*",
       "uint16*",
+      "uint16*",
       "int",
       "int",
       "int",
@@ -289,6 +290,13 @@ Object {
   "AU3_Init": Array [
     "void",
     Array [],
+  ],
+  "AU3_WinGetHandle": Array [
+    "void*",
+    Array [
+      "uint16*",
+      "uint16*",
+    ],
   ],
   "AU3_error": Array [
     "int",

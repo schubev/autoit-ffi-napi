@@ -34,8 +34,8 @@ export function ffiTypeOfParam(paramType: Param): string {
 
 export function ffiBindingOfDescription(description: FunctionDef): Signature {
   return [
-    ffiTypeOfReturn(description[0]),
-    description[1].map(([, def]) => ffiTypeOfParam(def)),
+    ffiTypeOfReturn(description.return),
+    description.params.map(({ type }) => ffiTypeOfParam(type)),
   ]
 }
 

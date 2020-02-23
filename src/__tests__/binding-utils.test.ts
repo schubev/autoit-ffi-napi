@@ -1,4 +1,4 @@
-import { functions, Return, Param } from '../functions'
+import { functions, Return, Param, FunctionDef } from '../functions'
 import {
   ffiTypeOfReturn,
   ffiTypeOfParam,
@@ -36,26 +36,23 @@ describe(ffiTypeOfParam, () => {
 
 describe(ffiBindingOfDescription, () => {
   it.each([
+    [{ return: Return.Void, params: [] }, ['void', []]],
     [
-      [Return.Void, []],
-      ['void', []],
-    ],
-    [
-      [Return.Int, [['param', Param.Int]]],
+      { return: Return.Int, params: [{ key: 'param', type: Param.Int }] },
       ['int', ['int']],
     ],
     [
-      [
-        Return.Hwnd,
-        [
-          ['title', Param.InWstrDescription],
-          ['text', Param.InWstr],
-          ['extra', Param.Int],
+      {
+        return: Return.Hwnd,
+        params: [
+          { key: 'title', type: Param.InWstrDescription },
+          { key: 'text', type: Param.InWstr },
+          { key: 'extra', type: Param.Int },
         ],
-      ],
+      },
       ['void*', ['uint16*', 'uint16*', 'int']],
     ],
-  ] as Array<[[Return, [string, Param][]], [string, string[]]]>)(
+  ] as Array<[FunctionDef, [string, string[]]]>)(
     'function type %j is ffi type %j',
     (autoitSignature, ffiSignature) => {
       expect(ffiBindingOfDescription(autoitSignature)).toEqual(ffiSignature)
