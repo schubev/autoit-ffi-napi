@@ -40,6 +40,8 @@ function typeOfReturnType(type: Return): string {
       return 'number'
     case Return.Hwnd:
       return 'Hwnd'
+    case Return.IntStatus:
+      return 'boolean'
   }
 }
 
@@ -59,6 +61,8 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   for (const paramDef of paramDefs) {
     switch (paramDef.type) {
       case Param.InWstr:
+      case Param.InWstrMouseButton:
+      case Param.InWstrDescription:
         params.push(`${paramDef.key}Buffer`)
         break
       default:
@@ -75,8 +79,14 @@ export function makeTransformSection(paramDefs: ParamDef[]): string {
   for (const paramDef of paramDefs) {
     switch (paramDef.type) {
       case Param.InWstr:
+      case Param.InWstrMouseButton:
         transforms.push(
           `const ${paramDef.key}Buffer = inWstrOfString(${paramDef.key})`,
+        )
+        break
+      case Param.InWstrDescription:
+        transforms.push(
+          `const ${paramDef.key}Buffer = inWstrOfWindowDescription(${paramDef.key})`,
         )
         break
       default:
@@ -88,6 +98,15 @@ export function makeTransformSection(paramDefs: ParamDef[]): string {
   return transforms.join('\n  ')
 }
 
+export function makeResolverSection(returnType: Return): string {
+  switch (returnType) {
+    case Return.IntStatus:
+      return '(status: 0 | 1) => { resolve(status === 1) }'
+    default:
+      return 'resolve'
+  }
+}
+
 export function generateFunction(
   functionName: string,
   functionDef: FunctionDef,
@@ -97,7 +116,7 @@ export function generateFunction(
   const transformSection = makeTransformSection(functionDef.params)
   const lowlevelArgsSection = makeLowlevelArgsSection(functionDef.params)
   const returnTypeSection = `Promise<${typeOfReturnType(functionDef.return)}>`
-  const resolverSection = 'resolve'
+  const resolverSection = makeResolverSection(functionDef.return)
   return `async function ${prettyFunctionName}(${paramsSection}): ${returnTypeSection} {
   ${transformSection}return new Promise(resolve => {
     lib.${functionName}.async(${lowlevelArgsSection}${resolverSection})

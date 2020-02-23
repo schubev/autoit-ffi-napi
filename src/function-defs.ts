@@ -17,6 +17,7 @@ export enum Param {
 export enum Return {
   Void = 'Void',
   Int = 'Int',
+  IntStatus = 'IntStatus',
   Hwnd = 'Hwnd',
 }
 
@@ -92,7 +93,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [{ key: 'clip', type: Param.InWstr }],
   },
   AU3_ControlClick: {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [
       ...controlSelection,
       { key: 'button', type: Param.InWstrMouseButton },

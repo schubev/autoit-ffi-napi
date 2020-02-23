@@ -196,4 +196,20 @@ describe(generateFunction, () => {
 }`,
     )
   })
+
+  it('generates the AU3_ControlClick function', () => {
+    const name = 'AU3_ControlClick'
+    const functionDef = functions[name]
+    expect(generateFunction(name, functionDef)).toEqual(
+      `async function controlClick(title: string | WindowDescription, text: string, control: string | WindowDescription, button: MouseButton, numClicks: number, nX: number, nY: number): Promise<boolean> {
+  const titleBuffer = inWstrOfWindowDescription(title)
+  const textBuffer = inWstrOfString(text)
+  const controlBuffer = inWstrOfWindowDescription(control)
+  const buttonBuffer = inWstrOfString(button)
+  return new Promise(resolve => {
+    lib.AU3_ControlClick.async(titleBuffer, textBuffer, controlBuffer, buttonBuffer, numClicks, nX, nY, (status: 0 | 1) => { resolve(status === 1) })
+  })
+}`,
+    )
+  })
 })
