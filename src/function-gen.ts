@@ -57,10 +57,35 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   if (paramDefs.length === 0) return ''
   const params = []
   for (const paramDef of paramDefs) {
-    params.push(paramDef.key)
+    switch (paramDef.type) {
+      case Param.InWstr:
+        params.push(`${paramDef.key}Buffer`)
+        break
+      default:
+        params.push(paramDef.key)
+        break
+    }
   }
   params.push('')
   return params.join(', ')
+}
+
+export function makeTransformSection(paramDefs: ParamDef[]): string {
+  const transforms = []
+  for (const paramDef of paramDefs) {
+    switch (paramDef.type) {
+      case Param.InWstr:
+        transforms.push(
+          `const ${paramDef.key}Buffer = inWstrOfString(${paramDef.key})`,
+        )
+        break
+      default:
+        break
+    }
+  }
+  if (transforms.length === 0) return ''
+  transforms.push('')
+  return transforms.join('\n  ')
 }
 
 export function generateFunction(
@@ -69,7 +94,7 @@ export function generateFunction(
 ): string {
   const prettyFunctionName = makePrettyFunctionName(functionName)
   const paramsSection = makeParamsSection(functionDef.params)
-  const transformSection = ''
+  const transformSection = makeTransformSection(functionDef.params)
   const lowlevelArgsSection = makeLowlevelArgsSection(functionDef.params)
   const returnTypeSection = `Promise<${typeOfReturnType(functionDef.return)}>`
   const resolverSection = 'resolve'

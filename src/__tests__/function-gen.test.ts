@@ -1,52 +1,5 @@
-import { FunctionDef, Return, Param } from '../function-defs'
+import { functions, FunctionDef, Return, Param } from '../function-defs'
 import { makePrettyFunctionName, generateFunction } from '../function-gen'
-
-describe(generateFunction, () => {
-  it('creates the most basic function', () => {
-    const voidvoidfoo: FunctionDef = {
-      return: Return.Void,
-      params: [],
-    }
-    expect(generateFunction('AU3_FooBar', voidvoidfoo)).toEqual(
-      `async function fooBar(): Promise<void> {
-  return new Promise(resolve => {
-    lib.AU3_FooBar.async(resolve)
-  })
-}`,
-    )
-  })
-
-  it('creates a function with a single parameter', () => {
-    const voidintfoo: FunctionDef = {
-      return: Return.Void,
-      params: [{ key: 'qux', type: Param.Int }],
-    }
-    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
-      `async function fooBar(qux: number): Promise<void> {
-  return new Promise(resolve => {
-    lib.AU3_FooBar.async(qux, resolve)
-  })
-}`,
-    )
-  })
-
-  it('creates a function with two parameters', () => {
-    const voidintfoo: FunctionDef = {
-      return: Return.Void,
-      params: [
-        { key: 'qux', type: Param.Int },
-        { key: 'baz', type: Param.Int },
-      ],
-    }
-    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
-      `async function fooBar(qux: number, baz: number): Promise<void> {
-  return new Promise(resolve => {
-    lib.AU3_FooBar.async(qux, baz, resolve)
-  })
-}`,
-    )
-  })
-})
 
 describe(makePrettyFunctionName, () => {
   test.each([
@@ -170,5 +123,77 @@ describe(makePrettyFunctionName, () => {
     ['AU3_WinWaitNotActiveByHandle', 'winWaitNotActiveByHandle'],
   ])('%p becomes %p', (input, expected) => {
     expect(makePrettyFunctionName(input)).toEqual(expected)
+  })
+})
+
+describe(generateFunction, () => {
+  it('creates the most basic function', () => {
+    const voidvoidfoo: FunctionDef = {
+      return: Return.Void,
+      params: [],
+    }
+    expect(generateFunction('AU3_FooBar', voidvoidfoo)).toEqual(
+      `async function fooBar(): Promise<void> {
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(resolve)
+  })
+}`,
+    )
+  })
+
+  it('creates a function with a single parameter', () => {
+    const voidintfoo: FunctionDef = {
+      return: Return.Void,
+      params: [{ key: 'qux', type: Param.Int }],
+    }
+    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
+      `async function fooBar(qux: number): Promise<void> {
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(qux, resolve)
+  })
+}`,
+    )
+  })
+
+  it('creates a function with two parameters', () => {
+    const voidintfoo: FunctionDef = {
+      return: Return.Void,
+      params: [
+        { key: 'qux', type: Param.Int },
+        { key: 'baz', type: Param.Int },
+      ],
+    }
+    expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
+      `async function fooBar(qux: number, baz: number): Promise<void> {
+  return new Promise(resolve => {
+    lib.AU3_FooBar.async(qux, baz, resolve)
+  })
+}`,
+    )
+  })
+
+  it('generates the AU3_error function', () => {
+    const name = 'AU3_error'
+    const functionDef = functions[name]
+    expect(generateFunction(name, functionDef)).toEqual(
+      `async function error(): Promise<number> {
+  return new Promise(resolve => {
+    lib.AU3_error.async(resolve)
+  })
+}`,
+    )
+  })
+
+  it('generates the AU3_ClipPut function', () => {
+    const name = 'AU3_ClipPut'
+    const functionDef = functions[name]
+    expect(generateFunction(name, functionDef)).toEqual(
+      `async function clipPut(clip: string): Promise<void> {
+  const clipBuffer = inWstrOfString(clip)
+  return new Promise(resolve => {
+    lib.AU3_ClipPut.async(clipBuffer, resolve)
+  })
+}`,
+    )
   })
 })
