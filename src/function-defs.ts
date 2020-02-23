@@ -19,6 +19,7 @@ export enum Return {
   Int = 'Int',
   IntStatus = 'IntStatus',
   Hwnd = 'Hwnd',
+  OutWstr = 'OutWstr',
 }
 
 export enum SendMode {
@@ -94,6 +95,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_ClipPut: {
     return: Return.Void,
     params: [{ key: 'clip', type: Param.InWstr }],
+    generate: true,
   },
   AU3_ControlClick: {
     return: Return.IntStatus,
@@ -468,10 +470,15 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
   // ],
-  // AU3_WinGetTitle: [
-  //   'void',
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPWSTR szRetText, int nBufSize)',
-  // ],
+  AU3_WinGetTitle: {
+    return: Return.OutWstr,
+    params: [
+      ...windowSelection,
+      { key: 'title', type: Param.OutWstr },
+      { key: 'titleSize', type: Param.OutWstrSize },
+    ],
+    generate: true,
+  },
   // AU3_WinGetTitleByHandle: [
   //   'void',
   //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',

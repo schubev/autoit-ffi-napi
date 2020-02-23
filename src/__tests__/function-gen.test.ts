@@ -131,6 +131,7 @@ describe(generateFunction, () => {
     const voidvoidfoo: FunctionDef = {
       return: Return.Void,
       params: [],
+      generate: true,
     }
     expect(generateFunction('AU3_FooBar', voidvoidfoo)).toEqual(
       `async function fooBar(): Promise<void> {
@@ -145,6 +146,7 @@ describe(generateFunction, () => {
     const voidintfoo: FunctionDef = {
       return: Return.Void,
       params: [{ key: 'qux', type: Param.Int }],
+      generate: true,
     }
     expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
       `async function fooBar(qux: number): Promise<void> {
@@ -162,6 +164,7 @@ describe(generateFunction, () => {
         { key: 'qux', type: Param.Int },
         { key: 'baz', type: Param.Int },
       ],
+      generate: true,
     }
     expect(generateFunction('AU3_FooBar', voidintfoo)).toEqual(
       `async function fooBar(qux: number, baz: number): Promise<void> {
@@ -208,6 +211,21 @@ describe(generateFunction, () => {
   const buttonBuffer = inWstrOfString(button)
   return new Promise(resolve => {
     lib.AU3_ControlClick.async(titleBuffer, textBuffer, controlBuffer, buttonBuffer, numClicks, nX, nY, (status: 0 | 1) => { resolve(status === 1) })
+  })
+}`,
+    )
+  })
+
+  it('generates the AU3_WinGetTitle function', () => {
+    const name = 'AU3_WinGetTitle'
+    const functionDef = functions[name]
+    expect(generateFunction(name, functionDef)).toEqual(
+      `async function winGetTitle(title: string | WindowDescription, text: string, titleSize = 512): Promise<string> {
+  const titleBuffer = inWstrOfWindowDescription(title)
+  const textBuffer = inWstrOfString(text)
+  const outBuffer = outWstrOfSize(titleSize)
+  return new Promise(resolve => {
+    lib.AU3_WinGetTitle.async(titleBuffer, textBuffer, outBuffer, titleSize, outWstrResolver(outBuffer, resolve))
   })
 }`,
     )

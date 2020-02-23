@@ -42,6 +42,8 @@ function typeOfReturnType(type: Return): string {
       return 'Hwnd'
     case Return.IntStatus:
       return 'boolean'
+    case Return.OutWstr:
+      return 'string'
   }
 }
 
@@ -50,7 +52,17 @@ export function makeParamsSection(paramDefs: ParamDef[]): string {
   for (const paramDef of paramDefs) {
     const name = paramDef.key
     const tsType = typeOfParamType(paramDef.type)
-    params.push(`${name}: ${tsType}`)
+    switch (paramDef.type) {
+      case Param.OutWstr:
+        break
+      case Param.OutWstrSize:
+        params.push(`${name} = 512`)
+        break
+      default: {
+        params.push(`${name}: ${tsType}`)
+        break
+      }
+    }
   }
   return params.join(', ')
 }
@@ -60,6 +72,9 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   const params = []
   for (const paramDef of paramDefs) {
     switch (paramDef.type) {
+      case Param.OutWstr:
+        params.push('outBuffer')
+        break
       case Param.InWstr:
       case Param.InWstrMouseButton:
       case Param.InWstrDescription:
@@ -78,6 +93,9 @@ export function makeTransformSection(paramDefs: ParamDef[]): string {
   const transforms = []
   for (const paramDef of paramDefs) {
     switch (paramDef.type) {
+      case Param.OutWstrSize:
+        transforms.push(`const outBuffer = outWstrOfSize(${paramDef.key})`)
+        break
       case Param.InWstr:
       case Param.InWstrMouseButton:
         transforms.push(
@@ -102,6 +120,8 @@ export function makeResolverSection(returnType: Return): string {
   switch (returnType) {
     case Return.IntStatus:
       return '(status: 0 | 1) => { resolve(status === 1) }'
+    case Return.OutWstr:
+      return 'outWstrResolver(outBuffer, resolve)'
     default:
       return 'resolve'
   }
