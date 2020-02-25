@@ -143,3 +143,10 @@ export function generateFunction(
   })
 }`
 }
+
+export async function writeFunctions(
+  functionDefs: Record<string, FunctionDef>,
+) {
+  for (const functionName in functionDefs) {
+  }
+}

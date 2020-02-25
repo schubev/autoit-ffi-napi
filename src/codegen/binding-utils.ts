@@ -7,9 +7,12 @@ export function ffiTypeOfReturn(returnType: Return): string {
     case Return.Void:
       return 'void'
     case Return.Int:
+    case Return.IntStatus:
       return 'int'
     case Return.Hwnd:
       return 'void*'
+    case Return.OutWstr:
+      return 'void'
   }
 }
 

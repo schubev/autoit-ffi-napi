@@ -22,22 +22,6 @@ export enum Return {
   OutWstr = 'OutWstr',
 }
 
-export enum SendMode {
-  Default = 0,
-  Raw = 1,
-}
-
-export enum MouseButton {
-  Default = '',
-  Left = 'left',
-  Middle = 'middle',
-  Right = 'right',
-  Primary = 'primary',
-  Main = 'main',
-  Secondary = 'secondary',
-  Menu = 'menu',
-}
-
 export interface ParamDefGeneric {
   key: string
   type: Param
