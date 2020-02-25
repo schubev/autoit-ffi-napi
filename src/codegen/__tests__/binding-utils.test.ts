@@ -4,6 +4,7 @@ import {
   ffiTypeOfParam,
   ffiBindingOfDescription,
   ffiBindingOfDescriptions,
+  ffiBindingSourceOfDescriptions,
 } from '../binding-utils'
 
 describe(ffiTypeOfReturn, () => {
@@ -63,5 +64,11 @@ describe(ffiBindingOfDescription, () => {
 describe(ffiBindingOfDescriptions, () => {
   it.each(Object.keys(functions))('builds bindings for %s', name => {
     expect(ffiBindingOfDescriptions(functions)[name]).toMatchSnapshot()
+  })
+})
+
+describe(ffiBindingSourceOfDescriptions, () => {
+  it('builds a source file for bindings', () => {
+    expect(ffiBindingSourceOfDescriptions(functions)).toMatchSnapshot()
   })
 })

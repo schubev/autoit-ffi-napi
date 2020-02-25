@@ -51,3 +51,12 @@ export function ffiBindingOfDescriptions(
   }
   return bindings
 }
+
+export function ffiBindingSourceOfDescriptions(
+  descriptions: Record<string, FunctionDef>,
+): string {
+  const bindings = ffiBindingOfDescriptions(descriptions)
+  const bindingsJson = JSON.stringify(bindings)
+  const bindingsJsonString = JSON.stringify(bindingsJson)
+  return `export const bindings : Record<string, Signature> = JSON.parse(${bindingsJsonString})`
+}
