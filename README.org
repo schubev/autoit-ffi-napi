@@ -1,0 +1,3 @@
+#+TITLE: autoit-ffi-napi
+
+[[https://github.com/schubev/autoit-ffi-napi/workflows/Node.js%20CI/badge.svg]]
