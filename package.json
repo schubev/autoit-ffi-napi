@@ -8,7 +8,10 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "build:codegen": "tsc -P src/codegen",
+    "build:build-codegen": "tsc -P src/codegen",
+    "build:run-codegen": "node lib/codegen/index.js",
+    "build:build-generated": "true",
+    "build": "npm run build:build-codegen && npm run build:run-codegen && npm run build:build-generated",
     "check:tsc": "tsc --noEmit",
     "check": "npm run check:tsc"
   },
