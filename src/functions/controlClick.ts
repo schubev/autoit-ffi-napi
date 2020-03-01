@@ -1,5 +1,5 @@
 import { WindowDescription, descriptor } from 'autoit-advanced-descriptor'
-import { MouseButton } from '../function-defs'
+import { MouseButton } from '../types'
 import { inWstrOfString } from '../wrap-utils'
 import { lib } from '../lowlevel'
 

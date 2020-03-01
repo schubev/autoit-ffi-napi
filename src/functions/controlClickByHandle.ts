@@ -1,5 +1,4 @@
-import { Hwnd } from '../types/hwnd'
-import { MouseButton } from '../function-defs'
+import { Hwnd, MouseButton } from '../types'
 import { inWstrOfString } from '../wrap-utils'
 import { lib } from '../lowlevel'
 
