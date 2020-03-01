@@ -21,9 +21,8 @@ async function writeFunctions(): Promise<void> {
     const prettyFunctionName = makePrettyFunctionName(functionName)
     const sourcePath = `src/functions/generated/${prettyFunctionName}.ts`
     const source = generateFunction(functionName, functionDef)
-    console.log(`write ${functionName} to ${sourcePath}:`)
-    console.log(source)
-    // await writeFile(sourcePath, source)
+    console.log(`generating function ${prettyFunctionName} at ${sourcePath}...`)
+    await writeFile(sourcePath, source)
   }
 }
 

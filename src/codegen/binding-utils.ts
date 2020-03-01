@@ -57,5 +57,5 @@ export function ffiBindingSourceOfDescriptions(
 ): string {
   const bindings = ffiBindingOfDescriptions(descriptions)
   const bindingsJson = JSON.stringify(bindings, null, 2)
-  return `export const bindings : Record<string, Signature> = ${bindingsJson}`
+  return `export const bindings : Record<string, [string, string[]]> = ${bindingsJson}`
 }

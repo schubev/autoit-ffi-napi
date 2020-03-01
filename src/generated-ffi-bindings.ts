@@ -1,4 +1,4 @@
-export const bindings : Record<string, Signature> = {
+export const bindings : Record<string, [string, string[]]> = {
   "AU3_Init": [
     "void",
     []

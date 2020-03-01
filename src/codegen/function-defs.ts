@@ -44,12 +44,12 @@ export interface FunctionDef {
 export const defaultInt = -0x7fffffff
 
 const windowSelection: ParamDef[] = [
-  { key: 'title', type: Param.InWstrDescription },
-  { key: 'text', type: Param.InWstr },
+  { key: 'windowDescription', type: Param.InWstrDescription },
+  { key: 'windowText', type: Param.InWstr },
 ]
 const controlSelection: ParamDef[] = [
   ...windowSelection,
-  { key: 'control', type: Param.InWstrDescription },
+  { key: 'controlDescription', type: Param.InWstrDescription },
 ]
 const windowByHwnd: ParamDef[] = [{ key: 'window', type: Param.Hwnd }]
 const controlByHwnd: ParamDef[] = [

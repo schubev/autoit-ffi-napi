@@ -1,12 +1,8 @@
 import { Library } from 'ffi-napi'
-import { functions, FunctionDef } from './function-defs'
-import { ffiBindingOfDescriptions } from './binding-utils'
+import { bindings } from './generated-ffi-bindings'
 
-function ffiLibrary(
-  descriptions: Record<string, FunctionDef>,
-  path = './AutoItX3.dll',
-): Record<string, any> {
-  return Library(path, ffiBindingOfDescriptions(descriptions))
+function ffiLibrary(path = './AutoItX3.dll'): Record<string, any> {
+  return Library(path, bindings)
 }
 
-export const lib = ffiLibrary(functions)
+export const lib = ffiLibrary()

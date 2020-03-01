@@ -128,6 +128,8 @@ export function makeResolverSection(returnType: Return): string {
 }
 
 export function makeImportsSection(functionDef: FunctionDef): string {
+  const wrapUtils = '../../wrap-utils'
+  const types = '../../types'
   const imports: Record<string, Set<string>> = {}
   function addImport(moduleName: string, ...members: string[]): void {
     if (!(moduleName in imports)) imports[moduleName] = new Set()
@@ -135,29 +137,39 @@ export function makeImportsSection(functionDef: FunctionDef): string {
       imports[moduleName].add(member)
     })
   }
+  addImport('../../lowlevel', 'lib')
   for (const paramDef of functionDef.params) {
     switch (paramDef.type) {
       case Param.OutWstrSize:
-        addImport('./wrap-utils', 'outWstrOfSize')
+        addImport(wrapUtils, 'outWstrOfSize')
         break
       case Param.InWstrMouseButton:
-        addImport('./types', 'MouseButton')
-        addImport('./wrap-utils', 'inWstrOfString')
+        addImport(types, 'MouseButton')
+        addImport(wrapUtils, 'inWstrOfString')
         break
       case Param.InWstrDescription:
         addImport('autoit-advanced-descriptor', 'WindowDescription')
-        addImport('./wrap-utils', 'inWstrOfWindowDescription')
+        addImport(wrapUtils, 'inWstrOfWindowDescription')
         break
       case Param.InWstr:
-        addImport('./wrap-utils', 'inWstrOfString')
+        addImport(wrapUtils, 'inWstrOfString')
         break
       case Param.Hwnd:
-        addImport('./types', 'Hwnd')
+        addImport(types, 'Hwnd')
+        break
+      case Param.SendMode:
+        addImport(types, 'SendMode')
         break
     }
   }
-  if (functionDef.return === Return.OutWstr)
-    addImport('./wrap-utils', 'outWstrResolver')
+  switch (functionDef.return) {
+    case Return.OutWstr:
+      addImport(wrapUtils, 'outWstrResolver')
+      break
+    case Return.Hwnd:
+      addImport(types, 'Hwnd')
+      break
+  }
   const importStrings: string[] = []
   for (const moduleName in imports) {
     importStrings.push(
