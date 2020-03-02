@@ -15,8 +15,7 @@ export declare enum Return {
     Void = "Void",
     Int = "Int",
     IntStatus = "IntStatus",
-    Hwnd = "Hwnd",
-    OutWstr = "OutWstr"
+    Hwnd = "Hwnd"
 }
 export interface ParamDefGeneric {
     key: string;

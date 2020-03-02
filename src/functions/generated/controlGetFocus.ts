@@ -4,25 +4,26 @@ import {
   inWstrOfString,
   inWstrOfWindowDescription,
   outWstrOfSize,
-  outWstrResolver,
+  stringOfOutWstr,
 } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlGetFocus = promisify(lib.AU3_ControlGetFocus.async)
 
 export async function controlGetFocus(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
   controlSize = 512,
 ): Promise<string> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const outBuffer = outWstrOfSize(controlSize)
-  return new Promise(resolve => {
-    lib.AU3_ControlGetFocus.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      outBuffer,
-      controlSize,
-      outWstrResolver(outBuffer, resolve),
-    )
-  })
+  await AU3_ControlGetFocus(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    outBuffer,
+    controlSize,
+  )
+  return stringOfOutWstr(outBuffer)
 }

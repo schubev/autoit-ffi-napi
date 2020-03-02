@@ -3,11 +3,14 @@ import { MouseButton } from '../../types'
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlClick = promisify(lib.AU3_ControlClick.async)
 
 export async function controlClick(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
   button: MouseButton,
   numClicks: number,
   nX: number,
@@ -17,18 +20,14 @@ export async function controlClick(
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const buttonBuffer = inWstrOfString(button)
-  return new Promise(resolve => {
-    lib.AU3_ControlClick.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      buttonBuffer,
-      numClicks,
-      nX,
-      nY,
-      (status: 0 | 1) => {
-        resolve(status === 1)
-      },
-    )
-  })
+  const result = await AU3_ControlClick(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+    buttonBuffer,
+    numClicks,
+    nX,
+    nY,
+  )
+  return result === 1
 }

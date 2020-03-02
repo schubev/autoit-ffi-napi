@@ -19,7 +19,6 @@ export enum Return {
   Int = 'Int',
   IntStatus = 'IntStatus',
   Hwnd = 'Hwnd',
-  OutWstr = 'OutWstr',
 }
 
 export interface ParamDefGeneric {
@@ -455,7 +454,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
   // ],
   AU3_WinGetTitle: {
-    return: Return.OutWstr,
+    return: Return.Void,
     params: [
       ...windowSelection,
       { key: 'title', type: Param.OutWstr },

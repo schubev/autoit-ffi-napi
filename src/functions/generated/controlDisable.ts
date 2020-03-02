@@ -2,21 +2,21 @@
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlDisable = promisify(lib.AU3_ControlDisable.async)
 
 export async function controlDisable(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
 ): Promise<number> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
-  return new Promise(resolve => {
-    lib.AU3_ControlDisable.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      resolve,
-    )
-  })
+  return AU3_ControlDisable(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+  )
 }

@@ -8,65 +8,6 @@ export function makePrettyFunctionName(functionName: string): string {
   return match[1].toLowerCase() + match[2]
 }
 
-function typeOfParamType(param: Param): string {
-  switch (param) {
-    case Param.Int:
-      return 'number'
-    case Param.InWstr:
-      return 'string'
-    case Param.InWstrCommand:
-    case Param.InWstrCommandExtra:
-      throw Error('not implemented')
-    case Param.InWstrDescription:
-      return 'string | WindowDescription'
-    case Param.InWstrMouseButton:
-      return 'MouseButton'
-    case Param.OutWstr:
-    case Param.OutWstrSize:
-    case Param.OutRectangle:
-      return 'never'
-    case Param.Hwnd:
-      return 'Hwnd'
-    case Param.SendMode:
-      return 'SendMode'
-  }
-}
-
-function typeOfReturnType(type: Return): string {
-  switch (type) {
-    case Return.Void:
-      return 'void'
-    case Return.Int:
-      return 'number'
-    case Return.Hwnd:
-      return 'Hwnd'
-    case Return.IntStatus:
-      return 'boolean'
-    case Return.OutWstr:
-      return 'string'
-  }
-}
-
-export function makeParamsSection(paramDefs: ParamDef[]): string {
-  const params = []
-  for (const paramDef of paramDefs) {
-    const name = paramDef.key
-    const tsType = typeOfParamType(paramDef.type)
-    switch (paramDef.type) {
-      case Param.OutWstr:
-        break
-      case Param.OutWstrSize:
-        params.push(`${name} = 512`)
-        break
-      default: {
-        params.push(`${name}: ${tsType}`)
-        break
-      }
-    }
-  }
-  return params.join(', ')
-}
-
 export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   if (paramDefs.length === 0) return ''
   const params = []
@@ -89,33 +30,6 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   return params.join(', ')
 }
 
-export function makeTransformSection(paramDefs: ParamDef[]): string {
-  const transforms = []
-  for (const paramDef of paramDefs) {
-    switch (paramDef.type) {
-      case Param.OutWstrSize:
-        transforms.push(`const outBuffer = outWstrOfSize(${paramDef.key})`)
-        break
-      case Param.InWstr:
-      case Param.InWstrMouseButton:
-        transforms.push(
-          `const ${paramDef.key}Buffer = inWstrOfString(${paramDef.key})`,
-        )
-        break
-      case Param.InWstrDescription:
-        transforms.push(
-          `const ${paramDef.key}Buffer = inWstrOfWindowDescription(${paramDef.key})`,
-        )
-        break
-      default:
-        break
-    }
-  }
-  if (transforms.length === 0) return ''
-  transforms.push('')
-  return transforms.join('\n  ')
-}
-
 export function makeResolverSection(functionDef: FunctionDef): string {
   if (functionDef.params.some(param => param.type === Param.OutWstr)) {
     return 'outWstrResolver(outBuffer, resolve)'
@@ -126,87 +40,141 @@ export function makeResolverSection(functionDef: FunctionDef): string {
   }
 }
 
-export function makeImportsSection(functionDef: FunctionDef): string {
-  const wrapUtils = '../../wrap-utils'
-  const types = '../../types'
-  const imports: Record<string, Set<string>> = {}
-  function addImport(moduleName: string, ...members: string[]): void {
-    if (!(moduleName in imports)) imports[moduleName] = new Set()
-    members.forEach(member => {
-      imports[moduleName].add(member)
-    })
-  }
-  addImport('../../lowlevel', 'lib')
-  for (const paramDef of functionDef.params) {
-    switch (paramDef.type) {
-      case Param.OutWstrSize:
-        addImport(wrapUtils, 'outWstrOfSize', 'outWstrResolver')
-        break
-      case Param.InWstrMouseButton:
-        addImport(types, 'MouseButton')
-        addImport(wrapUtils, 'inWstrOfString')
-        break
-      case Param.InWstrDescription:
-        addImport('autoit-advanced-descriptor', 'WindowDescription')
-        addImport(wrapUtils, 'inWstrOfWindowDescription')
-        break
-      case Param.InWstr:
-        addImport(wrapUtils, 'inWstrOfString')
-        break
-      case Param.Hwnd:
-        addImport(types, 'Hwnd')
-        break
-      case Param.SendMode:
-        addImport(types, 'SendMode')
-        break
+class ImportSet {
+  imports: Record<string, Set<string>> = {}
+
+  add(modulePath: string, ...members: string[]): void {
+    if (members.length === 0) return
+    if (!(modulePath in this.imports)) this.imports[modulePath] = new Set()
+    for (const member of members) {
+      this.imports[modulePath].add(member)
     }
   }
-  switch (functionDef.return) {
-    case Return.OutWstr:
-      addImport(wrapUtils, 'outWstrResolver')
-      break
-    case Return.Hwnd:
-      addImport(types, 'Hwnd')
-      break
-  }
-  const importStrings: string[] = []
-  for (const moduleName in imports) {
-    importStrings.push(
-      `import { ${Array.from(imports[moduleName])
-        .sort()
-        .join(', ')} } from '${moduleName}'`,
-    )
-  }
-  importStrings.sort()
-  if (importStrings.length > 0) importStrings.push('', '')
-  return importStrings.join('\n')
-}
 
-function makeReturnTypeSection(functionDef: FunctionDef): string {
-  let promisedType: string
-  if (functionDef.params.some(param => param.type === Param.OutWstr)) {
-    promisedType = 'string'
-  } else {
-    promisedType = typeOfReturnType(functionDef.return)
+  toSource(): string {
+    const lines = []
+    for (const modulePath in this.imports) {
+      const members = Array.from(this.imports[modulePath])
+        .sort()
+        .join(', ')
+      lines.push(`import { ${members} } from '${modulePath}'`)
+    }
+    lines.sort()
+    if (lines.length > 0) lines.push('', '')
+    return lines.join('\n')
   }
-  return `Promise<${promisedType}>`
 }
 
 export function generateFunction(
   functionName: string,
   functionDef: FunctionDef,
 ): string {
-  const importsSection = makeImportsSection(functionDef)
+  const imports = new ImportSet()
   const prettyFunctionName = makePrettyFunctionName(functionName)
-  const paramsSection = makeParamsSection(functionDef.params)
-  const transformSection = makeTransformSection(functionDef.params)
-  const lowlevelArgsSection = makeLowlevelArgsSection(functionDef.params)
-  const returnTypeSection = makeReturnTypeSection(functionDef)
-  const resolverSection = makeResolverSection(functionDef)
+
+  let returnAssignSection: string
+  let returnSection: string
+  let returnTypeSection: string
+  const transformsSection: string[] = []
+  const paramsSection: string[] = []
+  const lowlevelArgsSection: string[] = []
+
+  imports.add('util', 'promisify')
+  imports.add('../../lowlevel', 'lib')
+
+  switch (functionDef.return) {
+    case Return.Void:
+      returnAssignSection = 'await '
+      returnSection = ''
+      returnTypeSection = 'void'
+      break
+    case Return.Int:
+      returnAssignSection = 'return '
+      returnSection = ''
+      returnTypeSection = 'number'
+      break
+    case Return.IntStatus:
+      returnAssignSection = 'const result = await '
+      returnSection = 'return result === 1'
+      returnTypeSection = 'boolean'
+      break
+    case Return.Hwnd:
+      imports.add('../../types', 'Hwnd')
+      returnAssignSection = 'const result = await '
+      returnSection = 'return result === 0 ? null : Hwnd.ofNumber(result)'
+      returnTypeSection = 'Hwnd | null'
+      break
+    default:
+      throw Error(`return type ${functionDef.return} is not implemented`)
+  }
+
+  for (const paramDef of functionDef.params) {
+    const varName = paramDef.key
+    switch (paramDef.type) {
+      case Param.Int:
+        paramsSection.push(`${varName}: number`)
+        lowlevelArgsSection.push(varName)
+        break
+      case Param.InWstr: {
+        imports.add('../../wrap-utils', 'inWstrOfString')
+        const bufName = `${varName}Buffer`
+        paramsSection.push(`${varName}: string`)
+        transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
+        lowlevelArgsSection.push(bufName)
+        break
+      }
+      case Param.InWstrDescription: {
+        imports.add('../../wrap-utils', 'inWstrOfWindowDescription')
+        imports.add('autoit-advanced-descriptor', 'WindowDescription')
+        const bufName = `${varName}Buffer`
+        paramsSection.push(`${varName}: WindowDescription`)
+        transformsSection.push(
+          `const ${bufName} = inWstrOfWindowDescription(${varName})`,
+        )
+        lowlevelArgsSection.push(bufName)
+        break
+      }
+      case Param.InWstrMouseButton: {
+        imports.add('../../wrap-utils', 'inWstrOfString')
+        imports.add('../../types', 'MouseButton')
+        const bufName = `${varName}Buffer`
+        paramsSection.push(`${varName}: MouseButton`)
+        transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
+        lowlevelArgsSection.push(bufName)
+        break
+      }
+      case Param.OutWstr:
+        imports.add('../../wrap-utils', 'outWstrOfSize', 'stringOfOutWstr')
+        transformsSection.push(
+          `const outBuffer = outWstrOfSize(${varName}Size)`,
+        )
+        lowlevelArgsSection.push(`outBuffer`)
+        returnAssignSection = 'await '
+        returnSection = 'return stringOfOutWstr(outBuffer)'
+        returnTypeSection = 'string'
+        break
+      case Param.OutWstrSize:
+        paramsSection.push(`${varName} = 512`)
+        lowlevelArgsSection.push(`${varName}`)
+        break
+      case Param.Hwnd:
+        imports.add('../../types', 'Hwnd')
+        paramsSection.push(`${varName}: Hwnd`)
+        lowlevelArgsSection.push(`${varName}.toNumber()`)
+        break
+      default:
+        throw Error(`param type ${paramDef.type} is not implemented`)
+    }
+  }
+
   return `// This file is generated by src/codegen/function-gen.ts.
-${importsSection}export async function ${prettyFunctionName}(${paramsSection}): ${returnTypeSection} {
-  ${transformSection}return new Promise(resolve => {
-    lib.${functionName}.async(${lowlevelArgsSection}${resolverSection})
-  })
+${imports.toSource()}const ${functionName} = promisify(lib.${functionName}.async)
+
+export async function ${prettyFunctionName}(${paramsSection.join(
+    ', ',
+  )}): Promise<${returnTypeSection}> {
+${transformsSection.map(l => '  ' + l).join('\n')}
+  ${returnAssignSection}${functionName}(${lowlevelArgsSection.join(', ')})
+  ${returnSection}
 }`
 }

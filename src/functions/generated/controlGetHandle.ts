@@ -3,13 +3,15 @@ import { Hwnd } from '../../types'
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlGetHandle = promisify(lib.AU3_ControlGetHandle.async)
 
 export async function controlGetHandle(
   window: Hwnd,
-  control: string | WindowDescription,
-): Promise<Hwnd> {
+  control: WindowDescription,
+): Promise<Hwnd | null> {
   const controlBuffer = inWstrOfWindowDescription(control)
-  return new Promise(resolve => {
-    lib.AU3_ControlGetHandle.async(window, controlBuffer, resolve)
-  })
+  const result = await AU3_ControlGetHandle(window.toNumber(), controlBuffer)
+  return result === 0 ? null : Hwnd.ofNumber(result)
 }

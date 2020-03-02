@@ -11,8 +11,6 @@ export function ffiTypeOfReturn(returnType: Return): string {
       return 'int'
     case Return.Hwnd:
       return 'void*'
-    case Return.OutWstr:
-      return 'void'
   }
 }
 

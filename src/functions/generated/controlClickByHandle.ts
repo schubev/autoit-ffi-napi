@@ -2,6 +2,9 @@
 import { Hwnd, MouseButton } from '../../types'
 import { inWstrOfString } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlClickByHandle = promisify(lib.AU3_ControlClickByHandle.async)
 
 export async function controlClickByHandle(
   window: Hwnd,
@@ -12,15 +15,12 @@ export async function controlClickByHandle(
   nY: number,
 ): Promise<number> {
   const buttonBuffer = inWstrOfString(button)
-  return new Promise(resolve => {
-    lib.AU3_ControlClickByHandle.async(
-      window,
-      control,
-      buttonBuffer,
-      numClicks,
-      nX,
-      nY,
-      resolve,
-    )
-  })
+  return AU3_ControlClickByHandle(
+    window.toNumber(),
+    control.toNumber(),
+    buttonBuffer,
+    numClicks,
+    nX,
+    nY,
+  )
 }
