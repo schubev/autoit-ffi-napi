@@ -19,9 +19,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm test
     - run: find lib types -type f -exec sha1sum '{}' '+' | tee lib-hashes.txt
+    - run: rm -r lib types
     - run: npm run build
       env:
         CI: true
     - run: sha1sum --check lib-hashes.txt
+    - run: npm test

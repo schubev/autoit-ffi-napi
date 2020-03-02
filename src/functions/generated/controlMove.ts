@@ -2,11 +2,14 @@
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlMove = promisify(lib.AU3_ControlMove.async)
 
 export async function controlMove(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
   nX: number,
   nY: number,
   nWidth: number,
@@ -15,16 +18,13 @@ export async function controlMove(
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
-  return new Promise(resolve => {
-    lib.AU3_ControlMove.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      nX,
-      nY,
-      nWidth,
-      nHeight,
-      resolve,
-    )
-  })
+  return AU3_ControlMove(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+    nX,
+    nY,
+    nWidth,
+    nHeight,
+  )
 }

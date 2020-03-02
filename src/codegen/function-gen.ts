@@ -115,6 +115,11 @@ export function generateFunction(
         paramsSection.push(`${varName}: number`)
         lowlevelArgsSection.push(varName)
         break
+      case Param.SendMode:
+        imports.add('../../types', 'SendMode')
+        paramsSection.push(`${varName}: SendMode`)
+        lowlevelArgsSection.push(varName)
+        break
       case Param.InWstr: {
         imports.add('../../wrap-utils', 'inWstrOfString')
         const bufName = `${varName}Buffer`

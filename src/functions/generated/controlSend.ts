@@ -3,11 +3,14 @@ import { SendMode } from '../../types'
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlSend = promisify(lib.AU3_ControlSend.async)
 
 export async function controlSend(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
   text: string,
   mode: SendMode,
 ): Promise<number> {
@@ -15,14 +18,11 @@ export async function controlSend(
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const textBuffer = inWstrOfString(text)
-  return new Promise(resolve => {
-    lib.AU3_ControlSend.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      textBuffer,
-      mode,
-      resolve,
-    )
-  })
+  return AU3_ControlSend(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+    textBuffer,
+    mode,
+  )
 }

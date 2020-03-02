@@ -2,6 +2,9 @@
 import { Hwnd, SendMode } from '../../types'
 import { inWstrOfString } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlSendByHandle = promisify(lib.AU3_ControlSendByHandle.async)
 
 export async function controlSendByHandle(
   window: Hwnd,
@@ -10,13 +13,10 @@ export async function controlSendByHandle(
   mode: SendMode,
 ): Promise<number> {
   const textBuffer = inWstrOfString(text)
-  return new Promise(resolve => {
-    lib.AU3_ControlSendByHandle.async(
-      window,
-      control,
-      textBuffer,
-      mode,
-      resolve,
-    )
-  })
+  return AU3_ControlSendByHandle(
+    window.toNumber(),
+    control.toNumber(),
+    textBuffer,
+    mode,
+  )
 }

@@ -2,24 +2,24 @@
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlSetText = promisify(lib.AU3_ControlSetText.async)
 
 export async function controlSetText(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
   text: string,
 ): Promise<number> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const textBuffer = inWstrOfString(text)
-  return new Promise(resolve => {
-    lib.AU3_ControlSetText.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      textBuffer,
-      resolve,
-    )
-  })
+  return AU3_ControlSetText(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+    textBuffer,
+  )
 }

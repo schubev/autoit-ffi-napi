@@ -3,18 +3,19 @@ import { Hwnd } from '../../types'
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_WinGetHandle = promisify(lib.AU3_WinGetHandle.async)
 
 export async function winGetHandle(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-): Promise<Hwnd> {
+): Promise<Hwnd | null> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
-  return new Promise(resolve => {
-    lib.AU3_WinGetHandle.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      resolve,
-    )
-  })
+  const result = await AU3_WinGetHandle(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+  )
+  return result === 0 ? null : Hwnd.ofNumber(result)
 }

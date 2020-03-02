@@ -1,2 +1,2 @@
 import { WindowDescription } from 'autoit-advanced-descriptor';
-export declare function controlGetText(windowDescription: string | WindowDescription, windowText: string, controlDescription: string | WindowDescription, controlTextSize?: number): Promise<string>;
+export declare function controlGetText(windowDescription: WindowDescription, windowText: string, controlDescription: WindowDescription, controlTextSize?: number): Promise<string>;

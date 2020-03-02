@@ -167,23 +167,6 @@ export const bindings : Record<string, [string, string[]]> = {
       "uint16*"
     ]
   ],
-  "AU3_ControlGetPos": [
-    "int",
-    [
-      "uint16*",
-      "uint16*",
-      "uint16*",
-      "void*"
-    ]
-  ],
-  "AU3_ControlGetPosByHandle": [
-    "int",
-    [
-      "void*",
-      "void*",
-      "void*"
-    ]
-  ],
   "AU3_ControlGetText": [
     "void",
     [
@@ -291,6 +274,10 @@ export const bindings : Record<string, [string, string[]]> = {
       "void*",
       "void*"
     ]
+  ],
+  "AU3_IsAdmin": [
+    "int",
+    []
   ],
   "AU3_WinGetHandle": [
     "void*",

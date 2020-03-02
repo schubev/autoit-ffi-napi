@@ -4,28 +4,29 @@ import {
   inWstrOfString,
   inWstrOfWindowDescription,
   outWstrOfSize,
-  outWstrResolver,
+  stringOfOutWstr,
 } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
+import { promisify } from 'util'
+
+const AU3_ControlGetText = promisify(lib.AU3_ControlGetText.async)
 
 export async function controlGetText(
-  windowDescription: string | WindowDescription,
+  windowDescription: WindowDescription,
   windowText: string,
-  controlDescription: string | WindowDescription,
+  controlDescription: WindowDescription,
   controlTextSize = 512,
 ): Promise<string> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const outBuffer = outWstrOfSize(controlTextSize)
-  return new Promise(resolve => {
-    lib.AU3_ControlGetText.async(
-      windowDescriptionBuffer,
-      windowTextBuffer,
-      controlDescriptionBuffer,
-      outBuffer,
-      controlTextSize,
-      outWstrResolver(outBuffer, resolve),
-    )
-  })
+  await AU3_ControlGetText(
+    windowDescriptionBuffer,
+    windowTextBuffer,
+    controlDescriptionBuffer,
+    outBuffer,
+    controlTextSize,
+  )
+  return stringOfOutWstr(outBuffer)
 }
