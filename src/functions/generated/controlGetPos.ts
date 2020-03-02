@@ -3,11 +3,22 @@ import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
 
-async function controlGetPos(windowDescription: string | WindowDescription, windowText: string, controlDescription: string | WindowDescription, rectangle: never): Promise<number> {
+export async function controlGetPos(
+  windowDescription: string | WindowDescription,
+  windowText: string,
+  controlDescription: string | WindowDescription,
+  rectangle: never,
+): Promise<number> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   return new Promise(resolve => {
-    lib.AU3_ControlGetPos.async(windowDescriptionBuffer, windowTextBuffer, controlDescriptionBuffer, rectangle, resolve)
+    lib.AU3_ControlGetPos.async(
+      windowDescriptionBuffer,
+      windowTextBuffer,
+      controlDescriptionBuffer,
+      rectangle,
+      resolve,
+    )
   })
 }

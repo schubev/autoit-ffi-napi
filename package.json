@@ -13,7 +13,8 @@
     "build:build-generated": "tsc",
     "build": "npm run build:build-codegen && npm run build:run-codegen && npm run build:build-generated",
     "check:tsc": "tsc --noEmit",
-    "check": "npm run check:tsc"
+    "check": "npm run check:tsc",
+    "prettier:generated": "prettier --write src/functions/generated/*"
   },
   "devDependencies": {
     "@types/ffi-napi": "^2.4.1",

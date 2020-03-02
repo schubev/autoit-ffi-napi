@@ -3,9 +3,20 @@ import { Hwnd, SendMode } from '../../types'
 import { inWstrOfString } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
 
-async function controlSendByHandle(window: Hwnd, control: Hwnd, text: string, mode: SendMode): Promise<number> {
+export async function controlSendByHandle(
+  window: Hwnd,
+  control: Hwnd,
+  text: string,
+  mode: SendMode,
+): Promise<number> {
   const textBuffer = inWstrOfString(text)
   return new Promise(resolve => {
-    lib.AU3_ControlSendByHandle.async(window, control, textBuffer, mode, resolve)
+    lib.AU3_ControlSendByHandle.async(
+      window,
+      control,
+      textBuffer,
+      mode,
+      resolve,
+    )
   })
 }

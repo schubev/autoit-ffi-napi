@@ -3,7 +3,11 @@ import { Hwnd } from '../../types'
 import { inWstrOfString } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
 
-async function controlSetTextByHandle(window: Hwnd, control: Hwnd, text: string): Promise<number> {
+export async function controlSetTextByHandle(
+  window: Hwnd,
+  control: Hwnd,
+  text: string,
+): Promise<number> {
   const textBuffer = inWstrOfString(text)
   return new Promise(resolve => {
     lib.AU3_ControlSetTextByHandle.async(window, control, textBuffer, resolve)

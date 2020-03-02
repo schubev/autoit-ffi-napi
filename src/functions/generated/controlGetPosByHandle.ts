@@ -2,7 +2,11 @@
 import { Hwnd } from '../../types'
 import { lib } from '../../lowlevel'
 
-async function controlGetPosByHandle(window: Hwnd, control: Hwnd, rectangle: never): Promise<number> {
+export async function controlGetPosByHandle(
+  window: Hwnd,
+  control: Hwnd,
+  rectangle: never,
+): Promise<number> {
   return new Promise(resolve => {
     lib.AU3_ControlGetPosByHandle.async(window, control, rectangle, resolve)
   })

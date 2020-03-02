@@ -4,10 +4,17 @@ import { WindowDescription } from 'autoit-advanced-descriptor'
 import { inWstrOfString, inWstrOfWindowDescription } from '../../wrap-utils'
 import { lib } from '../../lowlevel'
 
-async function winGetHandle(windowDescription: string | WindowDescription, windowText: string): Promise<Hwnd> {
+export async function winGetHandle(
+  windowDescription: string | WindowDescription,
+  windowText: string,
+): Promise<Hwnd> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   return new Promise(resolve => {
-    lib.AU3_WinGetHandle.async(windowDescriptionBuffer, windowTextBuffer, resolve)
+    lib.AU3_WinGetHandle.async(
+      windowDescriptionBuffer,
+      windowTextBuffer,
+      resolve,
+    )
   })
 }

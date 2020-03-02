@@ -2,8 +2,23 @@
 import { Hwnd } from '../../types'
 import { lib } from '../../lowlevel'
 
-async function controlMoveByHandle(window: Hwnd, control: Hwnd, nX: number, nY: number, nWidth: number, nHeight: number): Promise<number> {
+export async function controlMoveByHandle(
+  window: Hwnd,
+  control: Hwnd,
+  nX: number,
+  nY: number,
+  nWidth: number,
+  nHeight: number,
+): Promise<number> {
   return new Promise(resolve => {
-    lib.AU3_ControlMoveByHandle.async(window, control, nX, nY, nWidth, nHeight, resolve)
+    lib.AU3_ControlMoveByHandle.async(
+      window,
+      control,
+      nX,
+      nY,
+      nWidth,
+      nHeight,
+      resolve,
+    )
   })
 }

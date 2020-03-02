@@ -2,7 +2,10 @@
 import { Hwnd } from '../../types'
 import { lib } from '../../lowlevel'
 
-async function controlShowByHandle(window: Hwnd, control: Hwnd): Promise<number> {
+export async function controlShowByHandle(
+  window: Hwnd,
+  control: Hwnd,
+): Promise<number> {
   return new Promise(resolve => {
     lib.AU3_ControlShowByHandle.async(window, control, resolve)
   })
