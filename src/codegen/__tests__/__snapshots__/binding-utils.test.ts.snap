@@ -399,6 +399,15 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseDown 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
 Array [
   "void*",
@@ -729,6 +738,12 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"int\\",
       \\"int\\",
       \\"int\\"
+    ]
+  ],
+  \\"AU3_MouseDown\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\"
     ]
   ],
   \\"AU3_WinGetHandle\\": [

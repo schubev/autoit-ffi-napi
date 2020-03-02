@@ -300,6 +300,12 @@ export const bindings : Record<string, [string, string[]]> = {
       "int"
     ]
   ],
+  "AU3_MouseDown": [
+    "void",
+    [
+      "uint16*"
+    ]
+  ],
   "AU3_WinGetHandle": [
     "void*",
     [

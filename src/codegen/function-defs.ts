@@ -350,10 +350,17 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   },
-  // AU3_MouseDown: [
-  //   Return.Void,
-  //   '(/*[in,defaultvalue("LEFT")]*/LPCWSTR szButton)',
-  // ],
+  AU3_MouseDown: {
+    return: Return.Void,
+    params: [
+      {
+        key: 'button',
+        type: Param.InWstrMouseButton,
+        default: 'MouseButton.Left',
+      },
+    ],
+    generate: true,
+  },
   // AU3_MouseGetCursor: [Return.Int, '(void)'],
   // AU3_MouseGetPos: [Return.Void, '(LPPOINT lpPoint)'],
   // AU3_MouseMove: [Return.Int, '(int nX, int nY, int nSpeed = -1)'],
