@@ -385,6 +385,20 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseClickDrag 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
 Array [
   "void*",
@@ -700,6 +714,17 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     \\"int\\",
     [
       \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_MouseClickDrag\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"int\\",
       \\"int\\",
       \\"int\\",
       \\"int\\",

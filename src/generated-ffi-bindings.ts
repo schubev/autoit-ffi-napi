@@ -289,6 +289,17 @@ export const bindings : Record<string, [string, string[]]> = {
       "int"
     ]
   ],
+  "AU3_MouseClickDrag": [
+    "int",
+    [
+      "uint16*",
+      "int",
+      "int",
+      "int",
+      "int",
+      "int"
+    ]
+  ],
   "AU3_WinGetHandle": [
     "void*",
     [
