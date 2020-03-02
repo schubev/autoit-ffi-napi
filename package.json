@@ -11,7 +11,7 @@
     "build:build-codegen": "tsc -P src/codegen",
     "build:run-codegen": "node lib/codegen/index.js",
     "build:build-generated": "tsc",
-    "build": "npm run build:build-codegen && npm run build:run-codegen && npm run build:build-generated",
+    "build": "npm run build:build-codegen && npm run build:run-codegen && npm run prettier:generated && npm run build:build-generated",
     "check:tsc": "tsc --noEmit",
     "check": "npm run check:tsc",
     "prettier:generated": "prettier --write src/functions/generated/*"
