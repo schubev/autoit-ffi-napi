@@ -8,6 +8,7 @@ export function ffiTypeOfReturn(returnType: Return): string {
       return 'void'
     case Return.Int:
     case Return.IntStatus:
+    case Return.IntCursor:
       return 'int'
     case Return.Hwnd:
       return 'void*'

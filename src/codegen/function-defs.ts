@@ -18,6 +18,7 @@ export enum Return {
   Void = 'Void',
   Int = 'Int',
   IntStatus = 'IntStatus',
+  IntCursor = 'IntCursor',
   Hwnd = 'Hwnd',
 }
 
@@ -361,7 +362,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   },
-  // AU3_MouseGetCursor: [Return.Int, '(void)'],
+  AU3_MouseGetCursor: { return: Return.IntCursor, params: [], generate: true },
   // AU3_MouseGetPos: [Return.Void, '(LPPOINT lpPoint)'],
   // AU3_MouseMove: [Return.Int, '(int nX, int nY, int nSpeed = -1)'],
   // AU3_MouseUp: [Return.Void, '(/*[in,defaultvalue("LEFT")]*/LPCWSTR szButton)'],

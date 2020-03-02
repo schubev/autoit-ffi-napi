@@ -306,6 +306,10 @@ export const bindings : Record<string, [string, string[]]> = {
       "uint16*"
     ]
   ],
+  "AU3_MouseGetCursor": [
+    "int",
+    []
+  ],
   "AU3_WinGetHandle": [
     "void*",
     [

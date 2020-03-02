@@ -30,5 +30,6 @@ export { isAdmin } from './generated/isAdmin';
 export { mouseClick } from './generated/mouseClick';
 export { mouseClickDrag } from './generated/mouseClickDrag';
 export { mouseDown } from './generated/mouseDown';
+export { mouseGetCursor } from './generated/mouseGetCursor';
 export { winGetHandle } from './generated/winGetHandle';
 export { winGetTitle } from './generated/winGetTitle';

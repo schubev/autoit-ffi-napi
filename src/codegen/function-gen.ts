@@ -93,6 +93,12 @@ export function generateFunction(
       returnSection = ''
       returnTypeSection = 'number'
       break
+    case Return.IntCursor:
+      imports.add('../../types', 'Cursor')
+      returnAssignSection = 'return '
+      returnSection = ''
+      returnTypeSection = 'Cursor'
+      break
     case Return.IntStatus:
       returnAssignSection = 'const result = await '
       returnSection = 'return result === 1'

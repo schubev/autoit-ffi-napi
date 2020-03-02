@@ -15,6 +15,7 @@ export declare enum Return {
     Void = "Void",
     Int = "Int",
     IntStatus = "IntStatus",
+    IntCursor = "IntCursor",
     Hwnd = "Hwnd"
 }
 export interface ParamDef {
