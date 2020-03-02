@@ -1,1 +1,1 @@
-export declare function isAdmin(): Promise<number>;
+export declare function isAdmin(): Promise<boolean>;

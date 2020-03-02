@@ -11,8 +11,8 @@ export async function controlClickByHandle(
   control: Hwnd,
   button: MouseButton,
   numClicks: number,
-  nX: number,
-  nY: number,
+  nX = -2147483647,
+  nY = -2147483647,
 ): Promise<number> {
   const buttonBuffer = inWstrOfString(button)
   return AU3_ControlClickByHandle(

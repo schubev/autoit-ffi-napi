@@ -12,8 +12,8 @@ export async function controlMove(
   controlDescription: WindowDescription,
   nX: number,
   nY: number,
-  nWidth: number,
-  nHeight: number,
+  nWidth = -1,
+  nHeight = -1,
 ): Promise<number> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)

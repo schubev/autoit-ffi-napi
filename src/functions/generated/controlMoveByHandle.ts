@@ -10,8 +10,8 @@ export async function controlMoveByHandle(
   control: Hwnd,
   nX: number,
   nY: number,
-  nWidth: number,
-  nHeight: number,
+  nWidth = -1,
+  nHeight = -1,
 ): Promise<number> {
   return AU3_ControlMoveByHandle(
     window.toNumber(),

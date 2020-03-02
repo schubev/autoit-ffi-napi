@@ -395,6 +395,19 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseClick 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
 Array [
   "void*",

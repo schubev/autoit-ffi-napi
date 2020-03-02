@@ -21,18 +21,11 @@ export enum Return {
   Hwnd = 'Hwnd',
 }
 
-export interface ParamDefGeneric {
+export interface ParamDef {
   key: string
   type: Param
+  default?: string | number
 }
-
-export interface ParamDefWithDefaultInt {
-  key: string
-  type: Param.Int
-  default: number
-}
-
-export type ParamDef = ParamDefGeneric | ParamDefWithDefaultInt
 
 export interface FunctionDef {
   return: Return
@@ -326,11 +319,22 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szDevice, LPWSTR szMapping, int nBufSize)',
   // ],
-  AU3_IsAdmin: { return: Return.Int, params: [], generate: true },
-  // AU3_MouseClick: [
-  //   Return.Int,
-  //   '(/*[in,defaultvalue("LEFT")]*/LPCWSTR szButton, int nX = AU3_INTDEFAULT, int nY = AU3_INTDEFAULT, int nClicks = 1, int nSpeed = -1)',
-  // ],
+  AU3_IsAdmin: { return: Return.IntStatus, params: [], generate: true },
+  AU3_MouseClick: {
+    return: Return.IntStatus,
+    params: [
+      {
+        key: 'button',
+        type: Param.InWstrMouseButton,
+        default: 'MouseButton.Left',
+      },
+      { key: 'x', type: Param.Int, default: defaultInt },
+      { key: 'y', type: Param.Int, default: defaultInt },
+      { key: 'clickCount', type: Param.Int, default: 1 },
+      { key: 'speed', type: Param.Int, default: 10 },
+    ],
+    generate: true,
+  },
   // AU3_MouseClickDrag: [
   //   Return.Int,
   //   '(LPCWSTR szButton, int nX1, int nY1, int nX2, int nY2, int nSpeed = -1)',

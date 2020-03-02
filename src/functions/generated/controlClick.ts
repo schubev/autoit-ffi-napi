@@ -13,8 +13,8 @@ export async function controlClick(
   controlDescription: WindowDescription,
   button: MouseButton,
   numClicks: number,
-  nX: number,
-  nY: number,
+  nX = -2147483647,
+  nY = -2147483647,
 ): Promise<boolean> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)

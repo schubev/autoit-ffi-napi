@@ -17,16 +17,11 @@ export declare enum Return {
     IntStatus = "IntStatus",
     Hwnd = "Hwnd"
 }
-export interface ParamDefGeneric {
+export interface ParamDef {
     key: string;
     type: Param;
+    default?: string | number;
 }
-export interface ParamDefWithDefaultInt {
-    key: string;
-    type: Param.Int;
-    default: number;
-}
-export declare type ParamDef = ParamDefGeneric | ParamDefWithDefaultInt;
 export interface FunctionDef {
     return: Return;
     params: ParamDef[];

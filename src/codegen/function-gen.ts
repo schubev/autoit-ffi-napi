@@ -108,22 +108,36 @@ export function generateFunction(
       throw Error(`return type ${functionDef.return} is not implemented`)
   }
 
+  function addParam(
+    name: string,
+    type: string,
+    defaultValue?: string | number,
+  ): void {
+    let paramString: string
+    if (defaultValue != null) {
+      paramString = `${name} = ${defaultValue}`
+    } else {
+      paramString = `${name}: ${type}`
+    }
+    paramsSection.push(paramString)
+  }
+
   for (const paramDef of functionDef.params) {
     const varName = paramDef.key
     switch (paramDef.type) {
       case Param.Int:
-        paramsSection.push(`${varName}: number`)
+        addParam(varName, 'number', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
       case Param.SendMode:
         imports.add('../../types', 'SendMode')
-        paramsSection.push(`${varName}: SendMode`)
+        addParam(varName, 'SendMode', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
       case Param.InWstr: {
         imports.add('../../wrap-utils', 'inWstrOfString')
         const bufName = `${varName}Buffer`
-        paramsSection.push(`${varName}: string`)
+        addParam(varName, 'string', paramDef.default)
         transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
         lowlevelArgsSection.push(bufName)
         break
@@ -132,7 +146,7 @@ export function generateFunction(
         imports.add('../../wrap-utils', 'inWstrOfWindowDescription')
         imports.add('autoit-advanced-descriptor', 'WindowDescription')
         const bufName = `${varName}Buffer`
-        paramsSection.push(`${varName}: WindowDescription`)
+        addParam(varName, 'WindowDescription', paramDef.default)
         transformsSection.push(
           `const ${bufName} = inWstrOfWindowDescription(${varName})`,
         )
@@ -143,7 +157,7 @@ export function generateFunction(
         imports.add('../../wrap-utils', 'inWstrOfString')
         imports.add('../../types', 'MouseButton')
         const bufName = `${varName}Buffer`
-        paramsSection.push(`${varName}: MouseButton`)
+        addParam(varName, 'MouseButton', paramDef.default)
         transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
         lowlevelArgsSection.push(bufName)
         break
