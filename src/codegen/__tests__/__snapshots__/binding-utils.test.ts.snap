@@ -183,29 +183,6 @@ Array [
 ]
 `;
 
-exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPos 1`] = `
-Array [
-  "int",
-  Array [
-    "uint16*",
-    "uint16*",
-    "uint16*",
-    "void*",
-  ],
-]
-`;
-
-exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPosByHandle 1`] = `
-Array [
-  "int",
-  Array [
-    "void*",
-    "void*",
-    "void*",
-  ],
-]
-`;
-
 exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetText 1`] = `
 Array [
   "void",
@@ -607,23 +584,6 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"uint16*\\"
     ]
   ],
-  \\"AU3_ControlGetPos\\": [
-    \\"int\\",
-    [
-      \\"uint16*\\",
-      \\"uint16*\\",
-      \\"uint16*\\",
-      \\"void*\\"
-    ]
-  ],
-  \\"AU3_ControlGetPosByHandle\\": [
-    \\"int\\",
-    [
-      \\"void*\\",
-      \\"void*\\",
-      \\"void*\\"
-    ]
-  ],
   \\"AU3_ControlGetText\\": [
     \\"void\\",
     [
@@ -730,6 +690,20 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     [
       \\"void*\\",
       \\"void*\\"
+    ]
+  ],
+  \\"AU3_IsAdmin\\": [
+    \\"int\\",
+    []
+  ],
+  \\"AU3_MouseClick\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
     ]
   ],
   \\"AU3_WinGetHandle\\": [
