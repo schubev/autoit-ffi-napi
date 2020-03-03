@@ -311,27 +311,27 @@ export const bindings : Record<string, [string, string[]]> = {
     []
   ],
   "AU3_WinActivate": [
-    "void*",
+    "int",
     [
       "uint16*",
       "uint16*"
     ]
   ],
   "AU3_WinActivateByHandle": [
-    "void*",
+    "int",
     [
       "void*"
     ]
   ],
   "AU3_WinActive": [
-    "void*",
+    "int",
     [
       "uint16*",
       "uint16*"
     ]
   ],
   "AU3_WinActiveByHandle": [
-    "void*",
+    "int",
     [
       "void*"
     ]

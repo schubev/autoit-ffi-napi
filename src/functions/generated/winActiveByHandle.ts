@@ -5,7 +5,7 @@ import { promisify } from 'util'
 
 const AU3_WinActiveByHandle = promisify(lib.AU3_WinActiveByHandle.async)
 
-export async function winActiveByHandle(window: Hwnd): Promise<Hwnd | null> {
+export async function winActiveByHandle(window: Hwnd): Promise<boolean> {
   const result = await AU3_WinActiveByHandle(window.toNumber())
-  return result === 0 ? null : Hwnd.ofNumber(result)
+  return result !== 0
 }
