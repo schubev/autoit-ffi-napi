@@ -1,4 +1,6 @@
 import { WindowDescription, descriptor } from 'autoit-advanced-descriptor'
+import { types } from 'ref'
+import { Rectangle } from './types'
 
 export function inWstrOfString(string: string): Buffer {
   const bufferLength = 2 + Buffer.byteLength(string, 'utf16le')
@@ -33,4 +35,23 @@ export function outWstrResolver(
   return function resolveOutWstr(): void {
     resolve(stringOfOutWstr(outBuffer))
   }
+}
+
+export function outRectangleBuffer(): Buffer {
+  const longAlignment = types.long.alignment
+  if (longAlignment !== 4) throw Error('long alignment is not 4')
+  return Buffer.alloc(4 * longAlignment)
+}
+
+export function rectangleOfRectangleBuffer(buffer: Buffer): Rectangle {
+  const longAlignment = types.long.alignment
+  if (longAlignment !== 4) throw Error('long alignment is not 4')
+  if (buffer.length !== 4 * longAlignment)
+    throw Error('buffer has unexpected size')
+  return Rectangle.ofCorners(
+    buffer.readInt32LE(0),
+    buffer.readInt32LE(4),
+    buffer.readInt32LE(8),
+    buffer.readInt32LE(12),
+  )
 }

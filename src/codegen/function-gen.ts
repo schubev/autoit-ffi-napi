@@ -173,7 +173,7 @@ export function generateFunction(
         transformsSection.push(
           `const outBuffer = outWstrOfSize(${varName}Size)`,
         )
-        lowlevelArgsSection.push(`outBuffer`)
+        lowlevelArgsSection.push('outBuffer')
         returnAssignSection = 'await '
         returnSection = 'return stringOfOutWstr(outBuffer)'
         returnTypeSection = 'string'
@@ -181,6 +181,20 @@ export function generateFunction(
       case Param.OutWstrSize:
         paramsSection.push(`${varName} = 512`)
         lowlevelArgsSection.push(`${varName}`)
+        break
+      case Param.OutRectangle:
+        imports.add(
+          '../../wrap-utils',
+          'outRectangleBuffer',
+          'rectangleOfRectangleBuffer',
+        )
+        imports.add('../../types', 'Rectangle')
+        transformsSection.push('const rectangleBuffer = outRectangleBuffer()')
+        lowlevelArgsSection.push('rectangleBuffer')
+        returnAssignSection = 'const result = await '
+        returnSection =
+          'return result ? rectangleOfRectangleBuffer(rectangleBuffer) : null'
+        returnTypeSection = 'Rectangle | null'
         break
       case Param.Hwnd:
         imports.add('../../types', 'Hwnd')

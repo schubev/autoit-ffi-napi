@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/ffi-napi": "^2.4.1",
     "@types/jest": "^25.1.2",
+    "@types/ref": "0.0.28",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
@@ -37,14 +38,18 @@
     "ref": "^1.3.5"
   },
   "jest": {
-    "roots": ["src"],
+    "roots": [
+      "src"
+    ],
     "transform": {
       "\\.ts$": "ts-jest"
     },
     "globals": {
       "ts-jest": {
         "diagnostics": {
-          "ignoreCodes": ["151001"]
+          "ignoreCodes": [
+            "151001"
+          ]
         }
       }
     }

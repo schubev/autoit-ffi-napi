@@ -202,19 +202,19 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPCWSTR szControl, LPWSTR szRetText, int nBufSize)',
   // ],
-  // AU3_ControlGetPos: {
-  //   return: Return.Int,
-  //   params: [
-  //     ...controlSelection,
-  //     { key: 'rectangle', type: Param.OutRectangle },
-  //   ],
-  //   generate: true,
-  // },
-  // AU3_ControlGetPosByHandle: {
-  //   return: Return.Int,
-  //   params: [...controlByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
-  //   generate: true,
-  // },
+  AU3_ControlGetPos: {
+    return: Return.Int,
+    params: [
+      ...controlSelection,
+      { key: 'rectangle', type: Param.OutRectangle },
+    ],
+    generate: true,
+  },
+  AU3_ControlGetPosByHandle: {
+    return: Return.Int,
+    params: [...controlByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
+    generate: true,
+  },
   AU3_ControlGetText: {
     return: Return.Void,
     params: [
@@ -480,11 +480,19 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPWSTR szRetText, int nBufSize)',
   // ],
-  // AU3_WinGetPos: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPRECT lpRect)',
-  // ],
-  // AU3_WinGetPosByHandle: [Return.Int, '(HWND hWnd, LPRECT lpRect)'],
+  AU3_WinGetPos: {
+    return: Return.Int,
+    params: [
+      ...windowSelection,
+      { key: 'rectangle', type: Param.OutRectangle },
+    ],
+    generate: true,
+  },
+  AU3_WinGetPosByHandle: {
+    return: Return.Int,
+    params: [...windowByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
+    generate: true,
+  },
   // AU3_WinGetProcess: [
   //   'DWORD',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
