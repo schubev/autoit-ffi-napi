@@ -559,6 +559,90 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWait 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitActive 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitActiveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitClose 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitCloseByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitNotActive 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitNotActiveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_error 1`] = `
 Array [
   "int",
@@ -982,6 +1066,66 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"uint16*\\",
       \\"uint16*\\",
       \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinWait\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitActive\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitActiveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitClose\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitCloseByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitNotActive\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitNotActiveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
     ]
   ]
 }"

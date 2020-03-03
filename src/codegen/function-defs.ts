@@ -579,24 +579,68 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTrans)',
   // ],
   // AU3_WinSetTransByHandle: [Return.Int, '(HWND hWnd, int nTrans)'],
-  // AU3_WinWait: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTimeout = 0)',
-  // ],
-  // AU3_WinWaitByHandle: [Return.Int, '(HWND hWnd, int nTimeout)'],
-  // AU3_WinWaitActive: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTimeout = 0)',
-  // ],
-  // AU3_WinWaitActiveByHandle: [Return.Int, '(HWND hWnd, int nTimeout)'],
-  // AU3_WinWaitClose: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTimeout = 0)',
-  // ],
-  // AU3_WinWaitCloseByHandle: [Return.Int, '(HWND hWnd, int nTimeout)'],
-  // AU3_WinWaitNotActive: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTimeout)',
-  // ],
-  // AU3_WinWaitNotActiveByHandle: [Return.Int, '(HWND hWnd, int nTimeout = 0)'],
+  AU3_WinWait: {
+    return: Return.IntStatus,
+    params: [
+      ...windowSelection,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitByHandle: {
+    return: Return.IntStatus,
+    params: [
+      ...windowByHwnd,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitActive: {
+    return: Return.IntStatus,
+    params: [
+      ...windowSelection,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitActiveByHandle: {
+    return: Return.IntStatus,
+    params: [
+      ...windowByHwnd,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitClose: {
+    return: Return.IntStatus,
+    params: [
+      ...windowSelection,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitCloseByHandle: {
+    return: Return.IntStatus,
+    params: [
+      ...windowByHwnd,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitNotActive: {
+    return: Return.IntStatus,
+    params: [
+      ...windowSelection,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
+  AU3_WinWaitNotActiveByHandle: {
+    return: Return.IntStatus,
+    params: [
+      ...windowByHwnd,
+      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
+    ],
+    generate: true,
+  },
 }
