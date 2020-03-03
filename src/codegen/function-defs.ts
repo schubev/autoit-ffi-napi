@@ -184,7 +184,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_ControlGetFocusByHandle: {
     return: Return.Void,
     params: [
-      { key: 'window', type: Param.Hwnd },
+      ...windowByHwnd,
       { key: 'control', type: Param.OutWstr },
       { key: 'controlSize', type: Param.OutWstrSize },
     ],
@@ -193,7 +193,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_ControlGetHandle: {
     return: Return.Hwnd,
     params: [
-      { key: 'window', type: Param.Hwnd },
+      ...windowByHwnd,
       { key: 'control', type: Param.InWstrDescription },
     ],
     generate: true,
@@ -411,24 +411,22 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   '(LPCWSTR szTip, int nX = AU3_INTDEFAULT, int nY = AU3_INTDEFAULT)',
   // ],
   AU3_WinActivate: {
-    return: Return.Hwnd,
+    return: Return.IntStatus,
     params: [...windowSelection],
     generate: true,
   },
-  // TODO: Verify the byhandle version returns an HWND
   AU3_WinActivateByHandle: {
-    return: Return.Hwnd,
+    return: Return.IntStatus,
     params: [...windowByHwnd],
     generate: true,
   },
   AU3_WinActive: {
-    return: Return.Hwnd,
+    return: Return.IntStatus,
     params: [...windowSelection],
     generate: true,
   },
-  // TODO: Verify the byhandle version returns an HWND
   AU3_WinActiveByHandle: {
-    return: Return.Hwnd,
+    return: Return.IntStatus,
     params: [...windowByHwnd],
     generate: true,
   },
