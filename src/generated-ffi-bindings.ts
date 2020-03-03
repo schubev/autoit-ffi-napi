@@ -386,6 +386,21 @@ export const bindings : Record<string, [string, string[]]> = {
       "void*"
     ]
   ],
+  "AU3_WinGetClientSize": [
+    "int",
+    [
+      "uint16*",
+      "uint16*",
+      "void*"
+    ]
+  ],
+  "AU3_WinGetClientSizeByHandle": [
+    "int",
+    [
+      "void*",
+      "void*"
+    ]
+  ],
   "AU3_WinGetHandle": [
     "void*",
     [

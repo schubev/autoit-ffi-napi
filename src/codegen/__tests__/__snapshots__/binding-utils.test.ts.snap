@@ -524,6 +524,27 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetClientSize 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetClientSizeByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
 Array [
   "void*",
@@ -1090,6 +1111,21 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
   \\"AU3_WinExistsByHandle\\": [
     \\"int\\",
     [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetClientSize\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetClientSizeByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
       \\"void*\\"
     ]
   ],
