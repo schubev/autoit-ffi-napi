@@ -453,6 +453,25 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinClose 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinCloseByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
 Array [
   "void*",
@@ -817,6 +836,19 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
   ],
   \\"AU3_WinActiveByHandle\\": [
     \\"void*\\",
+    [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinClose\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinCloseByHandle\\": [
+    \\"int\\",
     [
       \\"void*\\"
     ]
