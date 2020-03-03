@@ -442,11 +442,16 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [...windowByHwnd],
     generate: true,
   },
-  // AU3_WinExists: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
-  // AU3_WinExistsByHandle: [Return.Int, '(HWND hWnd)'],
+  AU3_WinExists: {
+    return: Return.IntStatus,
+    params: [...windowSelection],
+    generate: true,
+  },
+  AU3_WinExistsByHandle: {
+    return: Return.IntStatus,
+    params: [...windowByHwnd],
+    generate: true,
+  },
   // AU3_WinGetCaretPos: [Return.Int, '(LPPOINT lpPoint)'],
   // AU3_WinGetClassList: [
   //   'void',

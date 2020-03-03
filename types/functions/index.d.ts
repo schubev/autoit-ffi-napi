@@ -37,5 +37,7 @@ export { winActive } from './generated/winActive';
 export { winActiveByHandle } from './generated/winActiveByHandle';
 export { winClose } from './generated/winClose';
 export { winCloseByHandle } from './generated/winCloseByHandle';
+export { winExists } from './generated/winExists';
+export { winExistsByHandle } from './generated/winExistsByHandle';
 export { winGetHandle } from './generated/winGetHandle';
 export { winGetTitle } from './generated/winGetTitle';

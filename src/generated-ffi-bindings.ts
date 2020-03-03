@@ -349,6 +349,19 @@ export const bindings : Record<string, [string, string[]]> = {
       "void*"
     ]
   ],
+  "AU3_WinExists": [
+    "int",
+    [
+      "uint16*",
+      "uint16*"
+    ]
+  ],
+  "AU3_WinExistsByHandle": [
+    "int",
+    [
+      "void*"
+    ]
+  ],
   "AU3_WinGetHandle": [
     "void*",
     [
