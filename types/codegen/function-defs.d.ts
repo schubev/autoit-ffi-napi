@@ -1,22 +1,22 @@
 export declare enum Param {
-    Int = "Int",
-    InWstr = "IntWstr",
-    InWstrCommand = "InWstrCommand",
-    InWstrCommandExtra = "InWstrCommandExtra",
-    InWstrDescription = "InWstrDescription",
-    InWstrMouseButton = "InWstrMouseButton",
-    OutWstr = "OutWstr",
-    OutWstrSize = "OutWstrSize",
-    OutRectangle = "OutRectangle",
-    Hwnd = "Hwnd",
-    SendMode = "SendMode"
+    Int = 0,
+    InWstr = 1,
+    InWstrCommand = 2,
+    InWstrCommandExtra = 3,
+    InWstrDescription = 4,
+    InWstrMouseButton = 5,
+    OutWstr = 6,
+    OutWstrSize = 7,
+    OutRectangle = 8,
+    Hwnd = 9,
+    SendMode = 10
 }
 export declare enum Return {
-    Void = "Void",
-    Int = "Int",
-    IntStatus = "IntStatus",
-    IntCursor = "IntCursor",
-    Hwnd = "Hwnd"
+    Void = 0,
+    Int = 1,
+    IntStatus = 2,
+    IntCursor = 3,
+    Hwnd = 4
 }
 export interface ParamDef {
     key: string;
