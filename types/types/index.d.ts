@@ -1,4 +1,6 @@
 export { Hwnd } from './hwnd';
+export { Point } from './point';
+export { Rectangle } from './rectangle';
 export declare enum MouseButton {
     Default = "",
     Left = "left",
@@ -31,12 +33,4 @@ export declare enum Cursor {
     SizeWestEath = 13,
     UpArrow = 14,
     Wait = 15
-}
-export declare class Rectangle {
-    readonly x: number;
-    readonly y: number;
-    readonly width: number;
-    readonly height: number;
-    private constructor();
-    static ofCorners(aX: number, aY: number, bX: number, bY: number): Rectangle;
 }
