@@ -417,7 +417,7 @@ Array [
 
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActivate 1`] = `
 Array [
-  "void*",
+  "int",
   Array [
     "uint16*",
     "uint16*",
@@ -427,7 +427,7 @@ Array [
 
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActivateByHandle 1`] = `
 Array [
-  "void*",
+  "int",
   Array [
     "void*",
   ],
@@ -436,7 +436,7 @@ Array [
 
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActive 1`] = `
 Array [
-  "void*",
+  "int",
   Array [
     "uint16*",
     "uint16*",
@@ -446,7 +446,7 @@ Array [
 
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActiveByHandle 1`] = `
 Array [
-  "void*",
+  "int",
   Array [
     "void*",
   ],
@@ -880,27 +880,27 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     []
   ],
   \\"AU3_WinActivate\\": [
-    \\"void*\\",
+    \\"int\\",
     [
       \\"uint16*\\",
       \\"uint16*\\"
     ]
   ],
   \\"AU3_WinActivateByHandle\\": [
-    \\"void*\\",
+    \\"int\\",
     [
       \\"void*\\"
     ]
   ],
   \\"AU3_WinActive\\": [
-    \\"void*\\",
+    \\"int\\",
     [
       \\"uint16*\\",
       \\"uint16*\\"
     ]
   ],
   \\"AU3_WinActiveByHandle\\": [
-    \\"void*\\",
+    \\"int\\",
     [
       \\"void*\\"
     ]
