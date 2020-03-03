@@ -524,6 +524,41 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMenuSelectItem 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMenuSelectItemByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_error 1`] = `
 Array [
   "int",
@@ -918,6 +953,35 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"void*\\",
       \\"uint16*\\",
       \\"int\\"
+    ]
+  ],
+  \\"AU3_WinMenuSelectItem\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinMenuSelectItemByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
     ]
   ]
 }"

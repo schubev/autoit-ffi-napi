@@ -385,5 +385,34 @@ export const bindings : Record<string, [string, string[]]> = {
       "uint16*",
       "int"
     ]
+  ],
+  "AU3_WinMenuSelectItem": [
+    "int",
+    [
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*"
+    ]
+  ],
+  "AU3_WinMenuSelectItemByHandle": [
+    "int",
+    [
+      "void*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*",
+      "uint16*"
+    ]
   ]
 }
