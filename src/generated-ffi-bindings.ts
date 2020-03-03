@@ -377,5 +377,13 @@ export const bindings : Record<string, [string, string[]]> = {
       "uint16*",
       "int"
     ]
+  ],
+  "AU3_WinGetTitleByHandle": [
+    "void",
+    [
+      "void*",
+      "uint16*",
+      "int"
+    ]
   ]
 }

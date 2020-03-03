@@ -507,10 +507,15 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   },
-  // AU3_WinGetTitleByHandle: [
-  //   'void',
-  //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
-  // ],
+  AU3_WinGetTitleByHandle: {
+    return: Return.Void,
+    params: [
+      ...windowByHwnd,
+      { key: 'title', type: Param.OutWstr },
+      { key: 'titleSize', type: Param.OutWstrSize },
+    ],
+    generate: true,
+  },
   // AU3_WinKill: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',

@@ -41,3 +41,4 @@ export { winExists } from './generated/winExists';
 export { winExistsByHandle } from './generated/winExistsByHandle';
 export { winGetHandle } from './generated/winGetHandle';
 export { winGetTitle } from './generated/winGetTitle';
+export { winGetTitleByHandle } from './generated/winGetTitleByHandle';
