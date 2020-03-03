@@ -410,16 +410,28 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szTip, int nX = AU3_INTDEFAULT, int nY = AU3_INTDEFAULT)',
   // ],
-  // AU3_WinActivate: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
-  // AU3_WinActivateByHandle: [Return.Int, '(HWND hWnd)'],
-  // AU3_WinActive: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
-  // AU3_WinActiveByHandle: [Return.Int, '(HWND hWnd)'],
+  AU3_WinActivate: {
+    return: Return.Hwnd,
+    params: [...windowSelection],
+    generate: true,
+  },
+  // TODO: Verify the byhandle version returns an HWND
+  AU3_WinActivateByHandle: {
+    return: Return.Hwnd,
+    params: [...windowByHwnd],
+    generate: true,
+  },
+  AU3_WinActive: {
+    return: Return.Hwnd,
+    params: [...windowSelection],
+    generate: true,
+  },
+  // TODO: Verify the byhandle version returns an HWND
+  AU3_WinActiveByHandle: {
+    return: Return.Hwnd,
+    params: [...windowByHwnd],
+    generate: true,
+  },
   // AU3_WinClose: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
