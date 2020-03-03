@@ -1,15 +1,15 @@
 export declare enum Param {
     Int = 0,
-    InWstr = 1,
-    InWstrCommand = 2,
-    InWstrCommandExtra = 3,
-    InWstrDescription = 4,
-    InWstrMouseButton = 5,
-    OutWstr = 6,
-    OutWstrSize = 7,
-    OutRectangle = 8,
-    Hwnd = 9,
-    SendMode = 10
+    IntSendMode = 1,
+    InWstr = 2,
+    InWstrCommand = 3,
+    InWstrCommandExtra = 4,
+    InWstrDescription = 5,
+    InWstrMouseButton = 6,
+    OutWstr = 7,
+    OutWstrSize = 8,
+    OutRectangle = 9,
+    Hwnd = 10
 }
 export declare enum Return {
     Void = 0,

@@ -31,6 +31,7 @@ export { mouseClick } from './generated/mouseClick';
 export { mouseClickDrag } from './generated/mouseClickDrag';
 export { mouseDown } from './generated/mouseDown';
 export { mouseGetCursor } from './generated/mouseGetCursor';
+export { send } from './generated/send';
 export { winActivate } from './generated/winActivate';
 export { winActivateByHandle } from './generated/winActivateByHandle';
 export { winActive } from './generated/winActive';

@@ -135,7 +135,7 @@ export function generateFunction(
         addParam(varName, 'number', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
-      case Param.SendMode:
+      case Param.IntSendMode:
         imports.add('../../types', 'SendMode')
         addParam(varName, 'SendMode', paramDef.default)
         lowlevelArgsSection.push(varName)

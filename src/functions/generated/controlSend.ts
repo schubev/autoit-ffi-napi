@@ -12,7 +12,7 @@ export async function controlSend(
   windowText: string,
   controlDescription: WindowDescription,
   text: string,
-  mode: SendMode,
+  mode = SendMode.Default,
 ): Promise<number> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)

@@ -10,7 +10,7 @@ export async function controlSendByHandle(
   window: Hwnd,
   control: Hwnd,
   text: string,
-  mode: SendMode,
+  mode = SendMode.Default,
 ): Promise<number> {
   const textBuffer = inWstrOfString(text)
   return AU3_ControlSendByHandle(

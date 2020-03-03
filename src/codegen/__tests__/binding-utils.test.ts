@@ -21,7 +21,7 @@ describe(ffiTypeOfParam, () => {
   it.each([
     [Param.Int, 'int'],
     [Param.OutWstrSize, 'int'],
-    [Param.SendMode, 'int'],
+    [Param.IntSendMode, 'int'],
     [Param.Hwnd, 'void*'],
     [Param.OutRectangle, 'void*'],
     [Param.InWstr, 'uint16*'],

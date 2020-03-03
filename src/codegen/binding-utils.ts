@@ -19,7 +19,7 @@ export function ffiTypeOfParam(paramType: Param): string {
   switch (paramType) {
     case Param.Int:
     case Param.OutWstrSize:
-    case Param.SendMode:
+    case Param.IntSendMode:
       return 'int'
     case Param.Hwnd:
     case Param.OutRectangle: // TODO: make correct struct

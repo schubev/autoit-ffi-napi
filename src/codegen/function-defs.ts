@@ -2,6 +2,7 @@
 
 export enum Param {
   Int,
+  IntSendMode,
   InWstr,
   InWstrCommand,
   InWstrCommandExtra,
@@ -11,7 +12,6 @@ export enum Param {
   OutWstrSize,
   OutRectangle,
   Hwnd,
-  SendMode,
 }
 
 export enum Return {
@@ -270,7 +270,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [
       ...controlSelection,
       { key: 'text', type: Param.InWstr },
-      { key: 'mode', type: Param.SendMode },
+      { key: 'mode', type: Param.IntSendMode, default: 'SendMode.Default' },
     ],
     generate: true,
   },
@@ -279,7 +279,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [
       ...controlByHwnd,
       { key: 'text', type: Param.InWstr },
-      { key: 'mode', type: Param.SendMode },
+      { key: 'mode', type: Param.IntSendMode, default: 'SendMode.Default' },
     ],
     generate: true,
   },
@@ -395,7 +395,14 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   Return.Int,
   //   '(LPCWSTR szUser, LPCWSTR szDomain, LPCWSTR szPassword, int nLogonFlag, LPCWSTR szProgram, /*[in,defaultvalue("")]*/LPCWSTR szDir, int nShowFlag = SW_SHOWNORMAL)',
   // ],
-  // AU3_Send: [Return.Void, '(LPCWSTR szSendText, int nMode = 0)'],
+  AU3_Send: {
+    return: Return.Void,
+    params: [
+      { key: 'text', type: Param.InWstr },
+      { key: 'mode', type: Param.IntSendMode, default: 'SendMode.Default' },
+    ],
+    generate: true,
+  },
   // AU3_Shutdown: [Return.Int, '(int nFlags)'],
   // AU3_Sleep: [Return.Void, '(int nMilliseconds)'],
   // AU3_StatusbarGetText: [
