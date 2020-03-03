@@ -29,5 +29,5 @@ export async function controlClick(
     nX,
     nY,
   )
-  return result === 1
+  return result !== 0
 }

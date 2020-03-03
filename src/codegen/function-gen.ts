@@ -101,7 +101,7 @@ export function generateFunction(
       break
     case Return.IntStatus:
       returnAssignSection = 'const result = await '
-      returnSection = 'return result === 1'
+      returnSection = 'return result !== 0'
       returnTypeSection = 'boolean'
       break
     case Return.Hwnd:

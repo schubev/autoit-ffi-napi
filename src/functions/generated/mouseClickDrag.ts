@@ -23,5 +23,5 @@ export async function mouseClickDrag(
     yEnd,
     speed,
   )
-  return result === 1
+  return result !== 0
 }

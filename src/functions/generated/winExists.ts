@@ -13,5 +13,5 @@ export async function winExists(
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const result = await AU3_WinExists(windowDescriptionBuffer, windowTextBuffer)
-  return result === 1
+  return result !== 0
 }

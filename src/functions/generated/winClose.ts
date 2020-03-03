@@ -13,5 +13,5 @@ export async function winClose(
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const result = await AU3_WinClose(windowDescriptionBuffer, windowTextBuffer)
-  return result === 1
+  return result !== 0
 }

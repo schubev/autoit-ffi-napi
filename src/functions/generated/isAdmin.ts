@@ -6,5 +6,5 @@ const AU3_IsAdmin = promisify(lib.AU3_IsAdmin.async)
 
 export async function isAdmin(): Promise<boolean> {
   const result = await AU3_IsAdmin()
-  return result === 1
+  return result !== 0
 }

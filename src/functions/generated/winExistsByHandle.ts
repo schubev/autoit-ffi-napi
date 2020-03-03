@@ -7,5 +7,5 @@ const AU3_WinExistsByHandle = promisify(lib.AU3_WinExistsByHandle.async)
 
 export async function winExistsByHandle(window: Hwnd): Promise<boolean> {
   const result = await AU3_WinExistsByHandle(window.toNumber())
-  return result === 1
+  return result !== 0
 }

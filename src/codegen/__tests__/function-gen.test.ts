@@ -249,7 +249,7 @@ export async function controlClick(windowDescription: WindowDescription, windowT
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const buttonBuffer = inWstrOfString(button)
   const result = await AU3_ControlClick(windowDescriptionBuffer, windowTextBuffer, controlDescriptionBuffer, buttonBuffer, numClicks, nX, nY)
-  return result === 1
+  return result !== 0
 }`,
     )
   })

@@ -15,5 +15,5 @@ export async function mouseClick(
 ): Promise<boolean> {
   const buttonBuffer = inWstrOfString(button)
   const result = await AU3_MouseClick(buttonBuffer, x, y, clickCount, speed)
-  return result === 1
+  return result !== 0
 }
