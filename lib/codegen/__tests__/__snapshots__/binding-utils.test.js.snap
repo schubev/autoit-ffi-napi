@@ -1,0 +1,1261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_AutoItSetOption 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ClipGet 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ClipPut 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlClick 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlClickByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlCommand 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlCommandByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlDisable 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlDisableByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlEnable 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlEnableByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlFocus 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlFocusByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetFocus 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetFocusByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetHandle 1`] = `
+Array [
+  "void*",
+  Array [
+    "void*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPos 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetPosByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetText 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlGetTextByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlHide 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlHideByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlListView 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlListViewByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlMove 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlMoveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSend 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSendByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSetText 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlSetTextByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlShow 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_ControlShowByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_Init 1`] = `
+Array [
+  "void",
+  Array [],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_IsAdmin 1`] = `
+Array [
+  "int",
+  Array [],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseClick 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseClickDrag 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseDown 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseGetCursor 1`] = `
+Array [
+  "int",
+  Array [],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_Send 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActivate 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActivateByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActive 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinActiveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinClose 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinCloseByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinExists 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinExistsByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetClientSize 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetClientSizeByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetHandle 1`] = `
+Array [
+  "void*",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetPos 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetPosByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "void*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetTitle 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetTitleByHandle 1`] = `
+Array [
+  "void",
+  Array [
+    "void*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMenuSelectItem 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMenuSelectItemByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWait 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitActive 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitActiveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitClose 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitCloseByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitNotActive 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWaitNotActiveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_error 1`] = `
+Array [
+  "int",
+  Array [],
+]
+`;
+
+exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = `
+"export const bindings : Record<string, [string, string[]]> = {
+  \\"AU3_Init\\": [
+    \\"void\\",
+    []
+  ],
+  \\"AU3_error\\": [
+    \\"int\\",
+    []
+  ],
+  \\"AU3_AutoItSetOption\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ClipGet\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ClipPut\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlClick\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlClickByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlCommand\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlCommandByHandle\\": [
+    \\"void\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlListView\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlListViewByHandle\\": [
+    \\"void\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlDisable\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlDisableByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlEnable\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlEnableByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlFocus\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlFocusByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlGetFocus\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlGetFocusByHandle\\": [
+    \\"void\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlGetHandle\\": [
+    \\"void*\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlGetPos\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlGetPosByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlGetText\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlGetTextByHandle\\": [
+    \\"void\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlHide\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlHideByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_ControlMove\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlMoveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlSend\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlSendByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_ControlSetText\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlSetTextByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlShow\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_ControlShowByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_IsAdmin\\": [
+    \\"int\\",
+    []
+  ],
+  \\"AU3_MouseClick\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_MouseClickDrag\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_MouseDown\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_MouseGetCursor\\": [
+    \\"int\\",
+    []
+  ],
+  \\"AU3_Send\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinActivate\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinActivateByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinActive\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinActiveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinClose\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinCloseByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinExists\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinExistsByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetClientSize\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetClientSizeByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetHandle\\": [
+    \\"void*\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinGetPos\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetPosByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetTitle\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinGetTitleByHandle\\": [
+    \\"void\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinMenuSelectItem\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinMenuSelectItemByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinWait\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitActive\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitActiveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitClose\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitCloseByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitNotActive\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinWaitNotActiveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\"
+    ]
+  ]
+}"
+`;
