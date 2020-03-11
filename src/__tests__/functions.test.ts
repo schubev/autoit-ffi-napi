@@ -1,4 +1,5 @@
 jest.mock('../lowlevel')
+jest.mock('ref')
 
 import { winGetHandle } from '../functions'
 import { lib } from '../lowlevel'
