@@ -1,2 +1,3 @@
 import { Hwnd } from '../../types';
-export declare function winActivateByHandle(window: Hwnd): Promise<boolean>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function winActivateByHandle(window: Hwnd, library?: Pick<PromisifiedAutoitLib, 'AU3_WinActivateByHandle'>): Promise<boolean>;

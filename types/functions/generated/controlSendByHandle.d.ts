@@ -1,2 +1,3 @@
 import { Hwnd, SendMode } from '../../types';
-export declare function controlSendByHandle(window: Hwnd, control: Hwnd, text: string, mode?: SendMode): Promise<number>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function controlSendByHandle(window: Hwnd, control: Hwnd, text: string, mode?: SendMode, library?: Pick<PromisifiedAutoitLib, 'AU3_ControlSendByHandle'>): Promise<number>;

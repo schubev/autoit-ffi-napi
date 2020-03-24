@@ -1,2 +1,3 @@
 import { Hwnd, Rectangle } from '../../types';
-export declare function controlGetPosByHandle(window: Hwnd, control: Hwnd): Promise<Rectangle | null>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function controlGetPosByHandle(window: Hwnd, control: Hwnd, library?: Pick<PromisifiedAutoitLib, 'AU3_ControlGetPosByHandle'>): Promise<Rectangle | null>;

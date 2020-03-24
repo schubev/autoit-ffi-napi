@@ -1,2 +1,3 @@
 import { Hwnd } from '../../types';
-export declare function controlMoveByHandle(window: Hwnd, control: Hwnd, nX: number, nY: number, nWidth?: number, nHeight?: number): Promise<number>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function controlMoveByHandle(window: Hwnd, control: Hwnd, nX: number, nY: number, nWidth?: number, nHeight?: number, library?: Pick<PromisifiedAutoitLib, 'AU3_ControlMoveByHandle'>): Promise<number>;

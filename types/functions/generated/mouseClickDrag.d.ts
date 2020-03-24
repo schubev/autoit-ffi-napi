@@ -1,2 +1,3 @@
 import { MouseButton } from '../../types';
-export declare function mouseClickDrag(button: MouseButton, xStart: number, yStart: number, xEnd: number, yEnd: number, speed?: number): Promise<boolean>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function mouseClickDrag(button: MouseButton, xStart: number, yStart: number, xEnd: number, yEnd: number, speed?: number, library?: Pick<PromisifiedAutoitLib, 'AU3_MouseClickDrag'>): Promise<boolean>;

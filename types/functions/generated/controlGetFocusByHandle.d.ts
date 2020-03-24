@@ -1,2 +1,3 @@
 import { Hwnd } from '../../types';
-export declare function controlGetFocusByHandle(window: Hwnd, controlSize?: number): Promise<string>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function controlGetFocusByHandle(window: Hwnd, controlSize?: number, library?: Pick<PromisifiedAutoitLib, 'AU3_ControlGetFocusByHandle'>): Promise<string>;

@@ -1,2 +1,3 @@
 import { MouseButton } from '../../types';
-export declare function mouseClick(button?: MouseButton, x?: number, y?: number, clickCount?: number, speed?: number): Promise<boolean>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function mouseClick(button?: MouseButton, x?: number, y?: number, clickCount?: number, speed?: number, library?: Pick<PromisifiedAutoitLib, 'AU3_MouseClick'>): Promise<boolean>;

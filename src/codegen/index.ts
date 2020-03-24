@@ -3,6 +3,10 @@ import { promisify } from 'util'
 import { FunctionDef, functions } from './function-defs'
 import { ffiBindingSourceOfDescriptions } from './binding-utils'
 import { generateFunction, makePrettyFunctionName } from './function-gen'
+import {
+  generateLibInterface,
+  generatePromisifiedLibInterface,
+} from './lib-gen'
 
 const writeFile = promisify(writeFileCallback)
 
@@ -31,9 +35,17 @@ async function writeBindingSource(): Promise<void> {
   await writeFile('src/generated-ffi-bindings.ts', bindingSource)
 }
 
+async function writeLibType(): Promise<void> {
+  const libTypeSource = generateLibInterface(functions)
+  const promisifiedLibTypeSource = generatePromisifiedLibInterface(functions)
+  await writeFile(
+    'src/generated-lib-type.ts',
+    libTypeSource + '\n\n' + promisifiedLibTypeSource,
+  )
+}
+
 async function main(): Promise<void> {
-  await writeBindingSource()
-  await writeFunctions()
+  await Promise.all([writeBindingSource(), writeFunctions(), writeLibType()])
 }
 
 main()

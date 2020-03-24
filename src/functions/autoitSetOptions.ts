@@ -1,17 +1,21 @@
 import { inWstrOfString } from '../wrap-utils'
-import { lib } from '../lowlevel'
+import { PromisifiedAutoitLib } from '../generated-lib-type'
 import { AutoitOptions, AutoitOption } from '../options'
 
-function autoitSetOption(key: AutoitOption, value: number): Promise<number> {
+async function autoitSetOption(
+  key: AutoitOption,
+  value: number,
+  lib: Pick<PromisifiedAutoitLib, 'AU3_AutoItSetOption'>,
+): Promise<number> {
   const keyBuffer = inWstrOfString(key)
-  return new Promise(resolve => {
-    lib.AU3_AutoItSetOption(keyBuffer, value, resolve)
-  })
+  return lib.AU3_AutoItSetOption(keyBuffer, value)
 }
 
 export async function autoitSetOptions(
   options: Readonly<AutoitOptions>,
+  library?: Pick<PromisifiedAutoitLib, 'AU3_AutoItSetOption'>,
 ): Promise<AutoitOptions> {
+  const lib = library ?? (await import('../default-lib')).lib
   const previousOptions: AutoitOptions = {}
   for (const optionKey in options) {
     let finalValue: number
@@ -65,7 +69,7 @@ export async function autoitSetOptions(
       default:
         continue
     }
-    const previousValue = await autoitSetOption(optionKey, finalValue)
+    const previousValue = await autoitSetOption(optionKey, finalValue, lib)
     // TODO: Check error status
     switch (optionKey) {
       case 'TrayMenuMode':

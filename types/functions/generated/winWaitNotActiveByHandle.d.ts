@@ -1,2 +1,3 @@
 import { Hwnd } from '../../types';
-export declare function winWaitNotActiveByHandle(window: Hwnd, timeoutSeconds?: number): Promise<boolean>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function winWaitNotActiveByHandle(window: Hwnd, timeoutSeconds?: number, library?: Pick<PromisifiedAutoitLib, 'AU3_WinWaitNotActiveByHandle'>): Promise<boolean>;

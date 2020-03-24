@@ -1,2 +1,3 @@
 import { Hwnd } from '../../types';
-export declare function controlHideByHandle(window: Hwnd, control: Hwnd): Promise<number>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function controlHideByHandle(window: Hwnd, control: Hwnd, library?: Pick<PromisifiedAutoitLib, 'AU3_ControlHideByHandle'>): Promise<number>;

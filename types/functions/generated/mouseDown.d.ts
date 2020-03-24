@@ -1,2 +1,3 @@
 import { MouseButton } from '../../types';
-export declare function mouseDown(button?: MouseButton): Promise<void>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function mouseDown(button?: MouseButton, library?: Pick<PromisifiedAutoitLib, 'AU3_MouseDown'>): Promise<void>;

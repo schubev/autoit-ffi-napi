@@ -1,2 +1,3 @@
 import { Hwnd, Rectangle } from '../../types';
-export declare function winGetClientSizeByHandle(window: Hwnd): Promise<Rectangle | null>;
+import { PromisifiedAutoitLib } from '../../generated-lib-type';
+export declare function winGetClientSizeByHandle(window: Hwnd, library?: Pick<PromisifiedAutoitLib, 'AU3_WinGetClientSizeByHandle'>): Promise<Rectangle | null>;
