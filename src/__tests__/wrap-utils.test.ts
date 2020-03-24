@@ -1,5 +1,3 @@
-jest.mock('ref')
-
 import { inWstrOfString, stringOfOutWstr } from '../wrap-utils'
 
 describe(inWstrOfString, () => {
