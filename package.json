@@ -7,7 +7,7 @@
   "author": "Victor Schubert <v@schu.be>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "test:watch": "jest --watch",
     "build:build-codegen": "tsc -P src/codegen",
     "build:run-codegen": "node lib/codegen/index.js",
