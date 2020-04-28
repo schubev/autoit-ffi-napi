@@ -416,11 +416,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [{ key: 'rectangle', type: Param.OutRectangle }],
     generate: true,
   }),
-  // AU3_WinGetProcess: [
-  //   'DWORD',
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
-  // AU3_WinGetProcessByHandle: ['DWORD', '(HWND hWnd)'],
+  ...winFunctions('AU3_WinGetProcess', {
+    return: Return.Int,
+    params: [],
+    generate: true,
+  }),
   // AU3_WinGetState: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',

@@ -606,6 +606,25 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetProcess 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetProcessByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinGetText 1`] = `
 Array [
   "void",
@@ -1366,6 +1385,19 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     \\"int\\",
     [
       \\"void*\\",
+      \\"void*\\"
+    ]
+  ],
+  \\"AU3_WinGetProcess\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinGetProcessByHandle\\": [
+    \\"int\\",
+    [
       \\"void*\\"
     ]
   ],

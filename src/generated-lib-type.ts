@@ -413,6 +413,16 @@ export interface AutoitLib {
       callback: (error: any, result: number) => void,
     ): void
   }
+  AU3_WinGetProcess: {
+    async(
+      windowDescription: Buffer,
+      windowText: Buffer,
+      callback: (error: any, result: number) => void,
+    ): void
+  }
+  AU3_WinGetProcessByHandle: {
+    async(window: number, callback: (error: any, result: number) => void): void
+  }
   AU3_WinGetText: {
     async(
       windowDescription: Buffer,
@@ -853,6 +863,11 @@ export interface PromisifiedAutoitLib {
     rectangle: Buffer,
   ): Promise<number>
   AU3_WinGetPosByHandle(window: number, rectangle: Buffer): Promise<number>
+  AU3_WinGetProcess(
+    windowDescription: Buffer,
+    windowText: Buffer,
+  ): Promise<number>
+  AU3_WinGetProcessByHandle(window: number): Promise<number>
   AU3_WinGetText(
     windowDescription: Buffer,
     windowText: Buffer,
