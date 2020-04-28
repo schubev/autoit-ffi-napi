@@ -180,6 +180,12 @@ export interface AutoitLib {
     AU3_WinMenuSelectItemByHandle: {
         async(window: number, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer, callback: (error: any, result: number) => void): void;
     };
+    AU3_WinMinimizeAll: {
+        async(callback: (error: any, result: void) => void): void;
+    };
+    AU3_WinMinimizeAllUndo: {
+        async(callback: (error: any, result: void) => void): void;
+    };
     AU3_WinWait: {
         async(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number, callback: (error: any, result: number) => void): void;
     };
@@ -266,6 +272,8 @@ export interface PromisifiedAutoitLib {
     AU3_WinGetTitleByHandle(window: number, title: Buffer, titleSize: number): Promise<void>;
     AU3_WinMenuSelectItem(windowDescription: Buffer, windowText: Buffer, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer): Promise<number>;
     AU3_WinMenuSelectItemByHandle(window: number, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer): Promise<number>;
+    AU3_WinMinimizeAll(): Promise<void>;
+    AU3_WinMinimizeAllUndo(): Promise<void>;
     AU3_WinWait(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitByHandle(window: number, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitActive(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;

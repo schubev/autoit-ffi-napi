@@ -459,6 +459,12 @@ export interface AutoitLib {
       callback: (error: any, result: number) => void,
     ): void
   }
+  AU3_WinMinimizeAll: {
+    async(callback: (error: any, result: void) => void): void
+  }
+  AU3_WinMinimizeAllUndo: {
+    async(callback: (error: any, result: void) => void): void
+  }
   AU3_WinWait: {
     async(
       windowDescription: Buffer,
@@ -773,6 +779,8 @@ export interface PromisifiedAutoitLib {
     item6: Buffer,
     item7: Buffer,
   ): Promise<number>
+  AU3_WinMinimizeAll(): Promise<void>
+  AU3_WinMinimizeAllUndo(): Promise<void>
   AU3_WinWait(
     windowDescription: Buffer,
     windowText: Buffer,
