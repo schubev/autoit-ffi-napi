@@ -8,6 +8,6 @@ export async function mouseGetPos(
 ): Promise<Point | null> {
   const pointBuffer = await outPointBuffer()
   const lib = library ?? (await import('../../default-lib')).lib
-  const result = await lib.AU3_MouseGetPos(pointBuffer)
+  await lib.AU3_MouseGetPos(pointBuffer)
   return pointOfPointBuffer(pointBuffer)
 }
