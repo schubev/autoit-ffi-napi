@@ -442,11 +442,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   }),
-  // AU3_WinKill: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
-  // ],
-  // AU3_WinKillByHandle: [Return.Int, '(HWND hWnd)'],
+  ...winFunctions('AU3_WinKill', {
+    return: Return.IntStatus,
+    params: [],
+    generate: true,
+  }),
   ...winFunctions('AU3_WinMenuSelectItem', {
     return: Return.Int,
     params: [

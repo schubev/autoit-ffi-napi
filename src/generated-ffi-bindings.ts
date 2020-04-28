@@ -93,6 +93,8 @@ export const bindings: Record<string, [string, string[]]> = {
   AU3_WinGetPosByHandle: ['int', ['void*', 'void*']],
   AU3_WinGetTitle: ['void', ['uint16*', 'uint16*', 'uint16*', 'int']],
   AU3_WinGetTitleByHandle: ['void', ['void*', 'uint16*', 'int']],
+  AU3_WinKill: ['int', ['uint16*', 'uint16*']],
+  AU3_WinKillByHandle: ['int', ['void*']],
   AU3_WinMenuSelectItem: [
     'int',
     [

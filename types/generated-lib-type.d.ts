@@ -174,6 +174,12 @@ export interface AutoitLib {
     AU3_WinGetTitleByHandle: {
         async(window: number, title: Buffer, titleSize: number, callback: (error: any, result: void) => void): void;
     };
+    AU3_WinKill: {
+        async(windowDescription: Buffer, windowText: Buffer, callback: (error: any, result: number) => void): void;
+    };
+    AU3_WinKillByHandle: {
+        async(window: number, callback: (error: any, result: number) => void): void;
+    };
     AU3_WinMenuSelectItem: {
         async(windowDescription: Buffer, windowText: Buffer, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer, callback: (error: any, result: number) => void): void;
     };
@@ -300,6 +306,8 @@ export interface PromisifiedAutoitLib {
     AU3_WinGetPosByHandle(window: number, rectangle: Buffer): Promise<number>;
     AU3_WinGetTitle(windowDescription: Buffer, windowText: Buffer, title: Buffer, titleSize: number): Promise<void>;
     AU3_WinGetTitleByHandle(window: number, title: Buffer, titleSize: number): Promise<void>;
+    AU3_WinKill(windowDescription: Buffer, windowText: Buffer): Promise<number>;
+    AU3_WinKillByHandle(window: number): Promise<number>;
     AU3_WinMenuSelectItem(windowDescription: Buffer, windowText: Buffer, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer): Promise<number>;
     AU3_WinMenuSelectItemByHandle(window: number, item0: Buffer, item1: Buffer, item2: Buffer, item3: Buffer, item4: Buffer, item5: Buffer, item6: Buffer, item7: Buffer): Promise<number>;
     AU3_WinMinimizeAll(): Promise<void>;

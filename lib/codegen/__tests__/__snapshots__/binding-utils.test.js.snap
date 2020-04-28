@@ -629,6 +629,25 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinKill 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinKillByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMenuSelectItem 1`] = `
 Array [
   "int",
@@ -1342,6 +1361,19 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"void*\\",
       \\"uint16*\\",
       \\"int\\"
+    ]
+  ],
+  \\"AU3_WinKill\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinKillByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\"
     ]
   ],
   \\"AU3_WinMenuSelectItem\\": [
