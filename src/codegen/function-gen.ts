@@ -218,6 +218,15 @@ export function generateFunction(
           'return result ? await rectangleOfRectangleBuffer(rectangleBuffer) : null'
         returnTypeSection = 'Rectangle | null'
         break
+      case Param.OutPoint:
+        imports.add('../../wrap-utils', 'outPointBuffer', 'pointOfPointBuffer')
+        imports.add('../../types', 'Point')
+        transformsSection.push('const pointBuffer = await outPointBuffer()')
+        lowlevelArgsSection.push('pointBuffer')
+        returnAssignSection = 'const result = await '
+        returnSection = 'return pointOfPointBuffer(pointBuffer)'
+        returnTypeSection = 'Point | null'
+        break
       case Param.Hwnd:
         imports.add('../../types', 'Hwnd')
         addParam(varName, 'Hwnd')

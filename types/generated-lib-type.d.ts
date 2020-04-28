@@ -117,6 +117,9 @@ export interface AutoitLib {
     AU3_MouseGetCursor: {
         async(callback: (error: any, result: number) => void): void;
     };
+    AU3_MouseGetPos: {
+        async(point: Buffer, callback: (error: any, result: void) => void): void;
+    };
     AU3_MouseMove: {
         async(x: number, y: number, speed: number, callback: (error: any, result: number) => void): void;
     };
@@ -305,6 +308,7 @@ export interface PromisifiedAutoitLib {
     AU3_MouseClickDrag(button: Buffer, xStart: number, yStart: number, xEnd: number, yEnd: number, speed: number): Promise<number>;
     AU3_MouseDown(button: Buffer): Promise<void>;
     AU3_MouseGetCursor(): Promise<number>;
+    AU3_MouseGetPos(point: Buffer): Promise<void>;
     AU3_MouseMove(x: number, y: number, speed: number): Promise<number>;
     AU3_MouseUp(button: Buffer): Promise<void>;
     AU3_MouseWheel(direction: Buffer, increments: number): Promise<void>;

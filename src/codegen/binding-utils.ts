@@ -26,7 +26,8 @@ export function ffiTypeOfParam(paramType: Param): string {
     case Param.IntSetWindowState:
       return 'int'
     case Param.Hwnd:
-    case Param.OutRectangle: // TODO: make correct struct
+    case Param.OutPoint:
+    case Param.OutRectangle:
       return 'void*'
     case Param.InWstr:
     case Param.InWstrCommand:

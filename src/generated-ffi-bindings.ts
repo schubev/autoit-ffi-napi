@@ -74,6 +74,7 @@ export const bindings: Record<string, [string, string[]]> = {
   AU3_MouseClickDrag: ['int', ['uint16*', 'int', 'int', 'int', 'int', 'int']],
   AU3_MouseDown: ['void', ['uint16*']],
   AU3_MouseGetCursor: ['int', []],
+  AU3_MouseGetPos: ['void', ['void*']],
   AU3_MouseMove: ['int', ['int', 'int', 'int']],
   AU3_MouseUp: ['void', ['uint16*']],
   AU3_MouseWheel: ['void', ['uint16*', 'int']],

@@ -30,6 +30,7 @@ function tsTypeOfParamType(paramType: Param): 'number' | 'Buffer' {
     case Param.InWstrMouseButton:
     case Param.InWstrMouseScrollDirection:
     case Param.OutWstr:
+    case Param.OutPoint:
     case Param.OutRectangle:
       return 'Buffer'
   }

@@ -13,6 +13,7 @@ export enum Param {
   InWstrMouseScrollDirection,
   OutWstr,
   OutWstrSize,
+  OutPoint,
   OutRectangle,
   Hwnd,
 }
@@ -283,7 +284,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     generate: true,
   },
   AU3_MouseGetCursor: { return: Return.IntCursor, params: [], generate: true },
-  // AU3_MouseGetPos: [Return.Void, '(LPPOINT lpPoint)'],
+  AU3_MouseGetPos: {
+    return: Return.Void,
+    params: [{ key: 'point', type: Param.OutPoint }],
+    generate: true,
+  },
   AU3_MouseMove: {
     return: Return.IntDiscard,
     params: [

@@ -11,8 +11,9 @@ export declare enum Param {
     InWstrMouseScrollDirection = 9,
     OutWstr = 10,
     OutWstrSize = 11,
-    OutRectangle = 12,
-    Hwnd = 13
+    OutPoint = 12,
+    OutRectangle = 13,
+    Hwnd = 14
 }
 export declare enum Return {
     Void = 0,
