@@ -2,7 +2,6 @@ export { Hwnd } from './hwnd';
 export { Point } from './point';
 export { Rectangle } from './rectangle';
 export declare enum MouseButton {
-    Default = "",
     Left = "left",
     Middle = "middle",
     Right = "right",
@@ -10,6 +9,10 @@ export declare enum MouseButton {
     Main = "main",
     Secondary = "secondary",
     Menu = "menu"
+}
+export declare enum MouseScrollDirection {
+    Up = "up",
+    Down = "down"
 }
 export declare enum SendMode {
     Default = 0,

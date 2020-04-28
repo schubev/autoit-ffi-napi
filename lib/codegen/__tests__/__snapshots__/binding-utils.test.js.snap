@@ -458,6 +458,16 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseWheel 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_Send 1`] = `
 Array [
   "void",
@@ -1087,6 +1097,13 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     \\"void\\",
     [
       \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_MouseWheel\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\",
+      \\"int\\"
     ]
   ],
   \\"AU3_Send\\": [

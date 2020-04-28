@@ -6,10 +6,11 @@ export declare enum Param {
     InWstrCommandExtra = 4,
     InWstrDescription = 5,
     InWstrMouseButton = 6,
-    OutWstr = 7,
-    OutWstrSize = 8,
-    OutRectangle = 9,
-    Hwnd = 10
+    InWstrMouseScrollDirection = 7,
+    OutWstr = 8,
+    OutWstrSize = 9,
+    OutRectangle = 10,
+    Hwnd = 11
 }
 export declare enum Return {
     Void = 0,

@@ -25,6 +25,7 @@ function tsTypeOfParamType(paramType: Param): 'number' | 'Buffer' {
     case Param.InWstrCommandExtra:
     case Param.InWstrDescription:
     case Param.InWstrMouseButton:
+    case Param.InWstrMouseScrollDirection:
     case Param.OutWstr:
     case Param.OutRectangle:
       return 'Buffer'

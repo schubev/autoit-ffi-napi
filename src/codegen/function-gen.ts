@@ -18,6 +18,7 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
         break
       case Param.InWstr:
       case Param.InWstrMouseButton:
+      case Param.InWstrMouseScrollDirection:
       case Param.InWstrDescription:
         params.push(`${paramDef.key}Buffer`)
         break
@@ -158,6 +159,15 @@ export function generateFunction(
         imports.add('../../types', 'MouseButton')
         const bufName = `${varName}Buffer`
         addParam(varName, 'MouseButton', paramDef.default)
+        transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
+        lowlevelArgsSection.push(bufName)
+        break
+      }
+      case Param.InWstrMouseScrollDirection: {
+        imports.add('../../wrap-utils', 'inWstrOfString')
+        imports.add('../../types', 'MouseScrollDirection')
+        const bufName = `${varName}Buffer`
+        addParam(varName, 'MouseScrollDirection', paramDef.default)
         transformsSection.push(`const ${bufName} = inWstrOfString(${varName})`)
         lowlevelArgsSection.push(bufName)
         break

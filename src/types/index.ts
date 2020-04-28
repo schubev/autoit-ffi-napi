@@ -3,7 +3,6 @@ export { Point } from './point'
 export { Rectangle } from './rectangle'
 
 export enum MouseButton {
-  Default = '',
   Left = 'left',
   Middle = 'middle',
   Right = 'right',
@@ -11,6 +10,11 @@ export enum MouseButton {
   Main = 'main',
   Secondary = 'secondary',
   Menu = 'menu',
+}
+
+export enum MouseScrollDirection {
+  Up = 'up',
+  Down = 'down',
 }
 
 export enum SendMode {

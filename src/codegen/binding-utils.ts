@@ -30,6 +30,7 @@ export function ffiTypeOfParam(paramType: Param): string {
     case Param.InWstrCommandExtra:
     case Param.InWstrDescription:
     case Param.InWstrMouseButton:
+    case Param.InWstrMouseScrollDirection:
     case Param.OutWstr:
       return 'uint16*'
   }

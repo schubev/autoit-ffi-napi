@@ -8,6 +8,7 @@ export enum Param {
   InWstrCommandExtra,
   InWstrDescription,
   InWstrMouseButton,
+  InWstrMouseScrollDirection,
   OutWstr,
   OutWstrSize,
   OutRectangle,
@@ -385,7 +386,21 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   },
-  // AU3_MouseWheel: [Return.Void, '(LPCWSTR szDirection, int nClicks)'],
+  AU3_MouseWheel: {
+    return: Return.Void,
+    params: [
+      {
+        key: 'direction',
+        type: Param.InWstrMouseScrollDirection,
+      },
+      {
+        key: 'increments',
+        type: Param.Int,
+        default: 1,
+      },
+    ],
+    generate: true,
+  },
   // AU3_Opt: [Return.Int, '(LPCWSTR szOption, int nValue)'],
   // int: ['unsigned', ' AU3_PixelChecksum(LPRECT lpRect, int nStep = 1)'],
   // AU3_PixelGetColor: [Return.Int, '(int nX, int nY)'],
