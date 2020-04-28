@@ -11,10 +11,10 @@ export async function controlClickByHandle(
   nX = -2147483647,
   nY = -2147483647,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlClickByHandle'>,
-): Promise<number> {
+): Promise<boolean> {
   const buttonBuffer = inWstrOfString(button)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlClickByHandle(
+  const result = await lib.AU3_ControlClickByHandle(
     window.toNumber(),
     control.toNumber(),
     buttonBuffer,
@@ -22,4 +22,5 @@ export async function controlClickByHandle(
     nX,
     nY,
   )
+  return result !== 0
 }
