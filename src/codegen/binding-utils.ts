@@ -20,6 +20,7 @@ export function ffiTypeOfParam(paramType: Param): string {
   switch (paramType) {
     case Param.Int:
     case Param.OutWstrSize:
+    case Param.IntBool:
     case Param.IntSendMode:
       return 'int'
     case Param.Hwnd:

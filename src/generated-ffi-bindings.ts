@@ -126,6 +126,8 @@ export const bindings: Record<string, [string, string[]]> = {
   AU3_WinMinimizeAllUndo: ['void', []],
   AU3_WinMove: ['int', ['uint16*', 'uint16*', 'int', 'int', 'int', 'int']],
   AU3_WinMoveByHandle: ['int', ['void*', 'int', 'int', 'int', 'int']],
+  AU3_WinSetOnTop: ['int', ['uint16*', 'uint16*', 'int']],
+  AU3_WinSetOnTopByHandle: ['int', ['void*', 'int']],
   AU3_WinWait: ['int', ['uint16*', 'uint16*', 'int']],
   AU3_WinWaitByHandle: ['int', ['void*', 'int']],
   AU3_WinWaitActive: ['int', ['uint16*', 'uint16*', 'int']],

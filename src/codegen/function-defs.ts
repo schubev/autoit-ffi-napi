@@ -2,6 +2,7 @@
 
 export enum Param {
   Int,
+  IntBool,
   IntSendMode,
   InWstr,
   InWstrCommand,
@@ -477,6 +478,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'width', type: Param.Int, default: -1 },
       { key: 'height', type: Param.Int, default: -1 },
     ],
+    generate: true,
+  }),
+  ...winFunctions('AU3_WinSetOnTop', {
+    return: Return.IntStatus,
+    params: [{ key: 'onTop', type: Param.IntBool, default: 'true' }],
     generate: true,
   }),
   // AU3_WinSetOnTop: [

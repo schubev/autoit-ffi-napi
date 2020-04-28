@@ -705,6 +705,27 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinSetOnTop 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinSetOnTopByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWait 1`] = `
 Array [
   "int",
@@ -1315,6 +1336,21 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
       \\"int\\",
       \\"int\\",
       \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinSetOnTop\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinSetOnTopByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
       \\"int\\"
     ]
   ],

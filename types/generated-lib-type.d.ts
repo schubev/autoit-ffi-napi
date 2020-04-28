@@ -192,6 +192,12 @@ export interface AutoitLib {
     AU3_WinMoveByHandle: {
         async(window: number, x: number, y: number, width: number, height: number, callback: (error: any, result: number) => void): void;
     };
+    AU3_WinSetOnTop: {
+        async(windowDescription: Buffer, windowText: Buffer, onTop: number, callback: (error: any, result: number) => void): void;
+    };
+    AU3_WinSetOnTopByHandle: {
+        async(window: number, onTop: number, callback: (error: any, result: number) => void): void;
+    };
     AU3_WinWait: {
         async(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number, callback: (error: any, result: number) => void): void;
     };
@@ -282,6 +288,8 @@ export interface PromisifiedAutoitLib {
     AU3_WinMinimizeAllUndo(): Promise<void>;
     AU3_WinMove(windowDescription: Buffer, windowText: Buffer, x: number, y: number, width: number, height: number): Promise<number>;
     AU3_WinMoveByHandle(window: number, x: number, y: number, width: number, height: number): Promise<number>;
+    AU3_WinSetOnTop(windowDescription: Buffer, windowText: Buffer, onTop: number): Promise<number>;
+    AU3_WinSetOnTopByHandle(window: number, onTop: number): Promise<number>;
     AU3_WinWait(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitByHandle(window: number, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitActive(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;

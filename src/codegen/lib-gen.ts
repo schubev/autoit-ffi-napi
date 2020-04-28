@@ -16,6 +16,7 @@ function tsTypeOfReturnType(returnType: Return): 'void' | 'number' {
 function tsTypeOfParamType(paramType: Param): 'number' | 'Buffer' {
   switch (paramType) {
     case Param.Int:
+    case Param.IntBool:
     case Param.IntSendMode:
     case Param.Hwnd:
     case Param.OutWstrSize:
