@@ -30,16 +30,6 @@ export function makeLowlevelArgsSection(paramDefs: ParamDef[]): string {
   return params.join(', ')
 }
 
-export function makeResolverSection(functionDef: FunctionDef): string {
-  if (functionDef.params.some(param => param.type === Param.OutWstr)) {
-    return 'outWstrResolver(outBuffer, resolve)'
-  } else if (functionDef.return === Return.IntStatus) {
-    return '(status: 0 | 1) => { resolve(status === 1) }'
-  } else {
-    return 'resolve'
-  }
-}
-
 class ImportSet {
   imports: Record<string, Set<string>> = {}
 
@@ -100,6 +90,11 @@ export function generateFunction(
       returnAssignSection = 'const result = await '
       returnSection = 'return result !== 0'
       returnTypeSection = 'boolean'
+      break
+    case Return.IntDiscard:
+      returnAssignSection = 'await '
+      returnSection = ''
+      returnTypeSection = 'void'
       break
     case Return.Hwnd:
       imports.add('../../types', 'Hwnd')

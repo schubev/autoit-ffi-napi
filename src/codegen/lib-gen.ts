@@ -7,6 +7,7 @@ function tsTypeOfReturnType(returnType: Return): 'void' | 'number' {
     case Return.Int:
     case Return.IntStatus:
     case Return.IntCursor:
+    case Return.IntDiscard:
     case Return.Hwnd:
       return 'number'
   }

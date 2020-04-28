@@ -17,6 +17,7 @@ export enum Param {
 export enum Return {
   Void,
   Int,
+  IntDiscard,
   IntStatus,
   IntCursor,
   Hwnd,
@@ -364,7 +365,15 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   },
   AU3_MouseGetCursor: { return: Return.IntCursor, params: [], generate: true },
   // AU3_MouseGetPos: [Return.Void, '(LPPOINT lpPoint)'],
-  // AU3_MouseMove: [Return.Int, '(int nX, int nY, int nSpeed = -1)'],
+  AU3_MouseMove: {
+    return: Return.IntDiscard,
+    params: [
+      { key: 'x', type: Param.Int },
+      { key: 'y', type: Param.Int },
+      { key: 'speed', type: Param.Int, default: 10 },
+    ],
+    generate: true,
+  },
   // AU3_MouseUp: [Return.Void, '(/*[in,defaultvalue("LEFT")]*/LPCWSTR szButton)'],
   // AU3_MouseWheel: [Return.Void, '(LPCWSTR szDirection, int nClicks)'],
   // AU3_Opt: [Return.Int, '(LPCWSTR szOption, int nValue)'],

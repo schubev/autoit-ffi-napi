@@ -14,9 +14,10 @@ export declare enum Param {
 export declare enum Return {
     Void = 0,
     Int = 1,
-    IntStatus = 2,
-    IntCursor = 3,
-    Hwnd = 4
+    IntDiscard = 2,
+    IntStatus = 3,
+    IntCursor = 4,
+    Hwnd = 5
 }
 export interface ParamDef {
     key: string;
