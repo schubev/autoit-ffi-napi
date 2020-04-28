@@ -17,6 +17,14 @@ export enum MouseScrollDirection {
   Down = 'down',
 }
 
+export enum WindowState {
+  Hide = 0,
+  Show = 5,
+  Maximize = 3,
+  Minimize = 6,
+  Restore = 9,
+}
+
 export enum SendMode {
   Default = 0,
   Raw = 1,

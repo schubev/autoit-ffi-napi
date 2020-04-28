@@ -22,6 +22,7 @@ export function ffiTypeOfParam(paramType: Param): string {
     case Param.OutWstrSize:
     case Param.IntBool:
     case Param.IntSendMode:
+    case Param.IntWindowState:
       return 'int'
     case Param.Hwnd:
     case Param.OutRectangle: // TODO: make correct struct

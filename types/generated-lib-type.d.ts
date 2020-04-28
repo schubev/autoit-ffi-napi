@@ -198,6 +198,12 @@ export interface AutoitLib {
     AU3_WinSetOnTopByHandle: {
         async(window: number, onTop: number, callback: (error: any, result: number) => void): void;
     };
+    AU3_WinSetState: {
+        async(windowDescription: Buffer, windowText: Buffer, state: number, callback: (error: any, result: number) => void): void;
+    };
+    AU3_WinSetStateByHandle: {
+        async(window: number, state: number, callback: (error: any, result: number) => void): void;
+    };
     AU3_WinWait: {
         async(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number, callback: (error: any, result: number) => void): void;
     };
@@ -290,6 +296,8 @@ export interface PromisifiedAutoitLib {
     AU3_WinMoveByHandle(window: number, x: number, y: number, width: number, height: number): Promise<number>;
     AU3_WinSetOnTop(windowDescription: Buffer, windowText: Buffer, onTop: number): Promise<number>;
     AU3_WinSetOnTopByHandle(window: number, onTop: number): Promise<number>;
+    AU3_WinSetState(windowDescription: Buffer, windowText: Buffer, state: number): Promise<number>;
+    AU3_WinSetStateByHandle(window: number, state: number): Promise<number>;
     AU3_WinWait(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitByHandle(window: number, timeoutSeconds: number): Promise<number>;
     AU3_WinWaitActive(windowDescription: Buffer, windowText: Buffer, timeoutSeconds: number): Promise<number>;

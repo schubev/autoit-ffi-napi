@@ -3,6 +3,7 @@
 export enum Param {
   Int,
   IntBool,
+  IntWindowState,
   IntSendMode,
   InWstr,
   InWstrCommand,
@@ -485,16 +486,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [{ key: 'onTop', type: Param.IntBool, default: 'true' }],
     generate: true,
   }),
-  // AU3_WinSetOnTop: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nFlag)',
-  // ],
-  // AU3_WinSetOnTopByHandle: [Return.Int, '(HWND hWnd, int nFlag)'],
-  // AU3_WinSetState: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nFlags)',
-  // ],
-  // AU3_WinSetStateByHandle: [Return.Int, '(HWND hWnd, int nFlags)'],
+  ...winFunctions('AU3_WinSetState', {
+    return: Return.IntStatus,
+    params: [{ key: 'state', type: Param.IntWindowState }],
+    generate: true,
+  }),
   // AU3_WinSetTitle: [
   //   Return.Int,
   //   '(LPCWSTR szTitle,/*[in,defaultvalue("")]*/ LPCWSTR szText, LPCWSTR szNewTitle)',

@@ -1,17 +1,18 @@
 export declare enum Param {
     Int = 0,
     IntBool = 1,
-    IntSendMode = 2,
-    InWstr = 3,
-    InWstrCommand = 4,
-    InWstrCommandExtra = 5,
-    InWstrDescription = 6,
-    InWstrMouseButton = 7,
-    InWstrMouseScrollDirection = 8,
-    OutWstr = 9,
-    OutWstrSize = 10,
-    OutRectangle = 11,
-    Hwnd = 12
+    IntWindowState = 2,
+    IntSendMode = 3,
+    InWstr = 4,
+    InWstrCommand = 5,
+    InWstrCommandExtra = 6,
+    InWstrDescription = 7,
+    InWstrMouseButton = 8,
+    InWstrMouseScrollDirection = 9,
+    OutWstr = 10,
+    OutWstrSize = 11,
+    OutRectangle = 12,
+    Hwnd = 13
 }
 export declare enum Return {
     Void = 0,

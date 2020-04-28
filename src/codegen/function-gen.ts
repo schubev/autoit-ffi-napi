@@ -135,6 +135,11 @@ export function generateFunction(
         addParam(varName, 'SendMode', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
+      case Param.IntWindowState:
+        imports.add('../../types', 'WindowState')
+        addParam(varName, 'WindowState', paramDef.default)
+        lowlevelArgsSection.push(varName)
+        break
       case Param.IntBool:
         addParam(varName, 'boolean', paramDef.default)
         lowlevelArgsSection.push(`Number(${varName})`)
