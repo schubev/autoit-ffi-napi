@@ -4,7 +4,7 @@ import { PromisifiedAutoitLib } from '../../generated-lib-type'
 import { inWstrOfString } from '../../wrap-utils'
 
 export async function mouseClick(
-  button = MouseButton.Left,
+  button = MouseButton.Primary,
   x = -2147483647,
   y = -2147483647,
   clickCount = 1,

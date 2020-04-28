@@ -328,7 +328,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       {
         key: 'button',
         type: Param.InWstrMouseButton,
-        default: 'MouseButton.Left',
+        default: 'MouseButton.Primary',
       },
       { key: 'x', type: Param.Int, default: defaultInt },
       { key: 'y', type: Param.Int, default: defaultInt },
@@ -358,7 +358,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       {
         key: 'button',
         type: Param.InWstrMouseButton,
-        default: 'MouseButton.Left',
+        default: 'MouseButton.Primary',
       },
     ],
     generate: true,
@@ -374,7 +374,17 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     ],
     generate: true,
   },
-  // AU3_MouseUp: [Return.Void, '(/*[in,defaultvalue("LEFT")]*/LPCWSTR szButton)'],
+  AU3_MouseUp: {
+    return: Return.Void,
+    params: [
+      {
+        key: 'button',
+        type: Param.InWstrMouseButton,
+        default: 'MouseButton.Primary',
+      },
+    ],
+    generate: true,
+  },
   // AU3_MouseWheel: [Return.Void, '(LPCWSTR szDirection, int nClicks)'],
   // AU3_Opt: [Return.Int, '(LPCWSTR szOption, int nValue)'],
   // int: ['unsigned', ' AU3_PixelChecksum(LPRECT lpRect, int nStep = 1)'],

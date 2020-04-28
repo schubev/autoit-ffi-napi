@@ -438,6 +438,26 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseMove 1`] = `
+Array [
+  "int",
+  Array [
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_MouseUp 1`] = `
+Array [
+  "void",
+  Array [
+    "uint16*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_Send 1`] = `
 Array [
   "void",
@@ -1054,6 +1074,20 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
   \\"AU3_MouseGetCursor\\": [
     \\"int\\",
     []
+  ],
+  \\"AU3_MouseMove\\": [
+    \\"int\\",
+    [
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_MouseUp\\": [
+    \\"void\\",
+    [
+      \\"uint16*\\"
+    ]
   ],
   \\"AU3_Send\\": [
     \\"void\\",

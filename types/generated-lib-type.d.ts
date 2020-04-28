@@ -120,6 +120,9 @@ export interface AutoitLib {
     AU3_MouseMove: {
         async(x: number, y: number, speed: number, callback: (error: any, result: number) => void): void;
     };
+    AU3_MouseUp: {
+        async(button: Buffer, callback: (error: any, result: void) => void): void;
+    };
     AU3_Send: {
         async(text: Buffer, mode: number, callback: (error: any, result: void) => void): void;
     };
@@ -240,6 +243,7 @@ export interface PromisifiedAutoitLib {
     AU3_MouseDown(button: Buffer): Promise<void>;
     AU3_MouseGetCursor(): Promise<number>;
     AU3_MouseMove(x: number, y: number, speed: number): Promise<number>;
+    AU3_MouseUp(button: Buffer): Promise<void>;
     AU3_Send(text: Buffer, mode: number): Promise<void>;
     AU3_WinActivate(windowDescription: Buffer, windowText: Buffer): Promise<number>;
     AU3_WinActivateByHandle(window: number): Promise<number>;
