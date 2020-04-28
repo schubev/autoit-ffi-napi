@@ -1,4 +1,4 @@
-import { inWstrOfString, stringOfOutWstr } from '../wrap-utils'
+import { inWstrOfString, stringOfOutWstr, decomposeBitSet } from '../wrap-utils'
 
 describe(inWstrOfString, () => {
   it.each([
@@ -25,5 +25,22 @@ describe(stringOfOutWstr, () => {
     ['3ed884dd75006e00690063006f0072006e000000', '🦄unicorn'],
   ])('%p decodes to %p', (input, expected) => {
     expect(stringOfOutWstr(Buffer.from(input, 'hex'))).toEqual(expected)
+  })
+})
+
+describe(decomposeBitSet, () => {
+  it.each([
+    [0, []],
+    [1, [1]],
+    [2, [2]],
+    [4, [4]],
+    [8, [8]],
+    [16, [16]],
+    [32, [32]],
+    [3, [1, 2]],
+    [7, [1, 2, 4]],
+    [9, [1, 8]],
+  ])('%p decomposes to %p', (input, expected) => {
+    expect(decomposeBitSet(input)).toEqual(new Set(expected))
   })
 })

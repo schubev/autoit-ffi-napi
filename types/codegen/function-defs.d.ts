@@ -1,7 +1,7 @@
 export declare enum Param {
     Int = 0,
     IntBool = 1,
-    IntWindowState = 2,
+    IntSetWindowState = 2,
     IntSendMode = 3,
     InWstr = 4,
     InWstrCommand = 5,
@@ -20,7 +20,8 @@ export declare enum Return {
     IntDiscard = 2,
     IntStatus = 3,
     IntCursor = 4,
-    Hwnd = 5
+    IntWindowState = 5,
+    Hwnd = 6
 }
 export interface ParamDef {
     key: string;

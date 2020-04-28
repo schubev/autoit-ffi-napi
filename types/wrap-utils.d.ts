@@ -8,3 +8,4 @@ export declare function stringOfOutWstr(buffer: Buffer): string;
 export declare function outWstrResolver(outBuffer: Buffer, resolve: (outString: string) => void): () => void;
 export declare function outRectangleBuffer(): Promise<Buffer>;
 export declare function rectangleOfRectangleBuffer(buffer: Buffer): Promise<Rectangle>;
+export declare function decomposeBitSet(bitset: number): Set<number>;

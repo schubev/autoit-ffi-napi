@@ -8,6 +8,7 @@ function tsTypeOfReturnType(returnType: Return): 'void' | 'number' {
     case Return.IntStatus:
     case Return.IntCursor:
     case Return.IntDiscard:
+    case Return.IntWindowState:
     case Return.Hwnd:
       return 'number'
   }
@@ -17,7 +18,7 @@ function tsTypeOfParamType(paramType: Param): 'number' | 'Buffer' {
   switch (paramType) {
     case Param.Int:
     case Param.IntBool:
-    case Param.IntWindowState:
+    case Param.IntSetWindowState:
     case Param.IntSendMode:
     case Param.Hwnd:
     case Param.OutWstrSize:

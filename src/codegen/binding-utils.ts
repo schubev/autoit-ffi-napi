@@ -10,6 +10,7 @@ export function ffiTypeOfReturn(returnType: Return): string {
     case Return.IntStatus:
     case Return.IntDiscard:
     case Return.IntCursor:
+    case Return.IntWindowState:
       return 'int'
     case Return.Hwnd:
       return 'void*'
@@ -22,7 +23,7 @@ export function ffiTypeOfParam(paramType: Param): string {
     case Param.OutWstrSize:
     case Param.IntBool:
     case Param.IntSendMode:
-    case Param.IntWindowState:
+    case Param.IntSetWindowState:
       return 'int'
     case Param.Hwnd:
     case Param.OutRectangle: // TODO: make correct struct

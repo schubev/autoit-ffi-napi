@@ -17,12 +17,21 @@ export enum MouseScrollDirection {
   Down = 'down',
 }
 
-export enum WindowState {
+export enum SetWindowState {
   Hide = 0,
   Show = 5,
   Maximize = 3,
   Minimize = 6,
   Restore = 9,
+}
+
+export enum WindowState {
+  Exists = 1,
+  Visible = 2,
+  Enabled = 4,
+  Active = 8,
+  Minimized = 16,
+  Maximized = 32,
 }
 
 export enum SendMode {

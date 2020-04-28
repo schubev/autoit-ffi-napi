@@ -58,3 +58,16 @@ export async function rectangleOfRectangleBuffer(
     buffer.readInt32LE(12),
   )
 }
+
+export function decomposeBitSet(bitset: number): Set<number> {
+  if (!Number.isInteger(bitset)) throw Error('bitset must be integer')
+  const result: Set<number> = new Set()
+  for (let i = 0; bitset !== 0 && i < 32; i++) {
+    const mask = 1 << i
+    if (bitset & mask) {
+      result.add(mask)
+      bitset ^= mask
+    }
+  }
+  return result
+}

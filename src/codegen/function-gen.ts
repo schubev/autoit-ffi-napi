@@ -97,6 +97,13 @@ export function generateFunction(
       returnSection = ''
       returnTypeSection = 'void'
       break
+    case Return.IntWindowState:
+      imports.add('../../types', 'WindowState')
+      imports.add('../../wrap-utils', 'decomposeBitSet')
+      returnAssignSection = 'const result = await '
+      returnSection = 'return decomposeBitSet(result)'
+      returnTypeSection = 'Set<WindowState>'
+      break
     case Return.Hwnd:
       imports.add('../../types', 'Hwnd')
       returnAssignSection = 'const result = await '
@@ -135,9 +142,9 @@ export function generateFunction(
         addParam(varName, 'SendMode', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
-      case Param.IntWindowState:
-        imports.add('../../types', 'WindowState')
-        addParam(varName, 'WindowState', paramDef.default)
+      case Param.IntSetWindowState:
+        imports.add('../../types', 'SetWindowState')
+        addParam(varName, 'SetWindowState', paramDef.default)
         lowlevelArgsSection.push(varName)
         break
       case Param.IntBool:
