@@ -465,6 +465,27 @@ export interface AutoitLib {
   AU3_WinMinimizeAllUndo: {
     async(callback: (error: any, result: void) => void): void
   }
+  AU3_WinMove: {
+    async(
+      windowDescription: Buffer,
+      windowText: Buffer,
+      x: number,
+      y: number,
+      width: number,
+      height: number,
+      callback: (error: any, result: number) => void,
+    ): void
+  }
+  AU3_WinMoveByHandle: {
+    async(
+      window: number,
+      x: number,
+      y: number,
+      width: number,
+      height: number,
+      callback: (error: any, result: number) => void,
+    ): void
+  }
   AU3_WinWait: {
     async(
       windowDescription: Buffer,
@@ -781,6 +802,21 @@ export interface PromisifiedAutoitLib {
   ): Promise<number>
   AU3_WinMinimizeAll(): Promise<void>
   AU3_WinMinimizeAllUndo(): Promise<void>
+  AU3_WinMove(
+    windowDescription: Buffer,
+    windowText: Buffer,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  ): Promise<number>
+  AU3_WinMoveByHandle(
+    window: number,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  ): Promise<number>
   AU3_WinWait(
     windowDescription: Buffer,
     windowText: Buffer,

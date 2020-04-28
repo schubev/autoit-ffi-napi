@@ -469,14 +469,16 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [],
     generate: true,
   },
-  // AU3_WinMove: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nX, int nY, int nWidth = -1, int nHeight = -1)',
-  // ],
-  // AU3_WinMoveByHandle: [
-  //   Return.Int,
-  //   '(HWND hWnd, int nX, int nY, int nWidth = -1, int nHeight = -1)',
-  // ],
+  ...winFunctions('AU3_WinMove', {
+    return: Return.IntStatus,
+    params: [
+      { key: 'x', type: Param.Int },
+      { key: 'y', type: Param.Int },
+      { key: 'width', type: Param.Int, default: -1 },
+      { key: 'height', type: Param.Int, default: -1 },
+    ],
+    generate: true,
+  }),
   // AU3_WinSetOnTop: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nFlag)',

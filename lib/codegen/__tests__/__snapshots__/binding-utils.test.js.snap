@@ -678,6 +678,33 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMove 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinMoveByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "int",
+    "int",
+    "int",
+    "int",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWait 1`] = `
 Array [
   "int",
@@ -1269,6 +1296,27 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
   \\"AU3_WinMinimizeAllUndo\\": [
     \\"void\\",
     []
+  ],
+  \\"AU3_WinMove\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
+  ],
+  \\"AU3_WinMoveByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\",
+      \\"int\\"
+    ]
   ],
   \\"AU3_WinWait\\": [
     \\"int\\",
