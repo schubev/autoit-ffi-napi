@@ -8,14 +8,15 @@ export async function controlEnable(
   windowText: string,
   controlDescription: WindowDescription,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlEnable'>,
-): Promise<number> {
+): Promise<boolean> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlEnable(
+  const result = await lib.AU3_ControlEnable(
     windowDescriptionBuffer,
     windowTextBuffer,
     controlDescriptionBuffer,
   )
+  return result !== 0
 }

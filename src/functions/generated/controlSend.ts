@@ -11,17 +11,18 @@ export async function controlSend(
   text: string,
   mode = SendMode.Default,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlSend'>,
-): Promise<number> {
+): Promise<boolean> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const textBuffer = inWstrOfString(text)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlSend(
+  const result = await lib.AU3_ControlSend(
     windowDescriptionBuffer,
     windowTextBuffer,
     controlDescriptionBuffer,
     textBuffer,
     mode,
   )
+  return result !== 0
 }

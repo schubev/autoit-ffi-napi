@@ -6,7 +6,11 @@ export async function controlDisableByHandle(
   window: Hwnd,
   control: Hwnd,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlDisableByHandle'>,
-): Promise<number> {
+): Promise<boolean> {
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlDisableByHandle(window.toNumber(), control.toNumber())
+  const result = await lib.AU3_ControlDisableByHandle(
+    window.toNumber(),
+    control.toNumber(),
+  )
+  return result !== 0
 }

@@ -8,12 +8,13 @@ export async function controlSetTextByHandle(
   control: Hwnd,
   text: string,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlSetTextByHandle'>,
-): Promise<number> {
+): Promise<boolean> {
   const textBuffer = inWstrOfString(text)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlSetTextByHandle(
+  const result = await lib.AU3_ControlSetTextByHandle(
     window.toNumber(),
     control.toNumber(),
     textBuffer,
   )
+  return result !== 0
 }

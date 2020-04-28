@@ -9,13 +9,14 @@ export async function controlSendByHandle(
   text: string,
   mode = SendMode.Default,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlSendByHandle'>,
-): Promise<number> {
+): Promise<boolean> {
   const textBuffer = inWstrOfString(text)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlSendByHandle(
+  const result = await lib.AU3_ControlSendByHandle(
     window.toNumber(),
     control.toNumber(),
     textBuffer,
     mode,
   )
+  return result !== 0
 }

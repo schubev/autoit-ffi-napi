@@ -6,7 +6,11 @@ export async function controlFocusByHandle(
   window: Hwnd,
   control: Hwnd,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlFocusByHandle'>,
-): Promise<number> {
+): Promise<boolean> {
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlFocusByHandle(window.toNumber(), control.toNumber())
+  const result = await lib.AU3_ControlFocusByHandle(
+    window.toNumber(),
+    control.toNumber(),
+  )
+  return result !== 0
 }

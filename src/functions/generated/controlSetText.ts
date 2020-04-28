@@ -9,16 +9,17 @@ export async function controlSetText(
   controlDescription: WindowDescription,
   text: string,
   library?: Pick<PromisifiedAutoitLib, 'AU3_ControlSetText'>,
-): Promise<number> {
+): Promise<boolean> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
   const textBuffer = inWstrOfString(text)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_ControlSetText(
+  const result = await lib.AU3_ControlSetText(
     windowDescriptionBuffer,
     windowTextBuffer,
     controlDescriptionBuffer,
     textBuffer,
   )
+  return result !== 0
 }

@@ -15,7 +15,7 @@ export async function winMenuSelectItem(
   item6 = '',
   item7 = '',
   library?: Pick<PromisifiedAutoitLib, 'AU3_WinMenuSelectItem'>,
-): Promise<number> {
+): Promise<boolean> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const item0Buffer = inWstrOfString(item0)
@@ -27,7 +27,7 @@ export async function winMenuSelectItem(
   const item6Buffer = inWstrOfString(item6)
   const item7Buffer = inWstrOfString(item7)
   const lib = library ?? (await import('../../default-lib')).lib
-  return lib.AU3_WinMenuSelectItem(
+  const result = await lib.AU3_WinMenuSelectItem(
     windowDescriptionBuffer,
     windowTextBuffer,
     item0Buffer,
@@ -39,4 +39,5 @@ export async function winMenuSelectItem(
     item6Buffer,
     item7Buffer,
   )
+  return result !== 0
 }

@@ -144,17 +144,17 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     generate: false,
   }),
   ...controlFunctions('AU3_ControlDisable', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [],
     generate: true,
   }),
   ...controlFunctions('AU3_ControlEnable', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [],
     generate: true,
   }),
   ...controlFunctions('AU3_ControlFocus', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [],
     generate: true,
   }),
@@ -207,7 +207,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     generate: true,
   }),
   ...controlFunctions('AU3_ControlSend', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [
       { key: 'text', type: Param.InWstr },
       { key: 'mode', type: Param.IntSendMode, default: 'SendMode.Default' },
@@ -215,7 +215,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     generate: true,
   }),
   ...controlFunctions('AU3_ControlSetText', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [{ key: 'text', type: Param.InWstr }],
     generate: true,
   }),
@@ -454,7 +454,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     generate: true,
   }),
   ...winFunctions('AU3_WinMenuSelectItem', {
-    return: Return.Int,
+    return: Return.IntStatus,
     params: [
       { key: 'item0', type: Param.InWstr, default: "''" },
       { key: 'item1', type: Param.InWstr, default: "''" },
