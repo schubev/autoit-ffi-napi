@@ -426,14 +426,14 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
   // ],
   // AU3_WinGetStateByHandle: [Return.Int, '(HWND hWnd)'],
-  // AU3_WinGetText: [
-  //   'void',
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPWSTR szRetText, int nBufSize)',
-  // ],
-  // AU3_WinGetTextByHandle: [
-  //   'void',
-  //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
-  // ],
+  ...winFunctions('AU3_WinGetText', {
+    return: Return.Void,
+    params: [
+      { key: 'text', type: Param.OutWstr },
+      { key: 'textSize', type: Param.OutWstrSize },
+    ],
+    generate: true,
+  }),
   ...winFunctions('AU3_WinGetTitle', {
     return: Return.Void,
     params: [

@@ -413,6 +413,23 @@ export interface AutoitLib {
       callback: (error: any, result: number) => void,
     ): void
   }
+  AU3_WinGetText: {
+    async(
+      windowDescription: Buffer,
+      windowText: Buffer,
+      text: Buffer,
+      textSize: number,
+      callback: (error: any, result: void) => void,
+    ): void
+  }
+  AU3_WinGetTextByHandle: {
+    async(
+      window: number,
+      text: Buffer,
+      textSize: number,
+      callback: (error: any, result: void) => void,
+    ): void
+  }
   AU3_WinGetTitle: {
     async(
       windowDescription: Buffer,
@@ -836,6 +853,17 @@ export interface PromisifiedAutoitLib {
     rectangle: Buffer,
   ): Promise<number>
   AU3_WinGetPosByHandle(window: number, rectangle: Buffer): Promise<number>
+  AU3_WinGetText(
+    windowDescription: Buffer,
+    windowText: Buffer,
+    text: Buffer,
+    textSize: number,
+  ): Promise<void>
+  AU3_WinGetTextByHandle(
+    window: number,
+    text: Buffer,
+    textSize: number,
+  ): Promise<void>
   AU3_WinGetTitle(
     windowDescription: Buffer,
     windowText: Buffer,
