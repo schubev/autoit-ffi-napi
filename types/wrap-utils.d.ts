@@ -6,5 +6,5 @@ export declare function inWstrOfWindowDescription(description: string | WindowDe
 export declare function outWstrOfSize(size: number): Buffer;
 export declare function stringOfOutWstr(buffer: Buffer): string;
 export declare function outWstrResolver(outBuffer: Buffer, resolve: (outString: string) => void): () => void;
-export declare function outRectangleBuffer(): Buffer;
-export declare function rectangleOfRectangleBuffer(buffer: Buffer): Rectangle;
+export declare function outRectangleBuffer(): Promise<Buffer>;
+export declare function rectangleOfRectangleBuffer(buffer: Buffer): Promise<Rectangle>;

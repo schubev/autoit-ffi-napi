@@ -188,11 +188,13 @@ export function generateFunction(
           'rectangleOfRectangleBuffer',
         )
         imports.add('../../types', 'Rectangle')
-        transformsSection.push('const rectangleBuffer = outRectangleBuffer()')
+        transformsSection.push(
+          'const rectangleBuffer = await outRectangleBuffer()',
+        )
         lowlevelArgsSection.push('rectangleBuffer')
         returnAssignSection = 'const result = await '
         returnSection =
-          'return result ? rectangleOfRectangleBuffer(rectangleBuffer) : null'
+          'return result ? await rectangleOfRectangleBuffer(rectangleBuffer) : null'
         returnTypeSection = 'Rectangle | null'
         break
       case Param.Hwnd:

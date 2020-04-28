@@ -18,7 +18,7 @@ export async function controlGetPos(
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
   const controlDescriptionBuffer = inWstrOfWindowDescription(controlDescription)
-  const rectangleBuffer = outRectangleBuffer()
+  const rectangleBuffer = await outRectangleBuffer()
   const lib = library ?? (await import('../../default-lib')).lib
   const result = await lib.AU3_ControlGetPos(
     windowDescriptionBuffer,
@@ -26,5 +26,5 @@ export async function controlGetPos(
     controlDescriptionBuffer,
     rectangleBuffer,
   )
-  return result ? rectangleOfRectangleBuffer(rectangleBuffer) : null
+  return result ? await rectangleOfRectangleBuffer(rectangleBuffer) : null
 }

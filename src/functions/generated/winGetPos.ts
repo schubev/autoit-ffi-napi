@@ -16,12 +16,12 @@ export async function winGetPos(
 ): Promise<Rectangle | null> {
   const windowDescriptionBuffer = inWstrOfWindowDescription(windowDescription)
   const windowTextBuffer = inWstrOfString(windowText)
-  const rectangleBuffer = outRectangleBuffer()
+  const rectangleBuffer = await outRectangleBuffer()
   const lib = library ?? (await import('../../default-lib')).lib
   const result = await lib.AU3_WinGetPos(
     windowDescriptionBuffer,
     windowTextBuffer,
     rectangleBuffer,
   )
-  return result ? rectangleOfRectangleBuffer(rectangleBuffer) : null
+  return result ? await rectangleOfRectangleBuffer(rectangleBuffer) : null
 }

@@ -1,5 +1,4 @@
 import { WindowDescription, descriptor } from 'autoit-advanced-descriptor'
-import { types } from 'ref'
 import { Rectangle } from './types'
 
 export function inWstrOfString(string: string): Buffer {
@@ -37,13 +36,17 @@ export function outWstrResolver(
   }
 }
 
-export function outRectangleBuffer(): Buffer {
+export async function outRectangleBuffer(): Promise<Buffer> {
+  const { types } = await import('ref')
   const longAlignment = types.long.alignment
   if (longAlignment !== 4) throw Error('long alignment is not 4')
   return Buffer.alloc(4 * longAlignment)
 }
 
-export function rectangleOfRectangleBuffer(buffer: Buffer): Rectangle {
+export async function rectangleOfRectangleBuffer(
+  buffer: Buffer,
+): Promise<Rectangle> {
+  const { types } = await import('ref')
   const longAlignment = types.long.alignment
   if (longAlignment !== 4) throw Error('long alignment is not 4')
   if (buffer.length !== 4 * longAlignment)
