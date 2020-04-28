@@ -1,35 +1,4 @@
-export type AutoitOption =
-  | 'CaretCoordMode'
-  | 'ExpandEnvStrings'
-  | 'ExpandVarStrings'
-  | 'GuiCloseOnEsc'
-  | 'GuiDataSeparatorChar'
-  | 'GuiOnEventMode'
-  | 'GuiResizeMode'
-  | 'GuiEventOptions'
-  | 'MouseClickDelay'
-  | 'MouseClickDownDelay'
-  | 'MouseClickDragDelay'
-  | 'MouseCoordMode'
-  | 'MustDeclareVars'
-  | 'PixelCoordMode'
-  | 'SendAttachMode'
-  | 'SendCapslockMode'
-  | 'SendKeyDelay'
-  | 'SendKeyDownDelay'
-  | 'TcpTimeout'
-  | 'TrayAutoPause'
-  | 'TrayIconDebug'
-  | 'TrayIconHide'
-  | 'TrayMenuMode'
-  | 'TrayOnEventMode'
-  | 'WinDetectHiddenText'
-  | 'WinSearchChildren'
-  | 'WinTextMatchMode'
-  | 'WinTitleMatchMode'
-  | 'WinWaitDelay'
-
-export const AutoitOptionsList: AutoitOption[] = [
+export const AutoitOptionsList = [
   'CaretCoordMode',
   'ExpandEnvStrings',
   'ExpandVarStrings',
@@ -59,7 +28,9 @@ export const AutoitOptionsList: AutoitOption[] = [
   'WinTextMatchMode',
   'WinTitleMatchMode',
   'WinWaitDelay',
-]
+] as const
+
+export type AutoitOption = typeof AutoitOptionsList[number]
 
 export enum CaretCoordMode {
   Window = 0,

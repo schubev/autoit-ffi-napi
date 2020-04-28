@@ -1,5 +1,5 @@
-export declare type AutoitOption = 'CaretCoordMode' | 'ExpandEnvStrings' | 'ExpandVarStrings' | 'GuiCloseOnEsc' | 'GuiDataSeparatorChar' | 'GuiOnEventMode' | 'GuiResizeMode' | 'GuiEventOptions' | 'MouseClickDelay' | 'MouseClickDownDelay' | 'MouseClickDragDelay' | 'MouseCoordMode' | 'MustDeclareVars' | 'PixelCoordMode' | 'SendAttachMode' | 'SendCapslockMode' | 'SendKeyDelay' | 'SendKeyDownDelay' | 'TcpTimeout' | 'TrayAutoPause' | 'TrayIconDebug' | 'TrayIconHide' | 'TrayMenuMode' | 'TrayOnEventMode' | 'WinDetectHiddenText' | 'WinSearchChildren' | 'WinTextMatchMode' | 'WinTitleMatchMode' | 'WinWaitDelay';
-export declare const AutoitOptionsList: AutoitOption[];
+export declare const AutoitOptionsList: readonly ["CaretCoordMode", "ExpandEnvStrings", "ExpandVarStrings", "GuiCloseOnEsc", "GuiDataSeparatorChar", "GuiOnEventMode", "GuiResizeMode", "GuiEventOptions", "MouseClickDelay", "MouseClickDownDelay", "MouseClickDragDelay", "MouseCoordMode", "MustDeclareVars", "PixelCoordMode", "SendAttachMode", "SendCapslockMode", "SendKeyDelay", "SendKeyDownDelay", "TcpTimeout", "TrayAutoPause", "TrayIconDebug", "TrayIconHide", "TrayMenuMode", "TrayOnEventMode", "WinDetectHiddenText", "WinSearchChildren", "WinTextMatchMode", "WinTitleMatchMode", "WinWaitDelay"];
+export declare type AutoitOption = typeof AutoitOptionsList[number];
 export declare enum CaretCoordMode {
     Window = 0,
     Screen = 1,
