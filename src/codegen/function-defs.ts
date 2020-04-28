@@ -491,11 +491,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [{ key: 'state', type: Param.IntWindowState }],
     generate: true,
   }),
-  // AU3_WinSetTitle: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle,/*[in,defaultvalue("")]*/ LPCWSTR szText, LPCWSTR szNewTitle)',
-  // ],
-  // AU3_WinSetTitleByHandle: [Return.Int, '(HWND hWnd, LPCWSTR szNewTitle)'],
+  ...winFunctions('AU3_WinSetTitle', {
+    return: Return.IntStatus,
+    params: [{ key: 'title', type: Param.InWstr }],
+    generate: true,
+  }),
   // AU3_WinSetTrans: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTrans)',

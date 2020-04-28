@@ -747,6 +747,27 @@ Array [
 ]
 `;
 
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinSetTitle 1`] = `
+Array [
+  "int",
+  Array [
+    "uint16*",
+    "uint16*",
+    "uint16*",
+  ],
+]
+`;
+
+exports[`ffiBindingOfDescriptions builds bindings for AU3_WinSetTitleByHandle 1`] = `
+Array [
+  "int",
+  Array [
+    "void*",
+    "uint16*",
+  ],
+]
+`;
+
 exports[`ffiBindingOfDescriptions builds bindings for AU3_WinWait 1`] = `
 Array [
   "int",
@@ -1388,6 +1409,21 @@ exports[`ffiBindingSourceOfDescriptions builds a source file for bindings 1`] = 
     [
       \\"void*\\",
       \\"int\\"
+    ]
+  ],
+  \\"AU3_WinSetTitle\\": [
+    \\"int\\",
+    [
+      \\"uint16*\\",
+      \\"uint16*\\",
+      \\"uint16*\\"
+    ]
+  ],
+  \\"AU3_WinSetTitleByHandle\\": [
+    \\"int\\",
+    [
+      \\"void*\\",
+      \\"uint16*\\"
     ]
   ],
   \\"AU3_WinWait\\": [

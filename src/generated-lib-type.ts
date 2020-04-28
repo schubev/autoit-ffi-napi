@@ -516,6 +516,21 @@ export interface AutoitLib {
       callback: (error: any, result: number) => void,
     ): void
   }
+  AU3_WinSetTitle: {
+    async(
+      windowDescription: Buffer,
+      windowText: Buffer,
+      title: Buffer,
+      callback: (error: any, result: number) => void,
+    ): void
+  }
+  AU3_WinSetTitleByHandle: {
+    async(
+      window: number,
+      title: Buffer,
+      callback: (error: any, result: number) => void,
+    ): void
+  }
   AU3_WinWait: {
     async(
       windowDescription: Buffer,
@@ -859,6 +874,12 @@ export interface PromisifiedAutoitLib {
     state: number,
   ): Promise<number>
   AU3_WinSetStateByHandle(window: number, state: number): Promise<number>
+  AU3_WinSetTitle(
+    windowDescription: Buffer,
+    windowText: Buffer,
+    title: Buffer,
+  ): Promise<number>
+  AU3_WinSetTitleByHandle(window: number, title: Buffer): Promise<number>
   AU3_WinWait(
     windowDescription: Buffer,
     windowText: Buffer,
