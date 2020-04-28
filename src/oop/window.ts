@@ -10,12 +10,20 @@ import {
   winGetStateByHandle,
   winMinimizeAll,
   winMinimizeAllUndo,
+  winWaitActiveByHandle,
+  winWaitCloseByHandle,
   winGetTextByHandle,
   winGetTitleByHandle,
   winKillByHandle,
   winMenuSelectItemByHandle,
 } from '../functions'
 import { Hwnd, WindowState } from '../types'
+
+function tick(millisecs: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, millisecs)
+  })
+}
 
 export class Window {
   private hwnd: Hwnd
@@ -35,6 +43,20 @@ export class Window {
     const hwnd = await winGetHandle(windowDescription, windowText)
     if (hwnd === null) return null
     return new Window(hwnd)
+  }
+
+  static async wait(
+    windowDescription: WindowDescription,
+    windowText?: string,
+    timeoutMillisecs = Infinity,
+  ): Promise<Window | null> {
+    const incrementMillisecs = 250
+    for (let i = 0; i < timeoutMillisecs; i += incrementMillisecs) {
+      if (i > 0) await tick(incrementMillisecs)
+      const window = Window.ofSelector(windowDescription, windowText)
+      if (window !== null) return window
+    }
+    return null
   }
 
   getHwnd(): Hwnd {
@@ -110,5 +132,15 @@ export class Window {
       item6,
       item7,
     )
+  }
+
+  async waitActive(timeoutSecs = Infinity): Promise<boolean> {
+    if (timeoutSecs === Infinity) timeoutSecs = 0
+    return winWaitActiveByHandle(this.hwnd, timeoutSecs)
+  }
+
+  async waitClose(timeoutSecs = Infinity): Promise<boolean> {
+    if (timeoutSecs === Infinity) timeoutSecs = 0
+    return winWaitCloseByHandle(this.hwnd, timeoutSecs)
   }
 }

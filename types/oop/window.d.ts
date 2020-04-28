@@ -6,6 +6,7 @@ export declare class Window {
     private constructor();
     static ofHwnd(hwnd: Hwnd): Window;
     static ofSelector(windowDescription: WindowDescription, windowText?: string): Promise<Window | null>;
+    static wait(windowDescription: WindowDescription, windowText?: string, timeoutMillisecs?: number): Promise<Window | null>;
     getHwnd(): Hwnd;
     static minimizeAll(): Promise<void>;
     static minimizeAllUndo(): Promise<void>;
@@ -19,4 +20,6 @@ export declare class Window {
     getTitle(): Promise<string>;
     kill(): Promise<boolean>;
     selectMenuItem(item0: string, item1?: string, item2?: string, item3?: string, item4?: string, item5?: string, item6?: string, item7?: string): Promise<boolean>;
+    waitActive(timeoutSecs?: number): Promise<boolean>;
+    waitClose(timeoutSecs?: number): Promise<boolean>;
 }
