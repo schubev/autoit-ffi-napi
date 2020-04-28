@@ -496,11 +496,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [{ key: 'title', type: Param.InWstr }],
     generate: true,
   }),
-  // AU3_WinSetTrans: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTrans)',
-  // ],
-  // AU3_WinSetTransByHandle: [Return.Int, '(HWND hWnd, int nTrans)'],
+  ...winFunctions('AU3_WinSetTrans', {
+    return: Return.IntStatus,
+    params: [{ key: 'transparency', type: Param.Int }],
+    generate: true,
+  }),
   ...winFunctions('AU3_WinWait', {
     return: Return.IntStatus,
     params: [{ key: 'timeoutSeconds', type: Param.Int, default: 0 }],
