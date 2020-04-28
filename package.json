@@ -7,13 +7,14 @@
   "author": "Victor Schubert <v@schu.be>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --no-cache",
+    "test": "jest",
     "test:watch": "jest --watch",
     "build:build-codegen": "tsc -P src/codegen",
     "build:run-codegen": "node lib/codegen/index.js",
     "build:build-generated": "tsc",
     "build:type-declarations": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "build": "npm run build:build-codegen && npm run build:run-codegen && npm run prettier:generated && npm run build:type-declarations && npm run build:build-generated",
+    "build": "npm run clean:lib && npm run build:build-codegen && npm run build:run-codegen && npm run prettier:generated && npm run build:type-declarations && npm run build:build-generated",
+    "clean:lib": "find lib -name '*.js' -delete",
     "check:tsc": "tsc --noEmit",
     "check": "npm run check:tsc",
     "prettier:generated": "prettier --write src/functions/generated/* src/generated-*"
@@ -29,7 +30,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {
@@ -39,11 +39,8 @@
   },
   "jest": {
     "roots": [
-      "src"
+      "lib"
     ],
-    "transform": {
-      "\\.ts$": "ts-jest"
-    },
     "globals": {
       "ts-jest": {
         "diagnostics": {
