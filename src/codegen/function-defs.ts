@@ -52,6 +52,22 @@ const controlByHwnd: ParamDef[] = [
   { key: 'control', type: Param.Hwnd },
 ]
 
+function winFunctions(
+  name: string,
+  functionDef: Readonly<FunctionDef>,
+): Record<string, Readonly<FunctionDef>> {
+  return {
+    [name]: {
+      ...functionDef,
+      params: [...windowSelection, ...functionDef.params],
+    },
+    [name + 'ByHandle']: {
+      ...functionDef,
+      params: [...windowByHwnd, ...functionDef.params],
+    },
+  }
+}
+
 export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_Init: { return: Return.Void, params: [], generate: true },
   AU3_error: { return: Return.Int, params: [], generate: true },
@@ -451,46 +467,26 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szTip, int nX = AU3_INTDEFAULT, int nY = AU3_INTDEFAULT)',
   // ],
-  AU3_WinActivate: {
+  ...winFunctions('AU3_WinActivate', {
     return: Return.IntStatus,
-    params: [...windowSelection],
+    params: [],
     generate: true,
-  },
-  AU3_WinActivateByHandle: {
+  }),
+  ...winFunctions('AU3_WinActive', {
     return: Return.IntStatus,
-    params: [...windowByHwnd],
+    params: [],
     generate: true,
-  },
-  AU3_WinActive: {
+  }),
+  ...winFunctions('AU3_WinClose', {
     return: Return.IntStatus,
-    params: [...windowSelection],
+    params: [],
     generate: true,
-  },
-  AU3_WinActiveByHandle: {
+  }),
+  ...winFunctions('AU3_WinExists', {
     return: Return.IntStatus,
-    params: [...windowByHwnd],
+    params: [],
     generate: true,
-  },
-  AU3_WinClose: {
-    return: Return.IntStatus,
-    params: [...windowSelection],
-    generate: true,
-  },
-  AU3_WinCloseByHandle: {
-    return: Return.IntStatus,
-    params: [...windowByHwnd],
-    generate: true,
-  },
-  AU3_WinExists: {
-    return: Return.IntStatus,
-    params: [...windowSelection],
-    generate: true,
-  },
-  AU3_WinExistsByHandle: {
-    return: Return.IntStatus,
-    params: [...windowByHwnd],
-    generate: true,
-  },
+  }),
   // AU3_WinGetCaretPos: [Return.Int, '(LPPOINT lpPoint)'],
   // AU3_WinGetClassList: [
   //   'void',
@@ -500,19 +496,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
   // ],
-  AU3_WinGetClientSize: {
+  ...winFunctions('AU3_WinGetClientSize', {
     return: Return.Int,
-    params: [
-      ...windowSelection,
-      { key: 'rectangle', type: Param.OutRectangle },
-    ],
+    params: [{ key: 'rectangle', type: Param.OutRectangle }],
     generate: true,
-  },
-  AU3_WinGetClientSizeByHandle: {
-    return: Return.Int,
-    params: [...windowByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
-    generate: true,
-  },
+  }),
   AU3_WinGetHandle: {
     return: Return.Hwnd,
     params: [...windowSelection],
@@ -522,19 +510,11 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, LPWSTR szRetText, int nBufSize)',
   // ],
-  AU3_WinGetPos: {
+  ...winFunctions('AU3_WinGetPos', {
     return: Return.Int,
-    params: [
-      ...windowSelection,
-      { key: 'rectangle', type: Param.OutRectangle },
-    ],
+    params: [{ key: 'rectangle', type: Param.OutRectangle }],
     generate: true,
-  },
-  AU3_WinGetPosByHandle: {
-    return: Return.Int,
-    params: [...windowByHwnd, { key: 'rectangle', type: Param.OutRectangle }],
-    generate: true,
-  },
+  }),
   // AU3_WinGetProcess: [
   //   'DWORD',
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
@@ -553,33 +533,22 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   'void',
   //   '(HWND hWnd, LPWSTR szRetText, int nBufSize)',
   // ],
-  AU3_WinGetTitle: {
+  ...winFunctions('AU3_WinGetTitle', {
     return: Return.Void,
     params: [
-      ...windowSelection,
       { key: 'title', type: Param.OutWstr },
       { key: 'titleSize', type: Param.OutWstrSize },
     ],
     generate: true,
-  },
-  AU3_WinGetTitleByHandle: {
-    return: Return.Void,
-    params: [
-      ...windowByHwnd,
-      { key: 'title', type: Param.OutWstr },
-      { key: 'titleSize', type: Param.OutWstrSize },
-    ],
-    generate: true,
-  },
+  }),
   // AU3_WinKill: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText)',
   // ],
   // AU3_WinKillByHandle: [Return.Int, '(HWND hWnd)'],
-  AU3_WinMenuSelectItem: {
+  ...winFunctions('AU3_WinMenuSelectItem', {
     return: Return.Int,
     params: [
-      ...windowSelection,
       { key: 'item0', type: Param.InWstr, default: "''" },
       { key: 'item1', type: Param.InWstr, default: "''" },
       { key: 'item2', type: Param.InWstr, default: "''" },
@@ -590,22 +559,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
       { key: 'item7', type: Param.InWstr, default: "''" },
     ],
     generate: true,
-  },
-  AU3_WinMenuSelectItemByHandle: {
-    return: Return.Int,
-    params: [
-      ...windowByHwnd,
-      { key: 'item0', type: Param.InWstr, default: "''" },
-      { key: 'item1', type: Param.InWstr, default: "''" },
-      { key: 'item2', type: Param.InWstr, default: "''" },
-      { key: 'item3', type: Param.InWstr, default: "''" },
-      { key: 'item4', type: Param.InWstr, default: "''" },
-      { key: 'item5', type: Param.InWstr, default: "''" },
-      { key: 'item6', type: Param.InWstr, default: "''" },
-      { key: 'item7', type: Param.InWstr, default: "''" },
-    ],
-    generate: true,
-  },
+  }),
   AU3_WinMinimizeAll: {
     return: Return.Void,
     params: [],
@@ -616,16 +570,6 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
     params: [],
     generate: true,
   },
-  // AU3_WinMove: [
-  //   Return.Int,
-  //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nX, int nY, int nWidth = -1, int nHeight = -1)',
-  // ],
-  // AU3_WinMoveByHandle: [
-  //   Return.Int,
-  //   '(HWND hWnd, int nX, int nY, int nWidth = -1, int nHeight = -1)',
-  // ],
-  // AU3_WinMinimizeAll: [Return.Void, []],
-  // AU3_WinMinimizeAllUndo: [Return.Void, []],
   // AU3_WinMove: [
   //   Return.Int,
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nX, int nY, int nWidth = -1, int nHeight = -1)',
@@ -654,68 +598,24 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   //   '(LPCWSTR szTitle, /*[in,defaultvalue("")]*/LPCWSTR szText, int nTrans)',
   // ],
   // AU3_WinSetTransByHandle: [Return.Int, '(HWND hWnd, int nTrans)'],
-  AU3_WinWait: {
+  ...winFunctions('AU3_WinWait', {
     return: Return.IntStatus,
-    params: [
-      ...windowSelection,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
+    params: [{ key: 'timeoutSeconds', type: Param.Int, default: 0 }],
     generate: true,
-  },
-  AU3_WinWaitByHandle: {
+  }),
+  ...winFunctions('AU3_WinWaitActive', {
     return: Return.IntStatus,
-    params: [
-      ...windowByHwnd,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
+    params: [{ key: 'timeoutSeconds', type: Param.Int, default: 0 }],
     generate: true,
-  },
-  AU3_WinWaitActive: {
+  }),
+  ...winFunctions('AU3_WinWaitClose', {
     return: Return.IntStatus,
-    params: [
-      ...windowSelection,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
+    params: [{ key: 'timeoutSeconds', type: Param.Int, default: 0 }],
     generate: true,
-  },
-  AU3_WinWaitActiveByHandle: {
+  }),
+  ...winFunctions('AU3_WinWaitNotActive', {
     return: Return.IntStatus,
-    params: [
-      ...windowByHwnd,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
+    params: [{ key: 'timeoutSeconds', type: Param.Int, default: 0 }],
     generate: true,
-  },
-  AU3_WinWaitClose: {
-    return: Return.IntStatus,
-    params: [
-      ...windowSelection,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
-    generate: true,
-  },
-  AU3_WinWaitCloseByHandle: {
-    return: Return.IntStatus,
-    params: [
-      ...windowByHwnd,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
-    generate: true,
-  },
-  AU3_WinWaitNotActive: {
-    return: Return.IntStatus,
-    params: [
-      ...windowSelection,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
-    generate: true,
-  },
-  AU3_WinWaitNotActiveByHandle: {
-    return: Return.IntStatus,
-    params: [
-      ...windowByHwnd,
-      { key: 'timeoutSeconds', type: Param.Int, default: 0 },
-    ],
-    generate: true,
-  },
+  }),
 }
