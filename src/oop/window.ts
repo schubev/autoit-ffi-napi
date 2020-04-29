@@ -1,5 +1,6 @@
 import { WindowDescription } from 'autoit-advanced-descriptor'
 import { Control } from './control'
+import { LibraryParam } from '../util/library-param'
 import {
   controlGetHandle,
   winActivateByHandle,
@@ -63,52 +64,77 @@ export class Window {
     return this.hwnd
   }
 
-  static async minimizeAll(): Promise<void> {
-    return winMinimizeAll()
+  static async minimizeAll(
+    library?: LibraryParam<typeof winMinimizeAll>,
+  ): Promise<void> {
+    return winMinimizeAll(library)
   }
 
-  static async minimizeAllUndo(): Promise<void> {
-    return winMinimizeAllUndo()
+  static async minimizeAllUndo(
+    library?: LibraryParam<typeof winMinimizeAllUndo>,
+  ): Promise<void> {
+    return winMinimizeAllUndo(library)
   }
 
   async getControl(
     controlDescription: WindowDescription,
+    library?: LibraryParam<typeof controlGetHandle>,
   ): Promise<Control | null> {
-    const controlHwnd = await controlGetHandle(this.hwnd, controlDescription)
+    const controlHwnd = await controlGetHandle(
+      this.hwnd,
+      controlDescription,
+      library,
+    )
     if (controlHwnd === null) return null
     return Control.ofParentAndHwnd(this, controlHwnd)
   }
 
-  async activate(): Promise<boolean> {
-    return winActivateByHandle(this.hwnd)
+  async activate(
+    library?: LibraryParam<typeof winActivateByHandle>,
+  ): Promise<boolean> {
+    return winActivateByHandle(this.hwnd, library)
   }
 
-  async active(): Promise<boolean> {
-    return winActiveByHandle(this.hwnd)
+  async active(
+    library?: LibraryParam<typeof winActiveByHandle>,
+  ): Promise<boolean> {
+    return winActiveByHandle(this.hwnd, library)
   }
 
-  async close(): Promise<boolean> {
-    return winCloseByHandle(this.hwnd)
+  async close(
+    library?: LibraryParam<typeof winCloseByHandle>,
+  ): Promise<boolean> {
+    return winCloseByHandle(this.hwnd, library)
   }
 
-  async exists(): Promise<boolean> {
-    return winExistsByHandle(this.hwnd)
+  async exists(
+    library?: LibraryParam<typeof winExistsByHandle>,
+  ): Promise<boolean> {
+    return winExistsByHandle(this.hwnd, library)
   }
 
-  async getState(): Promise<Set<WindowState>> {
-    return winGetStateByHandle(this.hwnd)
+  async getState(
+    library?: LibraryParam<typeof winGetStateByHandle>,
+  ): Promise<Set<WindowState>> {
+    return winGetStateByHandle(this.hwnd, library)
   }
 
-  async getText(): Promise<string> {
-    return winGetTextByHandle(this.hwnd)
+  async getText(
+    textSize?: number,
+    library?: LibraryParam<typeof winGetTextByHandle>,
+  ): Promise<string> {
+    return winGetTextByHandle(this.hwnd, textSize, library)
   }
 
-  async getTitle(): Promise<string> {
-    return winGetTitleByHandle(this.hwnd)
+  async getTitle(
+    titleSize?: number,
+    library?: LibraryParam<typeof winGetTitleByHandle>,
+  ): Promise<string> {
+    return winGetTitleByHandle(this.hwnd, titleSize, library)
   }
 
-  async kill(): Promise<boolean> {
-    return winKillByHandle(this.hwnd)
+  async kill(library?: LibraryParam<typeof winKillByHandle>): Promise<boolean> {
+    return winKillByHandle(this.hwnd, library)
   }
 
   async selectMenuItem(
@@ -120,6 +146,7 @@ export class Window {
     item5?: string,
     item6?: string,
     item7?: string,
+    library?: LibraryParam<typeof winMenuSelectItemByHandle>,
   ): Promise<boolean> {
     return winMenuSelectItemByHandle(
       this.hwnd,
@@ -131,16 +158,23 @@ export class Window {
       item5,
       item6,
       item7,
+      library,
     )
   }
 
-  async waitActive(timeoutSecs = Infinity): Promise<boolean> {
+  async waitActive(
+    timeoutSecs = Infinity,
+    library?: LibraryParam<typeof winWaitActiveByHandle>,
+  ): Promise<boolean> {
     if (timeoutSecs === Infinity) timeoutSecs = 0
-    return winWaitActiveByHandle(this.hwnd, timeoutSecs)
+    return winWaitActiveByHandle(this.hwnd, timeoutSecs, library)
   }
 
-  async waitClose(timeoutSecs = Infinity): Promise<boolean> {
+  async waitClose(
+    timeoutSecs = Infinity,
+    library?: LibraryParam<typeof winWaitCloseByHandle>,
+  ): Promise<boolean> {
     if (timeoutSecs === Infinity) timeoutSecs = 0
-    return winWaitCloseByHandle(this.hwnd, timeoutSecs)
+    return winWaitCloseByHandle(this.hwnd, timeoutSecs, library)
   }
 }
