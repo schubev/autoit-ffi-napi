@@ -7,18 +7,27 @@ import {
   winActiveByHandle,
   winCloseByHandle,
   winExistsByHandle,
+  winGetClientSizeByHandle,
   winGetHandle,
+  winGetPosByHandle,
+  winGetProcessByHandle,
   winGetStateByHandle,
-  winMinimizeAll,
-  winMinimizeAllUndo,
-  winWaitActiveByHandle,
-  winWaitCloseByHandle,
   winGetTextByHandle,
   winGetTitleByHandle,
   winKillByHandle,
   winMenuSelectItemByHandle,
+  winMinimizeAll,
+  winMinimizeAllUndo,
+  winMoveByHandle,
+  winSetOnTopByHandle,
+  winSetStateByHandle,
+  winSetTitleByHandle,
+  winSetTransByHandle,
+  winWaitActiveByHandle,
+  winWaitCloseByHandle,
+  winWaitNotActiveByHandle,
 } from '../functions'
-import { Hwnd, WindowState } from '../types'
+import { Hwnd, WindowState, Rectangle, Point, SetWindowState } from '../types'
 
 function tick(millisecs: number): Promise<void> {
   return new Promise(resolve => {
@@ -113,6 +122,24 @@ export class Window {
     return winExistsByHandle(this.hwnd, library)
   }
 
+  async getClientSize(
+    library?: LibraryParam<typeof winGetClientSizeByHandle>,
+  ): Promise<Rectangle | null> {
+    return winGetClientSizeByHandle(this.hwnd, library)
+  }
+
+  async getPos(
+    library?: LibraryParam<typeof winGetPosByHandle>,
+  ): Promise<Rectangle | null> {
+    return winGetPosByHandle(this.hwnd, library)
+  }
+
+  async getProcess(
+    library?: LibraryParam<typeof winGetProcessByHandle>,
+  ): Promise<number> {
+    return winGetProcessByHandle(this.hwnd, library)
+  }
+
   async getState(
     library?: LibraryParam<typeof winGetStateByHandle>,
   ): Promise<Set<WindowState>> {
@@ -162,6 +189,48 @@ export class Window {
     )
   }
 
+  async move(
+    rectangle: Readonly<Point | Rectangle>,
+    library?: LibraryParam<typeof winMoveByHandle>,
+  ): Promise<boolean> {
+    return winMoveByHandle(
+      this.hwnd,
+      rectangle.x,
+      rectangle.y,
+      'width' in rectangle ? rectangle.width : undefined,
+      'height' in rectangle ? rectangle.height : undefined,
+      library,
+    )
+  }
+
+  async setOnTop(
+    onTop: boolean,
+    library?: LibraryParam<typeof winSetOnTopByHandle>,
+  ): Promise<boolean> {
+    return winSetOnTopByHandle(this.hwnd, onTop, library)
+  }
+
+  async setState(
+    state: SetWindowState,
+    library?: LibraryParam<typeof winSetStateByHandle>,
+  ): Promise<boolean> {
+    return winSetStateByHandle(this.hwnd, state, library)
+  }
+
+  async setTitle(
+    title: string,
+    library?: LibraryParam<typeof winSetTitleByHandle>,
+  ): Promise<boolean> {
+    return winSetTitleByHandle(this.hwnd, title, library)
+  }
+
+  async setTransparency(
+    transparency: number,
+    library?: LibraryParam<typeof winSetTransByHandle>,
+  ): Promise<boolean> {
+    return winSetTransByHandle(this.hwnd, transparency, library)
+  }
+
   async waitActive(
     timeoutSecs = Infinity,
     library?: LibraryParam<typeof winWaitActiveByHandle>,
@@ -176,5 +245,13 @@ export class Window {
   ): Promise<boolean> {
     if (timeoutSecs === Infinity) timeoutSecs = 0
     return winWaitCloseByHandle(this.hwnd, timeoutSecs, library)
+  }
+
+  async waitNotActive(
+    timeoutSecs = Infinity,
+    library?: LibraryParam<typeof winWaitNotActiveByHandle>,
+  ): Promise<boolean> {
+    if (timeoutSecs === Infinity) timeoutSecs = 0
+    return winWaitNotActiveByHandle(this.hwnd, timeoutSecs, library)
   }
 }

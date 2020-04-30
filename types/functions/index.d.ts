@@ -46,6 +46,8 @@ export { winClose } from './generated/winClose';
 export { winCloseByHandle } from './generated/winCloseByHandle';
 export { winExists } from './generated/winExists';
 export { winExistsByHandle } from './generated/winExistsByHandle';
+export { winGetClientSize } from './generated/winGetClientSize';
+export { winGetClientSizeByHandle } from './generated/winGetClientSizeByHandle';
 export { winGetHandle } from './generated/winGetHandle';
 export { winGetPos } from './generated/winGetPos';
 export { winGetPosByHandle } from './generated/winGetPosByHandle';
