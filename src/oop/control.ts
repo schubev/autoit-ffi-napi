@@ -1,4 +1,5 @@
 import { Hwnd, MouseButton, SendMode, Rectangle } from '../types'
+import { LibraryParam } from '../util/library-param'
 import { Window } from './window'
 import {
   controlClickByHandle,
@@ -24,22 +25,41 @@ export class Control {
     return new Control(window, hwnd)
   }
 
-  async setText(text: string): Promise<boolean> {
-    return controlSetTextByHandle(this.window.getHwnd(), this.hwnd, text)
+  async setText(
+    text: string,
+    library?: LibraryParam<typeof controlSetTextByHandle>,
+  ): Promise<boolean> {
+    return controlSetTextByHandle(
+      this.window.getHwnd(),
+      this.hwnd,
+      text,
+      library,
+    )
   }
 
-  async getText(textSize?: number): Promise<string> {
-    return controlGetTextByHandle(this.window.getHwnd(), this.hwnd, textSize)
+  async getText(
+    textSize?: number,
+    library?: LibraryParam<typeof controlGetTextByHandle>,
+  ): Promise<string> {
+    return controlGetTextByHandle(
+      this.window.getHwnd(),
+      this.hwnd,
+      textSize,
+      library,
+    )
   }
 
-  async focus(): Promise<boolean> {
-    return controlFocusByHandle(this.window.getHwnd(), this.hwnd)
+  async focus(
+    library?: LibraryParam<typeof controlFocusByHandle>,
+  ): Promise<boolean> {
+    return controlFocusByHandle(this.window.getHwnd(), this.hwnd, library)
   }
 
   async click(
     button = MouseButton.Primary,
     count = 1,
     position?: { readonly x: number; readonly y: number },
+    library?: LibraryParam<typeof controlClickByHandle>,
   ): Promise<boolean> {
     const { x, y } = position ? position : ({} as const)
     return controlClickByHandle(
@@ -49,22 +69,39 @@ export class Control {
       count,
       x,
       y,
+      library,
     )
   }
 
-  async getPos(): Promise<Rectangle | null> {
-    return controlGetPosByHandle(this.window.getHwnd(), this.hwnd)
+  async getPos(
+    library?: LibraryParam<typeof controlGetPosByHandle>,
+  ): Promise<Rectangle | null> {
+    return controlGetPosByHandle(this.window.getHwnd(), this.hwnd, library)
   }
 
-  async enable(): Promise<boolean> {
-    return controlEnableByHandle(this.window.getHwnd(), this.hwnd)
+  async enable(
+    library?: LibraryParam<typeof controlEnableByHandle>,
+  ): Promise<boolean> {
+    return controlEnableByHandle(this.window.getHwnd(), this.hwnd, library)
   }
 
-  async disable(): Promise<boolean> {
-    return controlDisableByHandle(this.window.getHwnd(), this.hwnd)
+  async disable(
+    library?: LibraryParam<typeof controlDisableByHandle>,
+  ): Promise<boolean> {
+    return controlDisableByHandle(this.window.getHwnd(), this.hwnd, library)
   }
 
-  async send(text: string, mode?: SendMode): Promise<boolean> {
-    return controlSendByHandle(this.window.getHwnd(), this.hwnd, text, mode)
+  async send(
+    text: string,
+    mode?: SendMode,
+    library?: LibraryParam<typeof controlSendByHandle>,
+  ): Promise<boolean> {
+    return controlSendByHandle(
+      this.window.getHwnd(),
+      this.hwnd,
+      text,
+      mode,
+      library,
+    )
   }
 }
