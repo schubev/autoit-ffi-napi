@@ -33,7 +33,7 @@ void dl_throw_param_alloc_error(napi_env env, const char *param_name) {
   NAPI_TRY(napi_create_int32(env, Struct->Name, &property));                   \
   NAPI_TRY(napi_set_named_property(env, Object, #Name, property));
 
-napi_status dl_create_rectangle(napi_env env, const RECT *rectangle,
+napi_status dl_create_rectangle(napi_env env, const LPRECT rectangle,
                                 napi_value *result) {
   napi_status status;
   napi_value property;
@@ -47,7 +47,7 @@ napi_status dl_create_rectangle(napi_env env, const RECT *rectangle,
   return napi_ok;
 };
 
-napi_status dl_create_point(napi_env env, const POINT *point,
+napi_status dl_create_point(napi_env env, const LPPOINT point,
                             napi_value *result) {
   napi_status status;
   napi_value property;

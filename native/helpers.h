@@ -13,7 +13,8 @@ void dl_throw_param_napi_error(napi_env env, const char *param_name);
 void dl_throw_alloc_napi_error(napi_env env, const char *param_name);
 napi_status dl_create_rectangle(napi_env env, const LPRECT rectangle,
                                 napi_value *result);
-napi_status dl_create_point(napi_env env, LPPOINT point, napi_value *result);
+napi_status dl_create_point(napi_env env, const LPPOINT point,
+                            napi_value *result);
 
 #define DL_PARAMS_0                                                            \
   napi_status status;                                                          \
