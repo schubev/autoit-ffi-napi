@@ -65,12 +65,15 @@ function writeBindingGyp(): Promise<void> {
             target_name: 'autoit',
             cflags: ['-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter'],
             include_dirs: ['native'],
-            libraries: ['<(module_root_dir)/native/AutoItX3.lib'],
+            libraries: ['<(module_root_dir)/build/Release/AutoItX3.lib'],
             sources: nativeSources(),
             copies: [
               {
                 destination: '<(module_root_dir)/build/Release/',
-                files: ['<(module_root_dir)/native/AutoItX3.dll'],
+                files: [
+                  '<(module_root_dir)/native/AutoItX3.dll',
+                  '<(module_root_dir)/native/AutoItX3.lib',
+                ],
               },
             ],
           },

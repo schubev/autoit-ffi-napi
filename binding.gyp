@@ -12,7 +12,7 @@
         "native"
       ],
       "libraries": [
-        "<(module_root_dir)/native/AutoItX3.lib"
+        "<(module_root_dir)/build/Release/AutoItX3.lib"
       ],
       "sources": [
         "native/helpers.c",
@@ -105,7 +105,8 @@
         {
           "destination": "<(module_root_dir)/build/Release/",
           "files": [
-            "<(module_root_dir)/native/AutoItX3.dll"
+            "<(module_root_dir)/native/AutoItX3.dll",
+            "<(module_root_dir)/native/AutoItX3.lib"
           ]
         }
       ]
