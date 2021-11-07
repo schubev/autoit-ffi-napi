@@ -23,4 +23,8 @@ jobs:
     - run: npm run build
       env:
         CI: true
+    - uses: actions/upload-artifact@v2
+      with:
+        name: addon
+        path: build/Release
     - run: npm test
