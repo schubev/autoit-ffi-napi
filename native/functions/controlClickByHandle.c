@@ -6,7 +6,6 @@
 
 napi_value dl_AU3_ControlClickByHandle(napi_env env,
                                        napi_callback_info cbinfo) {
-
   DL_PARAMS(6);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(control, 1);
@@ -16,7 +15,7 @@ napi_value dl_AU3_ControlClickByHandle(napi_env env,
   DL_ALLOC_INT_PARAM(nY, 5);
   DL_OUTPUT_INT_STATUS(
       AU3_ControlClickByHandle(window, control, button, numClicks, nX, nY),
-      AU3_ControlClickByHandle)
+      AU3_ControlClickByHandle);
   DL_FREE_INT_PARAM(nY);
   DL_FREE_INT_PARAM(nX);
   DL_FREE_INT_PARAM(numClicks);

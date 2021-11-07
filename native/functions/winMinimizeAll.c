@@ -5,8 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinMinimizeAll(napi_env env, napi_callback_info cbinfo) {
-
-  DL_OUTPUT_VOID(AU3_WinMinimizeAll())
-
+  DL_OUTPUT_VOID(AU3_WinMinimizeAll());
   DL_RETURN;
 }

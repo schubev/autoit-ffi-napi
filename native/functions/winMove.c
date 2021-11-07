@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinMove(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(6);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
@@ -15,7 +14,7 @@ napi_value dl_AU3_WinMove(napi_env env, napi_callback_info cbinfo) {
   DL_ALLOC_INT_PARAM(height, 5);
   DL_OUTPUT_INT_STATUS(
       AU3_WinMove(windowDescription, windowText, x, y, width, height),
-      AU3_WinMove)
+      AU3_WinMove);
   DL_FREE_INT_PARAM(height);
   DL_FREE_INT_PARAM(width);
   DL_FREE_INT_PARAM(y);

@@ -5,12 +5,11 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinWaitByHandle(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(2);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(timeoutSeconds, 1);
   DL_OUTPUT_INT_STATUS(AU3_WinWaitByHandle(window, timeoutSeconds),
-                       AU3_WinWaitByHandle)
+                       AU3_WinWaitByHandle);
   DL_FREE_INT_PARAM(timeoutSeconds);
   DL_FREE_INT_PARAM(window);
   DL_RETURN;

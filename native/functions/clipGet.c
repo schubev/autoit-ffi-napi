@@ -5,10 +5,9 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ClipGet(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(1);
   DL_ALLOC_INT_PARAM(clipSize, 0);
-  DL_OUTPUT_WSTR(AU3_ClipGet(clip, clipSize), clip)
+  DL_OUTPUT_WSTR(AU3_ClipGet(clip, clipSize), clip);
   DL_FREE_INT_PARAM(clipSize);
   DL_RETURN;
 }

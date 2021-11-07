@@ -5,13 +5,12 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinGetText(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
   DL_ALLOC_INT_PARAM(textSize, 2);
   DL_OUTPUT_WSTR(AU3_WinGetText(windowDescription, windowText, text, textSize),
-                 text)
+                 text);
   DL_FREE_INT_PARAM(textSize);
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);

@@ -5,13 +5,13 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlGetPos(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
   DL_ALLOC_INWSTR_PARAM(controlDescription, 2);
   DL_OUTPUT_RECTANGLE(AU3_ControlGetPos(windowDescription, windowText,
-                                        controlDescription, rectangle))
+                                        controlDescription, rectangle),
+                      rectangle, AU3_ControlGetPos);
   DL_FREE_INWSTR_PARAM(controlDescription);
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);

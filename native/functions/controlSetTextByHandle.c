@@ -6,13 +6,12 @@
 
 napi_value dl_AU3_ControlSetTextByHandle(napi_env env,
                                          napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(control, 1);
   DL_ALLOC_INWSTR_PARAM(text, 2);
   DL_OUTPUT_INT_STATUS(AU3_ControlSetTextByHandle(window, control, text),
-                       AU3_ControlSetTextByHandle)
+                       AU3_ControlSetTextByHandle);
   DL_FREE_INWSTR_PARAM(text);
   DL_FREE_INT_PARAM(control);
   DL_FREE_INT_PARAM(window);

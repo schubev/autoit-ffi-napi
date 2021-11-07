@@ -5,12 +5,11 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinActivate(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(2);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
   DL_OUTPUT_INT_STATUS(AU3_WinActivate(windowDescription, windowText),
-                       AU3_WinActivate)
+                       AU3_WinActivate);
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);
   DL_RETURN;

@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinMenuSelectItem(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(10);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
@@ -20,7 +19,7 @@ napi_value dl_AU3_WinMenuSelectItem(napi_env env, napi_callback_info cbinfo) {
   DL_OUTPUT_INT_STATUS(AU3_WinMenuSelectItem(windowDescription, windowText,
                                              item0, item1, item2, item3, item4,
                                              item5, item6, item7),
-                       AU3_WinMenuSelectItem)
+                       AU3_WinMenuSelectItem);
   DL_FREE_INWSTR_PARAM(item7);
   DL_FREE_INWSTR_PARAM(item6);
   DL_FREE_INWSTR_PARAM(item5);

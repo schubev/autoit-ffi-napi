@@ -5,13 +5,12 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinSetOnTop(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
   DL_ALLOC_BOOL_PARAM(onTop, 2);
   DL_OUTPUT_INT_STATUS(AU3_WinSetOnTop(windowDescription, windowText, onTop),
-                       AU3_WinSetOnTop)
+                       AU3_WinSetOnTop);
   DL_FREE_BOOL_PARAM(onTop);
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);

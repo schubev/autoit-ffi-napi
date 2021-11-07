@@ -5,12 +5,11 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseMove(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INT_PARAM(x, 0);
   DL_ALLOC_INT_PARAM(y, 1);
   DL_ALLOC_INT_PARAM(speed, 2);
-  DL_OUTPUT_VOID(AU3_MouseMove(x, y, speed))
+  DL_OUTPUT_VOID(AU3_MouseMove(x, y, speed));
   DL_FREE_INT_PARAM(speed);
   DL_FREE_INT_PARAM(y);
   DL_FREE_INT_PARAM(x);

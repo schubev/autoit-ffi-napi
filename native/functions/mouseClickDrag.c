@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseClickDrag(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(6);
   DL_ALLOC_INWSTR_PARAM(button, 0);
   DL_ALLOC_INT_PARAM(xStart, 1);
@@ -15,7 +14,7 @@ napi_value dl_AU3_MouseClickDrag(napi_env env, napi_callback_info cbinfo) {
   DL_ALLOC_INT_PARAM(speed, 5);
   DL_OUTPUT_INT_STATUS(
       AU3_MouseClickDrag(button, xStart, yStart, xEnd, yEnd, speed),
-      AU3_MouseClickDrag)
+      AU3_MouseClickDrag);
   DL_FREE_INT_PARAM(speed);
   DL_FREE_INT_PARAM(yEnd);
   DL_FREE_INT_PARAM(xEnd);

@@ -6,14 +6,13 @@
 
 napi_value dl_AU3_ControlGetTextByHandle(napi_env env,
                                          napi_callback_info cbinfo) {
-
   DL_PARAMS(3);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(control, 1);
   DL_ALLOC_INT_PARAM(controlTextSize, 2);
   DL_OUTPUT_WSTR(
       AU3_ControlGetTextByHandle(window, control, controlText, controlTextSize),
-      controlText)
+      controlText);
   DL_FREE_INT_PARAM(controlTextSize);
   DL_FREE_INT_PARAM(control);
   DL_FREE_INT_PARAM(window);

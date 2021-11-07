@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlClick(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(7);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
@@ -17,7 +16,7 @@ napi_value dl_AU3_ControlClick(napi_env env, napi_callback_info cbinfo) {
   DL_OUTPUT_INT_STATUS(AU3_ControlClick(windowDescription, windowText,
                                         controlDescription, button, numClicks,
                                         nX, nY),
-                       AU3_ControlClick)
+                       AU3_ControlClick);
   DL_FREE_INT_PARAM(nY);
   DL_FREE_INT_PARAM(nX);
   DL_FREE_INT_PARAM(numClicks);

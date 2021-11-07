@@ -5,8 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseGetPos(napi_env env, napi_callback_info cbinfo) {
-
-  DL_OUTPUT_POINT(AU3_MouseGetPos(point))
-
+  DL_OUTPUT_POINT(AU3_MouseGetPos(point), point, AU3_MouseGetPos);
   DL_RETURN;
 }

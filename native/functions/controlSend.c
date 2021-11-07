@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlSend(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(5);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
@@ -14,7 +13,7 @@ napi_value dl_AU3_ControlSend(napi_env env, napi_callback_info cbinfo) {
   DL_ALLOC_INT_PARAM(mode, 4);
   DL_OUTPUT_INT_STATUS(AU3_ControlSend(windowDescription, windowText,
                                        controlDescription, text, mode),
-                       AU3_ControlSend)
+                       AU3_ControlSend);
   DL_FREE_INT_PARAM(mode);
   DL_FREE_INWSTR_PARAM(text);
   DL_FREE_INWSTR_PARAM(controlDescription);

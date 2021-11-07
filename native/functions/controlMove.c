@@ -5,7 +5,6 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlMove(napi_env env, napi_callback_info cbinfo) {
-
   DL_PARAMS(7);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
@@ -15,7 +14,7 @@ napi_value dl_AU3_ControlMove(napi_env env, napi_callback_info cbinfo) {
   DL_ALLOC_INT_PARAM(nWidth, 5);
   DL_ALLOC_INT_PARAM(nHeight, 6);
   DL_OUTPUT_INT(AU3_ControlMove(windowDescription, windowText,
-                                controlDescription, nX, nY, nWidth, nHeight))
+                                controlDescription, nX, nY, nWidth, nHeight));
   DL_FREE_INT_PARAM(nHeight);
   DL_FREE_INT_PARAM(nWidth);
   DL_FREE_INT_PARAM(nY);

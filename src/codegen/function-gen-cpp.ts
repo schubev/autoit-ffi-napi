@@ -91,8 +91,7 @@ class BindingFunction {
       #include "helpers.h"
       #include "AutoItX3_DLL.h"
 
-      napi_value dl_${this.name}(napi_env env, napi_callback_info cbinfo) {
-    `
+      napi_value dl_${this.name}(napi_env env, napi_callback_info cbinfo) {`
   }
 
   private paramsIntro(): string {
@@ -109,23 +108,23 @@ class BindingFunction {
       switch (this.def.return) {
         case Return.Void:
         case Return.IntDiscard:
-          return `DL_OUTPUT_VOID(${call})`
+          return `DL_OUTPUT_VOID(${call});`
         case Return.Int:
         case Return.IntCursor:
         case Return.IntWindowState:
         case Return.Hwnd:
-          return `DL_OUTPUT_INT(${call})`
+          return `DL_OUTPUT_INT(${call});`
         case Return.IntStatus:
-          return `DL_OUTPUT_INT_STATUS(${call}, ${this.name})`
+          return `DL_OUTPUT_INT_STATUS(${call}, ${this.name});`
       }
     } else {
       switch (this.outParam.type) {
         case Param.OutWstr:
-          return `DL_OUTPUT_WSTR(${call}, ${this.outParam.key})`
+          return `DL_OUTPUT_WSTR(${call}, ${this.outParam.key});`
         case Param.OutPoint:
-          return `DL_OUTPUT_POINT(${call})`
+          return `DL_OUTPUT_POINT(${call}, ${this.outParam.key}, ${this.name});`
         case Param.OutRectangle:
-          return `DL_OUTPUT_RECTANGLE(${call})`
+          return `DL_OUTPUT_RECTANGLE(${call}, ${this.outParam.key}, ${this.name});`
       }
     }
   }
@@ -143,7 +142,7 @@ class BindingFunction {
       this.call(),
       this.cleanupSection.join(''),
       this.outro(),
-    ].join('\n')
+    ].join('')
   }
 }
 

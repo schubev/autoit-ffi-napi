@@ -6,7 +6,6 @@
 
 napi_value dl_AU3_WinMenuSelectItemByHandle(napi_env env,
                                             napi_callback_info cbinfo) {
-
   DL_PARAMS(9);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INWSTR_PARAM(item0, 1);
@@ -20,7 +19,7 @@ napi_value dl_AU3_WinMenuSelectItemByHandle(napi_env env,
   DL_OUTPUT_INT_STATUS(AU3_WinMenuSelectItemByHandle(window, item0, item1,
                                                      item2, item3, item4, item5,
                                                      item6, item7),
-                       AU3_WinMenuSelectItemByHandle)
+                       AU3_WinMenuSelectItemByHandle);
   DL_FREE_INWSTR_PARAM(item7);
   DL_FREE_INWSTR_PARAM(item6);
   DL_FREE_INWSTR_PARAM(item5);
