@@ -12,7 +12,7 @@
         "native"
       ],
       "libraries": [
-        "<(module_root_dir)/native/AutoItX3_DLL.lib"
+        "<(module_root_dir)/native/AutoItX3.lib"
       ],
       "sources": [
         "native/helpers.c",
@@ -100,6 +100,14 @@
         "native/functions/winWaitCloseByHandle.c",
         "native/functions/winWaitNotActive.c",
         "native/functions/winWaitNotActiveByHandle.c"
+      ],
+      "copies": [
+        {
+          "destination": "<(module_root_dir)/build/Release/",
+          "files": [
+            "<(module_root_dir)/native/AutoItX3.dll"
+          ]
+        }
       ]
     }
   ]
