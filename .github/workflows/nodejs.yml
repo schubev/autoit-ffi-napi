@@ -11,6 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [8.x, 10.x, 12.x]
+    env:
+      CI: true
 
     steps:
     - uses: actions/checkout@v2
@@ -20,9 +22,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         architecture: x86
     - run: npm install
-    - run: npm run build
-      env:
-        CI: true
+    - run: npm run clean:lib 
+    - run: npm run build:build-codegen 
+    - run: npm run build:run-codegen 
+    - run: npm run clangformat 
+    - run: npm run prettier:generated 
+    - run: npm run build:native
+  # - run: npm run build:type-declarations 
+  # - run: npm run build:build-generated",
     - uses: actions/upload-artifact@v2
       with:
         name: addon
