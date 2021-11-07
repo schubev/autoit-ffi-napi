@@ -16,8 +16,10 @@ napi_status dl_create_rectangle(napi_env env, const RECT *rectangle,
 napi_status dl_create_point(napi_env env, const POINT *point,
                             napi_value *result);
 
+#define DL_PARAMS_0 napi_status status;
+
 #define DL_PARAMS(ParamCount)                                                  \
-  napi_status status;                                                          \
+  DL_PARAMS_0;                                                                 \
   size_t argc = ParamCount;                                                    \
   napi_value argv[ParamCount];                                                 \
   napi_value thisArg;                                                          \

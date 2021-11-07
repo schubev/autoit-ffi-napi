@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinMinimizeAllUndo(napi_env env, napi_callback_info cbinfo) {
+  DL_PARAMS_0;
   DL_OUTPUT_VOID(AU3_WinMinimizeAllUndo());
   DL_RETURN;
 }

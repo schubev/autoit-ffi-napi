@@ -96,7 +96,7 @@ class BindingFunction {
 
   private paramsIntro(): string {
     if (this.inParams.length > 0) return `DL_PARAMS(${this.inParams.length});`
-    else return ''
+    else return 'DL_PARAMS_0;'
   }
 
   private outro(): string {

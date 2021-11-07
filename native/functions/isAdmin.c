@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_IsAdmin(napi_env env, napi_callback_info cbinfo) {
+  DL_PARAMS_0;
   DL_OUTPUT_INT_STATUS(AU3_IsAdmin(), AU3_IsAdmin);
   DL_RETURN;
 }

@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_error(napi_env env, napi_callback_info cbinfo) {
+  DL_PARAMS_0;
   DL_OUTPUT_INT(AU3_error());
   DL_RETURN;
 }
