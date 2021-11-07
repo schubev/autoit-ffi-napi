@@ -11,6 +11,9 @@
       "include_dirs": [
         "native"
       ],
+      "libraries": [
+        "native/AutoItX3.dll"
+      ],
       "sources": [
         "native/helpers.c",
         "native/autoit.c",
