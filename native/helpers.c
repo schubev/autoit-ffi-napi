@@ -16,7 +16,7 @@ void dl_throw_param_napi_error(napi_env env, const char *param_name) {
                      NAPI_AUTO_LENGTH);
 };
 
-void dl_throw_param_alloc_error(napi_env env, const char *param_name) {
+void dl_throw_alloc_napi_error(napi_env env, const char *param_name) {
   napi_status status;
   status = napi_throw_error(env, param_name, "Failed to allocate.");
   if (status != napi_ok)
