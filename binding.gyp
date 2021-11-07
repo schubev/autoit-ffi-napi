@@ -12,7 +12,7 @@
         "native"
       ],
       "libraries": [
-        "native/AutoItX3.dll"
+        "<(module_root_dir)/native/AutoItX3.dll"
       ],
       "sources": [
         "native/helpers.c",
