@@ -13,11 +13,13 @@
     "build:run-codegen": "node lib/codegen/index.js",
     "build:build-generated": "tsc",
     "build:type-declarations": "tsc --declaration --outDir types --emitDeclarationOnly",
-    "build": "npm run clean:lib && npm run build:build-codegen && npm run build:run-codegen && npm run prettier:generated && npm run build:type-declarations && npm run build:build-generated",
+    "build:native": "node-gyp configure && node-gyp build",
+    "build": "npm run clean:lib && npm run build:build-codegen && npm run build:run-codegen && npm run clangformat && npm run prettier:generated && npm run build:native && npm run build:type-declarations && npm run build:build-generated",
     "clean:lib": "find lib -name '*.js' -delete",
     "check:tsc": "tsc --noEmit",
     "check": "npm run check:tsc",
-    "prettier:generated": "prettier --write src/functions/generated/* src/generated-*"
+    "prettier:generated": "prettier --write src/generated-*",
+    "clangformat": "clang-format -i native/*.c native/*.h native/functions/*"
   },
   "devDependencies": {
     "@types/ffi-napi": "^2.4.1",
@@ -33,9 +35,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "autoit-advanced-descriptor": "git+https://github.com/schubev/autoit-advanced-descriptor.git#v1.0.5",
-    "ffi-napi": "^2.5.0",
-    "ref": "^1.3.5"
+    "autoit-advanced-descriptor": "git+https://github.com/schubev/autoit-advanced-descriptor.git#v1.0.5"
   },
   "jest": {
     "roots": [

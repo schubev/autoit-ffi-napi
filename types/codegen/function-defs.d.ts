@@ -15,6 +15,8 @@ export declare enum Param {
     OutRectangle = 13,
     Hwnd = 14
 }
+export declare function inParam(param: Param): boolean;
+export declare function outParam(param: Param): boolean;
 export declare enum Return {
     Void = 0,
     Int = 1,

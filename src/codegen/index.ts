@@ -2,10 +2,11 @@ import { writeFile as writeFileCallback } from 'fs'
 import { promisify } from 'util'
 import { FunctionDef, functions } from './function-defs'
 import { ffiBindingSourceOfDescriptions } from './binding-utils'
-import { generateFunction, makePrettyFunctionName } from './function-gen'
+import { generateFunction, makePrettyFunctionName } from './function-gen-cpp'
 import {
   generateLibInterface,
   generatePromisifiedLibInterface,
+  generateEntrypoint,
 } from './lib-gen'
 
 const writeFile = promisify(writeFileCallback)
@@ -20,32 +21,82 @@ function* generatedFunctions(): Generator<{
   }
 }
 
-async function writeFunctions(): Promise<void> {
-  for (const { functionName, functionDef } of generatedFunctions()) {
-    const prettyFunctionName = makePrettyFunctionName(functionName)
-    const sourcePath = `src/functions/generated/${prettyFunctionName}.ts`
-    const source = generateFunction(functionName, functionDef)
-    console.log(`generating function ${prettyFunctionName} at ${sourcePath}...`)
-    await writeFile(sourcePath, source)
-  }
+function makeSourcePath(functionName: string): string {
+  return `native/functions/${makePrettyFunctionName(functionName)}.c`
 }
 
-async function writeBindingSource(): Promise<void> {
+function writeFunctions(): Promise<unknown> {
+  return Promise.all(
+    Array.from(generatedFunctions()).map(({ functionName, functionDef }) => {
+      const prettyFunctionName = makePrettyFunctionName(functionName)
+      const sourcePath = makeSourcePath(functionName)
+      const source = generateFunction(functionName, functionDef)
+      console.log(
+        `generating function ${prettyFunctionName} at ${sourcePath}...`,
+      )
+      return writeFile(sourcePath, source)
+    }),
+  )
+}
+
+function nativeSources(): string[] {
+  const functionSources = Array.from(
+    generatedFunctions(),
+  ).map(({ functionName }) => makeSourcePath(functionName))
+  return ['native/helpers.c', 'native/autoit.c', ...functionSources]
+}
+
+function writeAutoitEntrypoint(): Promise<void> {
+  return writeFile(
+    'native/autoit.c',
+    generateEntrypoint(
+      Array.from(generatedFunctions()).map(({ functionName }) => functionName),
+    ),
+  )
+}
+
+function writeBindingGyp(): Promise<void> {
+  return writeFile(
+    'binding.gyp',
+    JSON.stringify(
+      {
+        targets: [
+          {
+            target_name: 'autoit',
+            cflags: ['-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter'],
+            include_dirs: ['native'],
+            sources: nativeSources(),
+          },
+        ],
+      },
+      null,
+      2,
+    ),
+  )
+}
+
+function writeBindingSource(): Promise<void> {
   const bindingSource = ffiBindingSourceOfDescriptions(functions)
-  await writeFile('src/generated-ffi-bindings.ts', bindingSource)
+  return writeFile('src/generated-ffi-bindings.ts', bindingSource)
 }
 
-async function writeLibType(): Promise<void> {
+function writeLibType(): Promise<void> {
   const libTypeSource = generateLibInterface(functions)
   const promisifiedLibTypeSource = generatePromisifiedLibInterface(functions)
-  await writeFile(
+  return writeFile(
     'src/generated-lib-type.ts',
     libTypeSource + '\n\n' + promisifiedLibTypeSource,
   )
 }
 
-async function main(): Promise<void> {
-  await Promise.all([writeBindingSource(), writeFunctions(), writeLibType()])
+function main(): Promise<unknown> {
+  return Promise.all([
+    writeBindingSource(),
+    writeFunctions(),
+    writeLibType(),
+    writeBindingGyp(),
+    writeAutoitEntrypoint(),
+  ])
 }
 
 main()

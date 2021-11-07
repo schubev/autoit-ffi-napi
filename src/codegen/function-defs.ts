@@ -18,6 +18,32 @@ export enum Param {
   Hwnd,
 }
 
+export function inParam(param: Param): boolean {
+  switch (param) {
+    case Param.Int:
+    case Param.IntBool:
+    case Param.IntSetWindowState:
+    case Param.IntSendMode:
+    case Param.InWstr:
+    case Param.InWstrCommand:
+    case Param.InWstrCommandExtra:
+    case Param.InWstrDescription:
+    case Param.InWstrMouseButton:
+    case Param.InWstrMouseScrollDirection:
+    case Param.OutWstrSize:
+    case Param.Hwnd:
+      return true
+    case Param.OutWstr:
+    case Param.OutPoint:
+    case Param.OutRectangle:
+      return false
+  }
+}
+
+export function outParam(param: Param): boolean {
+  return !inParam(param)
+}
+
 export enum Return {
   Void,
   Int,

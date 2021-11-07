@@ -1,0 +1,114 @@
+#pragma once
+
+// Helpers for addon entry point
+
+#define DL_PROTOTYPE(Name) napi_value dl_##Name(napi_env, napi_callback_info)
+
+#define DL_EXPORT(Name)                                                        \
+  { #Name, dl_##Name }
+
+// Helpers for Autoit function definitions
+
+void doctolib_throw_param_napi_error(napi_env env, const char *param_name);
+void doctolib_throw_param_alloc_error(napi_env env, const char *param_name);
+
+#define DL_PARAMS(ParamCount)                                                  \
+  napi_status status;                                                          \
+  size_t argc = ParamCount;                                                    \
+  napi_value argv[ParamCount];                                                 \
+  napi_value thisArg;                                                          \
+  napi_value result = NULL;                                                    \
+  void *data;                                                                  \
+  status = napi_get_cb_info(env, cbinfo, &argc, argv, &thisArg, &data);        \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, "Arguments list");                    \
+    return NULL;                                                               \
+  }
+
+#define DL_ALLOC_INT_PARAM(Name, Index)                                        \
+  int32_t Name;                                                                \
+  status = napi_get_value_int32(env, argv[Index], &Name);                      \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+    goto Name##Clean;                                                          \
+  }
+
+#define DL_FREE_INT_PARAM(Name) Name##Clean:;
+
+#define DL_ALLOC_INWSTR_PARAM(Name, Index)                                     \
+  size_t Name##Size;                                                           \
+  char16_t *Name;                                                              \
+  status =                                                                     \
+      napi_get_value_string_utf16(env, argv[Index], NULL, 0, &Name##Size);     \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+    goto Name##CleanSize;                                                      \
+  }                                                                            \
+  Name = malloc(sizeof(char16_t) * (1 + Name##Size));                          \
+  if (Name == NULL) {                                                          \
+    doctolib_throw_param_alloc_error(env, #Name);                              \
+    goto Name##CleanAlloc;                                                     \
+  }                                                                            \
+  status = napi_get_value_string_utf16(env, argv[Index], Name, Name##Size,     \
+                                       &Name##Size);                           \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+    goto Name##CleanCopy;                                                      \
+  }                                                                            \
+  Name[Name##Size] = 0;
+
+#define DL_FREE_INWSTR_PARAM(Name)                                             \
+  Name##CleanCopy : free(Name);                                                \
+  Name##CleanAlloc:;                                                           \
+  Name##CleanSize:;
+
+#define DL_ALLOC_BOOL_PARAM(Name, Index)                                       \
+  bool Name;                                                                   \
+  status = napi_get_value_bool(env, argv[Index], &Name);                       \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+    goto Name##Clean;                                                          \
+  }
+
+#define DL_FREE_BOOL_PARAM(Name) Name##Clean:;
+
+#define DL_OUTPUT_VOID(Call)                                                   \
+  Call;                                                                        \
+  result = NULL;
+
+#define DL_OUTPUT_INT(Call)                                                    \
+  int out = Call;                                                              \
+  status = napi_create_int32(env, out, &result);                               \
+  if (status != napi_ok)                                                       \
+    doctolib_throw_param_napi_error(env, "out");
+
+#define DL_OUTPUT_INT_STATUS(Call, FunName)                                    \
+  int out = Call;                                                              \
+  result = NULL;                                                               \
+  if (status != 1)                                                             \
+    napi_throw_error(env, "Status",                                            \
+                     "The call to " #FunName " reported failure.");
+
+#define DL_OUTPUT_OUTWSTR(Call, Name)                                          \
+  uint32_t Name##Size;                                                         \
+  status = napi_get_value_uint32(env, argv[Index], &Name);                     \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+    goto Name##CleanSize;                                                      \
+  }                                                                            \
+  size_t Name##AllocSize = sizeof(char16_t) * (1 + Name##Size);                \
+  char16_t *Name = malloc(Name##AllocSize);                                    \
+  if (Name == NULL) {                                                          \
+    doctolib_throw_alloc_napi_error(env, #Name);                               \
+    goto Name##CleanAlloc;                                                     \
+  }                                                                            \
+  memset(Name, 0, Name##AllocSize);                                            \
+  Call;                                                                        \
+  status = napi_create_string_utf16(env, Name, Name##Size, &result);           \
+  if (status != napi_ok) {                                                     \
+    doctolib_throw_param_napi_error(env, #Name);                               \
+  }                                                                            \
+  Name##CleanAlloc : free(Name);                                               \
+  Name##CleanSize:;
+
+#define DL_RETURN return result;
