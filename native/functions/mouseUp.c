@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseUp(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(1);
   DL_ALLOC_INWSTR_PARAM(button, 0);
   DL_OUTPUT_VOID(AU3_MouseUp(button))

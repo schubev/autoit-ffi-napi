@@ -55,7 +55,7 @@ class BindingFunction {
       case Param.InWstrMouseScrollDirection:
         return this.addInWstrParam(param, index)
       case Param.OutWstrSize:
-        return this.addOutWstrParam(param, index)
+        return this.addOutWstrSizeParam(param, index)
       case Param.OutPoint:
       case Param.OutRectangle:
       case Param.OutWstr:
@@ -75,8 +75,8 @@ class BindingFunction {
     this.addMacroParam('INWSTR', param, index)
   }
 
-  private addOutWstrParam(param: ParamDef, index: number): void {
-    this.addMacroParam('OUTWSTR', param, index)
+  private addOutWstrSizeParam(param: ParamDef, index: number): void {
+    this.addMacroParam('INT', param, index)
   }
 
   private addMacroParam(macro: string, param: ParamDef, index: number): void {
@@ -92,7 +92,12 @@ class BindingFunction {
       #include "AutoItX3_DLL.h"
 
       napi_value dl_${this.name}(napi_env env, napi_callback_info cbinfo) {
-        DL_PARAMS(${this.inParams.length});`
+    `
+  }
+
+  private paramsIntro(): string {
+    if (this.inParams.length > 0) return `DL_PARAMS(${this.inParams.length});`
+    else return ''
   }
 
   private outro(): string {
@@ -133,6 +138,7 @@ class BindingFunction {
   toString(): string {
     return [
       this.intro(),
+      this.paramsIntro(),
       this.paramsSection.join(''),
       this.call(),
       this.cleanupSection.join(''),

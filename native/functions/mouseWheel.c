@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseWheel(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(2);
   DL_ALLOC_INWSTR_PARAM(direction, 0);
   DL_ALLOC_INT_PARAM(increments, 1);

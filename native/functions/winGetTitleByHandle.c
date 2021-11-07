@@ -5,11 +5,12 @@
 #include "helpers.h"
 
 napi_value dl_AU3_WinGetTitleByHandle(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(2);
   DL_ALLOC_INT_PARAM(window, 0);
-  DL_ALLOC_OUTWSTR_PARAM(titleSize, 1);
+  DL_ALLOC_INT_PARAM(titleSize, 1);
   DL_OUTPUT_WSTR(AU3_WinGetTitleByHandle(window, title, titleSize), title)
-  DL_FREE_OUTWSTR_PARAM(titleSize);
+  DL_FREE_INT_PARAM(titleSize);
   DL_FREE_INT_PARAM(window);
   DL_RETURN;
 }

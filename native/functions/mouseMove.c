@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_MouseMove(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(3);
   DL_ALLOC_INT_PARAM(x, 0);
   DL_ALLOC_INT_PARAM(y, 1);

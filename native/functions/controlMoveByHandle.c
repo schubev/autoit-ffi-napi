@@ -5,6 +5,7 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlMoveByHandle(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(6);
   DL_ALLOC_INT_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(control, 1);

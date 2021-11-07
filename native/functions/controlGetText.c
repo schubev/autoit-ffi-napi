@@ -5,16 +5,17 @@
 #include "helpers.h"
 
 napi_value dl_AU3_ControlGetText(napi_env env, napi_callback_info cbinfo) {
+
   DL_PARAMS(4);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
   DL_ALLOC_INWSTR_PARAM(controlDescription, 2);
-  DL_ALLOC_OUTWSTR_PARAM(controlTextSize, 3);
+  DL_ALLOC_INT_PARAM(controlTextSize, 3);
   DL_OUTPUT_WSTR(AU3_ControlGetText(windowDescription, windowText,
                                     controlDescription, controlText,
                                     controlTextSize),
                  controlText)
-  DL_FREE_OUTWSTR_PARAM(controlTextSize);
+  DL_FREE_INT_PARAM(controlTextSize);
   DL_FREE_INWSTR_PARAM(controlDescription);
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);

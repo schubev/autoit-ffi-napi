@@ -89,13 +89,7 @@ void doctolib_throw_param_alloc_error(napi_env env, const char *param_name);
     napi_throw_error(env, "Status",                                            \
                      "The call to " #FunName " reported failure.");
 
-#define DL_OUTPUT_OUTWSTR(Call, Name)                                          \
-  uint32_t Name##Size;                                                         \
-  status = napi_get_value_uint32(env, argv[Index], &Name);                     \
-  if (status != napi_ok) {                                                     \
-    doctolib_throw_param_napi_error(env, #Name);                               \
-    goto Name##CleanSize;                                                      \
-  }                                                                            \
+#define DL_OUTPUT_WSTR(Call, Name)                                             \
   size_t Name##AllocSize = sizeof(char16_t) * (1 + Name##Size);                \
   char16_t *Name = malloc(Name##AllocSize);                                    \
   if (Name == NULL) {                                                          \
@@ -108,7 +102,7 @@ void doctolib_throw_param_alloc_error(napi_env env, const char *param_name);
   if (status != napi_ok) {                                                     \
     doctolib_throw_param_napi_error(env, #Name);                               \
   }                                                                            \
-  Name##CleanAlloc : free(Name);                                               \
-  Name##CleanSize:;
+  free(Name);                                                                  \
+  Name##CleanAlloc:;
 
 #define DL_RETURN return result;
