@@ -11,19 +11,19 @@
 
 void dl_throw_param_napi_error(napi_env env, const char *param_name);
 void dl_throw_alloc_napi_error(napi_env env, const char *param_name);
-napi_status dl_create_rectangle(napi_env env, const RECT *rectangle,
+napi_status dl_create_rectangle(napi_env env, const LPRECT rectangle,
                                 napi_value *result);
-napi_status dl_create_point(napi_env env, const POINT *point,
-                            napi_value *result);
+napi_status dl_create_point(napi_env env, LPPOINT point, napi_value *result);
 
-#define DL_PARAMS_0 napi_status status;
+#define DL_PARAMS_0                                                            \
+  napi_status status;                                                          \
+  napi_value result = NULL;
 
 #define DL_PARAMS(ParamCount)                                                  \
   DL_PARAMS_0;                                                                 \
   size_t argc = ParamCount;                                                    \
   napi_value argv[ParamCount];                                                 \
   napi_value thisArg;                                                          \
-  napi_value result = NULL;                                                    \
   void *data;                                                                  \
   status = napi_get_cb_info(env, cbinfo, &argc, argv, &thisArg, &data);        \
   if (status != napi_ok) {                                                     \
