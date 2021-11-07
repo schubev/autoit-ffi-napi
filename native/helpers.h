@@ -11,10 +11,10 @@
 
 void dl_throw_param_napi_error(napi_env env, const char *param_name);
 void dl_throw_alloc_napi_error(napi_env env, const char *param_name);
-napi_status dl_create_rectangle(napi_env env, const char *param_name,
-                                const RECT *rectangle);
-napi_status dl_create_point(napi_env env, const char *param_name,
-                            const POINT *point);
+napi_status dl_create_rectangle(napi_env env, const RECT *rectangle,
+                                napi_value *result);
+napi_status dl_create_point(napi_env env, const POINT *point,
+                            napi_value *result);
 
 #define DL_PARAMS(ParamCount)                                                  \
   napi_status status;                                                          \
