@@ -8,7 +8,7 @@ napi_value dl_AU3_WinGetHandle(napi_env env, napi_callback_info cbinfo) {
   DL_PARAMS(2);
   DL_ALLOC_INWSTR_PARAM(windowDescription, 0);
   DL_ALLOC_INWSTR_PARAM(windowText, 1);
-  DL_OUTPUT_INT(AU3_WinGetHandle(windowDescription, windowText));
+  DL_OUTPUT_HWND(AU3_WinGetHandle(windowDescription, windowText));
   DL_FREE_INWSTR_PARAM(windowText);
   DL_FREE_INWSTR_PARAM(windowDescription);
   DL_RETURN;

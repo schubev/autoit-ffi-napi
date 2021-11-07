@@ -117,8 +117,9 @@ class BindingFunction {
         case Return.Int:
         case Return.IntCursor:
         case Return.IntWindowState:
-        case Return.Hwnd:
           return `DL_OUTPUT_INT(${call});`
+        case Return.Hwnd:
+          return `DL_OUTPUT_HWND(${call});`
         case Return.IntStatus:
           return `DL_OUTPUT_INT_STATUS(${call}, ${this.name});`
       }

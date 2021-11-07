@@ -98,6 +98,12 @@ napi_status dl_create_point(napi_env env, LPPOINT point, napi_value *result);
   if (status != napi_ok)                                                       \
     dl_throw_param_napi_error(env, "out");
 
+#define DL_OUTPUT_HWND(Call)                                                   \
+  HWND out = Call;                                                             \
+  status = napi_create_int32(env, (int32_t)out, &result);                      \
+  if (status != napi_ok)                                                       \
+    dl_throw_param_napi_error(env, "out");
+
 #define DL_OUTPUT_INT_STATUS(Call, FunName)                                    \
   int out = Call;                                                              \
   result = NULL;                                                               \
