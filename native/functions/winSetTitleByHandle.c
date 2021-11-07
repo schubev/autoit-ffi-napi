@@ -6,11 +6,11 @@
 
 napi_value dl_AU3_WinSetTitleByHandle(napi_env env, napi_callback_info cbinfo) {
   DL_PARAMS(2);
-  DL_ALLOC_INT_PARAM(window, 0);
+  DL_ALLOC_HWND_PARAM(window, 0);
   DL_ALLOC_INWSTR_PARAM(title, 1);
   DL_OUTPUT_INT_STATUS(AU3_WinSetTitleByHandle(window, title),
                        AU3_WinSetTitleByHandle);
   DL_FREE_INWSTR_PARAM(title);
-  DL_FREE_INT_PARAM(window);
+  DL_FREE_HWND_PARAM(window);
   DL_RETURN;
 }

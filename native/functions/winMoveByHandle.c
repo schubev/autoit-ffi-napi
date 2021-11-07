@@ -6,7 +6,7 @@
 
 napi_value dl_AU3_WinMoveByHandle(napi_env env, napi_callback_info cbinfo) {
   DL_PARAMS(5);
-  DL_ALLOC_INT_PARAM(window, 0);
+  DL_ALLOC_HWND_PARAM(window, 0);
   DL_ALLOC_INT_PARAM(x, 1);
   DL_ALLOC_INT_PARAM(y, 2);
   DL_ALLOC_INT_PARAM(width, 3);
@@ -17,6 +17,6 @@ napi_value dl_AU3_WinMoveByHandle(napi_env env, napi_callback_info cbinfo) {
   DL_FREE_INT_PARAM(width);
   DL_FREE_INT_PARAM(y);
   DL_FREE_INT_PARAM(x);
-  DL_FREE_INT_PARAM(window);
+  DL_FREE_HWND_PARAM(window);
   DL_RETURN;
 }

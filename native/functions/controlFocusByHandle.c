@@ -7,11 +7,11 @@
 napi_value dl_AU3_ControlFocusByHandle(napi_env env,
                                        napi_callback_info cbinfo) {
   DL_PARAMS(2);
-  DL_ALLOC_INT_PARAM(window, 0);
-  DL_ALLOC_INT_PARAM(control, 1);
+  DL_ALLOC_HWND_PARAM(window, 0);
+  DL_ALLOC_HWND_PARAM(control, 1);
   DL_OUTPUT_INT_STATUS(AU3_ControlFocusByHandle(window, control),
                        AU3_ControlFocusByHandle);
-  DL_FREE_INT_PARAM(control);
-  DL_FREE_INT_PARAM(window);
+  DL_FREE_HWND_PARAM(control);
+  DL_FREE_HWND_PARAM(window);
   DL_RETURN;
 }

@@ -41,6 +41,16 @@ napi_status dl_create_point(napi_env env, LPPOINT point, napi_value *result);
 
 #define DL_FREE_INT_PARAM(Name) Name##Clean:;
 
+#define DL_ALLOC_HWND_PARAM(Name, Index)                                       \
+  HWND Name;                                                                   \
+  status = napi_get_value_int32(env, argv[Index], (int32_t *)&Name);           \
+  if (status != napi_ok) {                                                     \
+    dl_throw_param_napi_error(env, #Name);                                     \
+    goto Name##Clean;                                                          \
+  }
+
+#define DL_FREE_HWND_PARAM(Name) Name##Clean:;
+
 #define DL_ALLOC_INWSTR_PARAM(Name, Index)                                     \
   size_t Name##Size;                                                           \
   char16_t *Name;                                                              \

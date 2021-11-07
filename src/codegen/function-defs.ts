@@ -313,7 +313,7 @@ export const functions: Record<string, Readonly<FunctionDef>> = {
   AU3_MouseGetPos: {
     return: Return.Void,
     params: [{ key: 'point', type: Param.OutPoint }],
-    generate: true,
+    generate: false,
   },
   AU3_MouseMove: {
     return: Return.IntDiscard,

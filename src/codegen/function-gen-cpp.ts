@@ -42,8 +42,9 @@ class BindingFunction {
     switch (param.type) {
       case Param.IntBool:
         return this.addBoolParam(param, index)
-      case Param.Int:
       case Param.Hwnd:
+        return this.addHwndParam(param, index)
+      case Param.Int:
       case Param.IntSetWindowState:
       case Param.IntSendMode:
         return this.addIntParam(param, index)
@@ -69,6 +70,10 @@ class BindingFunction {
 
   private addIntParam(param: ParamDef, index: number): void {
     this.addMacroParam('INT', param, index)
+  }
+
+  private addHwndParam(param: ParamDef, index: number): void {
+    this.addMacroParam('HWND', param, index)
   }
 
   private addInWstrParam(param: ParamDef, index: number): void {

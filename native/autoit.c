@@ -37,7 +37,6 @@ DL_PROTOTYPE(AU3_MouseClick);
 DL_PROTOTYPE(AU3_MouseClickDrag);
 DL_PROTOTYPE(AU3_MouseDown);
 DL_PROTOTYPE(AU3_MouseGetCursor);
-DL_PROTOTYPE(AU3_MouseGetPos);
 DL_PROTOTYPE(AU3_MouseMove);
 DL_PROTOTYPE(AU3_MouseUp);
 DL_PROTOTYPE(AU3_MouseWheel);
@@ -93,7 +92,7 @@ struct named_export {
   napi_callback callback;
 };
 
-static const struct named_export named_exports[84] = {
+static const struct named_export named_exports[83] = {
     DL_EXPORT(AU3_Init),
     DL_EXPORT(AU3_error),
     DL_EXPORT(AU3_ClipGet),
@@ -128,7 +127,6 @@ static const struct named_export named_exports[84] = {
     DL_EXPORT(AU3_MouseClickDrag),
     DL_EXPORT(AU3_MouseDown),
     DL_EXPORT(AU3_MouseGetCursor),
-    DL_EXPORT(AU3_MouseGetPos),
     DL_EXPORT(AU3_MouseMove),
     DL_EXPORT(AU3_MouseUp),
     DL_EXPORT(AU3_MouseWheel),
@@ -183,7 +181,7 @@ static const struct named_export named_exports[84] = {
 napi_value dl_init(napi_env env, napi_value exports) {
   napi_status status;
   napi_value callback;
-  for (const struct named_export *cur = named_exports, *end = cur + 84;
+  for (const struct named_export *cur = named_exports, *end = cur + 83;
        cur < end; cur++) {
     status = napi_create_function(env, cur->name, NAPI_AUTO_LENGTH,
                                   cur->callback, NULL, &callback);

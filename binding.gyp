@@ -48,7 +48,6 @@
         "native/functions/mouseClickDrag.c",
         "native/functions/mouseDown.c",
         "native/functions/mouseGetCursor.c",
-        "native/functions/mouseGetPos.c",
         "native/functions/mouseMove.c",
         "native/functions/mouseUp.c",
         "native/functions/mouseWheel.c",
