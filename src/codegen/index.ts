@@ -63,10 +63,14 @@ function writeBindingGyp(): Promise<void> {
         targets: [
           {
             target_name: 'autoit',
+            dependencies: ['copy'],
             cflags: ['-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter'],
             include_dirs: ['native'],
             libraries: ['<(module_root_dir)/build/Release/AutoItX3.lib'],
             sources: nativeSources(),
+          },
+          {
+            target_name: 'copy',
             copies: [
               {
                 destination: '<(module_root_dir)/build/Release/',

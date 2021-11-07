@@ -2,6 +2,9 @@
   "targets": [
     {
       "target_name": "autoit",
+      "dependencies": [
+        "copy"
+      ],
       "cflags": [
         "-Wall",
         "-Wextra",
@@ -100,7 +103,10 @@
         "native/functions/winWaitCloseByHandle.c",
         "native/functions/winWaitNotActive.c",
         "native/functions/winWaitNotActiveByHandle.c"
-      ],
+      ]
+    },
+    {
+      "target_name": "copy",
       "copies": [
         {
           "destination": "<(module_root_dir)/build/Release/",
