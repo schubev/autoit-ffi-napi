@@ -2,6 +2,7 @@
 #include <node_api.h>
 
 #include "AutoItX3_DLL.h"
+
 #include "helpers.h"
 
 napi_value dl_AU3_WinSetTransByHandle(napi_env env, napi_callback_info cbinfo) {

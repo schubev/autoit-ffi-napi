@@ -2,6 +2,7 @@
 #include <node_api.h>
 
 #include "AutoItX3_DLL.h"
+
 #include "helpers.h"
 
 napi_value dl_AU3_ControlShowByHandle(napi_env env, napi_callback_info cbinfo) {

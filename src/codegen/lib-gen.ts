@@ -89,7 +89,7 @@ export function generateEntrypoint(functionNames: string[]): string {
   const exports = functionNames.map(
     functionName => `DL_EXPORT(${functionName}),`,
   )
-  return `
+  return `#include <windows.h>
     #include <node_api.h>
 
     #include "helpers.h"
