@@ -90,7 +90,8 @@ napi_status dl_create_point(napi_env env, LPPOINT point, napi_value *result);
 
 #define DL_OUTPUT_VOID(Call)                                                   \
   Call;                                                                        \
-  result = NULL;
+  result = NULL;                                                               \
+  (void)status;
 
 #define DL_OUTPUT_INT(Call)                                                    \
   int out = Call;                                                              \
